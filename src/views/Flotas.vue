@@ -1,6 +1,6 @@
 <template>
 	<div class="fleet-page container my-5">
-		<h1 class="text-center mb-4">Seguro para Flotas de Autos</h1>
+		<h1 class="text-center mb-4">Seguro para Flotas de Vehiculos</h1>
 
 		<section id="informacion" class="mb-5">
 			<h2 class="text-center mb-5">Coberturas Disponibles</h2>

@@ -76,6 +76,19 @@
 						required
 					/>
 				</div>
+				<div class="col-md-6">
+					<label for="marca" class="form-label">Plan</label>
+					<select
+						id="marca"
+						v-model="quoteData.marca"
+						class="form-control"
+						required
+					>
+						<option value="" disabled>Seleccione un plan</option>
+						<option value="Aurora">ART</option>
+						<option value="Cannondale">Accidente Personales</option>
+					</select>
+				</div>
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary w-100">
 						Solicitar Cotización

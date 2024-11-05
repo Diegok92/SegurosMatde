@@ -115,7 +115,7 @@ export default {
 				{
 					title: "Mala Praxis",
 					description:
-						"Cobertura para profesionales que enfrentan demandas por errores profesionales.",
+						"Cobertura para profesionales que enfrentan demandas por errores ejerciendo su labor.",
 					link: "/mala-praxis",
 					icon: "fas fa-user-md",
 				},

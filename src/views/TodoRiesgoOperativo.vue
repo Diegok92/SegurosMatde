@@ -3,7 +3,7 @@
 		<h1 class="text-center mb-4">Seguro de Todo Riesgo Operativo</h1>
 
 		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Información sobre Seguro de Todo Riesgo Operativo</h2>
+			<h2 class="mb-4">Información:</h2>
 			<p>
 				El Seguro de Todo Riesgo Operativo es una cobertura integral diseñada
 				para empresas, especialmente aquellas que manejan grandes activos,
@@ -88,28 +88,6 @@
 					</div>
 				</div>
 			</div>
-
-			<h3>Exclusiones Comunes</h3>
-			<ul>
-				<li>
-					<strong>Daños por desgaste normal:</strong> No cubre los daños por
-					envejecimiento o desgaste natural.
-				</li>
-				<li>
-					<strong>Negligencia grave o dolo:</strong> No cubre daños causados
-					intencionadamente o por negligencia extrema.
-				</li>
-				<li>
-					<strong>Conflictos laborales:</strong> Los daños derivados de huelgas
-					o disturbios laborales suelen estar excluidos, a menos que se contrate
-					cobertura específica.
-				</li>
-				<li>
-					<strong>Guerras y actos de terrorismo:</strong> Los daños derivados de
-					guerras o terrorismo suelen estar excluidos, salvo que se incluya
-					cobertura adicional.
-				</li>
-			</ul>
 
 			<h3>Ejemplo de Uso</h3>
 			<p>

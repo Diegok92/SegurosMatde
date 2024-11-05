@@ -114,7 +114,7 @@
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container">
-								<i class="fas fa-shield-alt"></i>
+								<i class="fas fa-ambulance"></i>
 							</div>
 							<h5 class="card-title text-center">Accidentes Personales</h5>
 							<p class="card-text">

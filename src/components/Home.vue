@@ -14,14 +14,16 @@
 					v-for="service in services"
 					:key="service.title"
 				>
-					<div class="card h-100">
-						<div class="card-body">
+					<div class="card h-100 d-flex flex-column">
+						<div class="card-body d-flex flex-column">
 							<div class="icon-container">
 								<i :class="service.icon"></i>
 							</div>
 							<h5 class="card-title">{{ service.title }}</h5>
 							<p class="card-text">{{ service.description }}</p>
-							<router-link :to="service.link" class="btn btn-primary"
+							<router-link
+								:to="service.link"
+								class="btn btn-primary mt-auto align-self-start"
 								>Más Información</router-link
 							>
 						</div>

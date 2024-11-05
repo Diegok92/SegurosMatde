@@ -1,115 +1,199 @@
 <template>
-    <div class="caucion-page container my-5">
-        <h1 class="text-center mb-4">Seguro de Caución</h1>
+	<div class="caucion-page container my-5">
+		<h1 class="text-center mb-4">Seguro de Caución</h1>
 
-        <section id="informacion" class="mb-5">
-            <h2 class="mb-4">Tipos de Cauciones</h2>
-            <h3>1. Garantías para obras o servicios públicos y privados</h3>
-            <ul>
-                <li>Mantenimiento de la oferta.</li>
-                <li>Ejecución de contrato / garantía de adjudicación.</li>
-                <li>Sustitución de fondos de reparos.</li>
-                <li>Anticipos por acopio o financieros.</li>
-                <li>Tenencia de materiales.</li>
-            </ul>
+		<section id="informacion" class="mb-5">
+			<h2 class="mb-4">Ofrecemos:</h2>
 
-            <h3>2. Garantías IATA</h3>
-            <p>
-                Son las garantías que la Asociación Internacional de Transporte Aéreo (IATA) solicita a las agencias de
-                viaje y a las agencias de carga para garantizar la solidez financiera en el manejo de las transacciones
-                relacionadas con la venta de boletos aéreos y la gestión de carga aérea.
-            </p>
-            <ul>
-                <li>Para agencias de carga IATA</li>
-                <li>Para agencias de viaje IATA</li>
-            </ul>
+			<div class="row">
+				<!-- Tarjeta 1: Garantías para obras o servicios públicos y privados -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-tools"></i>
+							</div>
+							<h5 class="card-title text-center">Obras y Servicios Públicos</h5>
+							<ul class="card-content">
+								<li>Mantenimiento de la oferta.</li>
+								<li>Ejecución de contrato / garantía de adjudicación.</li>
+								<li>Sustitución de fondos de reparos.</li>
+								<li>Anticipos por acopio o financieros.</li>
+								<li>Tenencia de materiales.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-            <h3>3. Garantías Aduaneras</h3>
-            <p>
-                Son instrumentos financieros que los importadores o exportadores proporcionan a la Dirección General de
-                Aduanas (DGA) para asegurar el pago de impuestos y aranceles. Estas garantías permiten la liberación de
-                la mercancía, incluso en casos de desacuerdo sobre la interpretación de normativas aduaneras, y se
-                mantienen hasta que se resuelvan dichas discrepancias.
-            </p>
-            <ul>
-                <li>Falta de documentación.</li>
-                <li>Importación temporal.</li>
-                <li>Exportación temporal.</li>
-                <li>Diferencia de valor.</li>
-                <li>Operadores portuarios.</li>
-                <li>Habilitación de depósitos fiscales.</li>
-                <li>Sumario contencioso y recurso administrativo.</li>
-                <li>Importación temporaria de enseres personales.</li>
-                <li>Agente de transporte aduanero.</li>
-                <li>Otros.</li>
-            </ul>
+				<!-- Tarjeta 2: Garantías IATA -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-plane"></i>
+							</div>
+							<h5 class="card-title text-center">Garantías IATA</h5>
+							<p class="card-content">
+								Garantías solicitadas por la Asociación Internacional de
+								Transporte Aéreo (IATA) para agencias de viajes y carga.
+							</p>
+							<ul class="card-content">
+								<li>Para agencias de carga IATA</li>
+								<li>Para agencias de viaje IATA</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-            <h3>4. Garantía de actividad o profesión</h3>
-            <p>
-                Garantizan el pago de una eventual multa que un organismo pudiera reclamar al profesional. Son
-                requisitos obligatorios para la inscripción en los organismos gubernamentales en ciertas industrias o
-                profesiones. Su propósito principal es la protección a los consumidores en caso de que el profesional no
-                cumpla con sus responsabilidades.
-            </p>
-            <ul>
-                <li>Directores y gerentes (Ciudad Autónoma de Buenos Aires).</li>
-                <li>Agentes de lotería.</li>
-                <li>CUCICBA</li>
-                <li>Operadores portuarios.</li>
-                <li>Martilleros y corredores.</li>
-                <li>Agencias de seguridad.</li>
-                <li>Talleres de verificación técnica.</li>
-                <li>Agentes de transportes.</li>
-                <li>Sujetos del sistema GNC (estaciones, PEC y talleres).</li>
-                <li>Despachadores y distribuidores de combustibles líquidos.</li>
-                <li>Auditores.</li>
-                <li>Actividades profesionales reglamentadas.</li>
-            </ul>
+				<!-- Tarjeta 3: Garantías Aduaneras -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-warehouse"></i>
+							</div>
+							<h5 class="card-title text-center">Garantías Aduaneras</h5>
+							<p class="card-content">
+								Instrumentos financieros para asegurar el pago de impuestos y
+								aranceles en operaciones aduaneras.
+							</p>
+							<ul class="card-content">
+								<li>Falta de documentación.</li>
+								<li>Importación y exportación temporal.</li>
+								<li>Operadores portuarios y depósitos fiscales.</li>
+								<li>Sumario contencioso y recurso administrativo.</li>
+								<li>Otros.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-            <h3>Otro tipo de cauciones</h3>
-            <ul>
-                <li><strong>Garantías Judiciales:</strong> Son sumas de dinero o activos que una persona o entidad
-                    deposita ante un tribunal como parte de un proceso legal para garantizar la comparecencia o el
-                    cumplimiento de ciertas obligaciones.</li>
-                <li><strong>Garantías de Concesiones:</strong> Se utilizan en el contexto de contratos de concesión o
-                    acuerdos de concesión en los que una entidad gubernamental o privada otorga a una empresa el derecho
-                    a operar, desarrollar o mantener una infraestructura o un servicio público durante un período
-                    determinado.</li>
-                <li><strong>Garantías de cumplimiento de turismo estudiantil:</strong> Son de carácter obligatorio y
-                    garantizan que una agencia de turismo estudiantil brinde los servicios básicos contratados.</li>
-                <li><strong>Garantía de alquiler:</strong> Garantizan el pago del alquiler al propietario del inmueble.
-                </li>
-            </ul>
-        </section>
+				<!-- Tarjeta 4: Garantía de actividad o profesión -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-briefcase"></i>
+							</div>
+							<h5 class="card-title text-center">Garantía de Profesión</h5>
+							<p class="card-content">
+								Garantizan el pago de multas y protección al consumidor en caso
+								de incumplimiento profesional.
+							</p>
+							<ul class="card-content">
+								<li>Directores y gerentes.</li>
+								<li>Agentes de lotería, martilleros, corredores.</li>
+								<li>
+									Agencias de seguridad y talleres de verificación técnica.
+								</li>
+								<li>Operadores de GNC y distribuidoras de combustibles.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-        <!-- Nueva Sección de Información Adicional -->
-        <section id="informacion-adicional" class="mb-5">
-            <h2 class="mb-4">Seguro de Caución: Garantía del Cumplimiento de Obligaciones</h2>
-            <p>
-                Este tipo de seguro está destinado a garantizar el cumplimiento de obligaciones contractuales. Si la
-                persona asegurada no cumple con sus compromisos, la compañía de seguros indemniza al beneficiario de la
-                caución.
-            </p>
+				<!-- Tarjeta 5: Garantías Judiciales -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-gavel"></i>
+							</div>
+							<h5 class="card-title text-center">Garantías Judiciales</h5>
+							<ul class="card-content">
+								<p>
+									Se utilizan en contratos de concesión otorgados por entidades
+									para operar o desarrollar servicios públicos.
+								</p>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-            <h3>Cobertura Básica</h3>
-            <p>
-                Garantía de cumplimiento de contratos (obras públicas, servicios, alquileres).
-            </p>
+				<!-- Tarjeta 6: Garantías de Concesiones -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-handshake"></i>
+							</div>
+							<h5 class="card-title text-center">Garantías de Concesiones</h5>
+							<ul class="card-content">
+								<p>
+									Para empresas que operan, desarrollan o mantienen
+									infraestructura o servicios públicos por concesión.
+								</p>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-            <h3>Coberturas Adicionales</h3>
-            <ul>
-                <li>Caución judicial</li>
-                <li>Caución aduanera</li>
-                <li>Caución de licitaciones</li>
-            </ul>
+				<!-- Tarjeta 7: Garantías de cumplimiento de turismo estudiantil -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-graduation-cap"></i>
+							</div>
+							<h5 class="card-title text-center">Turismo Estudiantil</h5>
+							<ul class="card-content">
+								<p>
+									Garantiza la prestación de servicios básicos contratados por
+									agencias de turismo estudiantil.
+								</p>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-            <h3>Ejemplo de Cobertura</h3>
-            <p>
-                Si una empresa contratista no termina una obra según el contrato, el beneficiario del seguro de caución
-                recibirá una compensación económica.
-            </p>
-        </section>
-    </div>
+				<!-- Tarjeta 8: Garantía de alquiler -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-home"></i>
+							</div>
+							<h5 class="card-title text-center">Garantía de Alquiler</h5>
+							<ul class="card-content">
+								<p>
+									Garantiza el pago del alquiler al propietario del inmueble.
+								</p>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Tarjeta 9: Garantía del Cumplimiento de Obligaciones -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-check-circle"></i>
+							</div>
+							<h5 class="card-title text-center">
+								Cumplimiento de Obligaciones
+							</h5>
+							<ul class="card-content">
+								<p>
+									Garantiza el cumplimiento de obligaciones contractuales,
+									indemnizando en caso de incumplimiento.
+								</p>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Nueva Sección de Información Adicional -->
+		<section id="informacion-adicional" class="mb-5">
+			<h3>Ejemplo de Cobertura</h3>
+			<p>
+				Si una empresa contratista no termina una obra según el contrato, el
+				beneficiario del seguro de caución recibirá una compensación económica.
+			</p>
+		</section>
+	</div>
 </template>
 
 <script>
@@ -118,21 +202,48 @@ export default {};
 
 <style scoped>
 .caucion-page {
-    padding-top: 20px;
+	padding-top: 20px;
+}
+
+.card {
+	border: 1px solid #e0e0e0;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	border-radius: 8px;
+	background-color: #ffffff;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	background-color: #f9f9f9;
+}
+
+.icon-container {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 15px;
+}
+
+.card-title {
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: center;
+}
+
+.card-content {
+	text-align: left;
+	color: #666;
 }
 
 h2 {
-    font-size: 1.8rem;
-    color: #003366;
+	font-size: 1.8rem;
+	color: #003366;
 }
 
 h3 {
-    margin-top: 20px;
-    color: #003366;
-}
-
-ul {
-    list-style-type: disc;
-    margin-left: 20px;
+	margin-top: 20px;
+	color: #003366;
 }
 </style>

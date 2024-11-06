@@ -1,0 +1,175 @@
+<template>
+	<div class="accidentes-personales-page container my-5">
+		<h1 class="text-center mb-4">Seguro de Accidentes Personales</h1>
+
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section mb-5">
+			<h2 class="mb-4">Cotizador Web</h2>
+			<form @submit.prevent="submitQuote" class="row g-3">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="quoteData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary w-100">
+						Solicitar Cotización
+					</button>
+				</div>
+			</form>
+		</section>
+
+		<!-- Información sobre el Seguro de Accidentes Personales -->
+		<section id="informacion" class="mb-5">
+			<h2 class="mb-4">Protección contra Accidentes Personales</h2>
+			<p>
+				Este seguro está diseñado para ofrecer una cobertura completa en caso de
+				accidentes personales que puedan resultar en lesiones, invalidez o
+				fallecimiento. Es ideal para personas que desean una protección
+				adicional ante imprevistos.
+			</p>
+			<p>
+				El Seguro de Accidentes Personales se adapta a tus necesidades, ante
+				cualquier accidente que puedas tener, ya sea realizando tus actividades
+				laborales + in itinere o bien durante las 24 horas los 365 días del año.
+			</p>
+
+			<div class="row justify-content-center">
+				<!-- Tarjeta de Cobertura Básica -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-user-shield"></i>
+							</div>
+							<h5 class="card-title text-center">Cobertura Básica</h5>
+							<ul class="card-content">
+								<li>Gastos médicos</li>
+								<li>Incapacidad temporal o permanente</li>
+								<li>Indemnización por fallecimiento</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<!-- Tarjeta de Coberturas Adicionales -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-medkit"></i>
+							</div>
+							<h5 class="card-title text-center">Coberturas Adicionales</h5>
+							<ul class="card-content">
+								<li>Tratamientos médicos prolongados</li>
+								<li>Rehabilitación</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Sección de Ejemplo de Cobertura -->
+		<section id="informacion-adicional" class="mb-5">
+			<h3>Ejemplo de Cobertura</h3>
+			<p>
+				Un seguro de accidentes personales cubre el tratamiento médico y la
+				pérdida de ingresos si sufres un accidente que te impide trabajar
+				durante varios meses.
+			</p>
+		</section>
+	</div>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			quoteData: {
+				nombre: "",
+				email: "",
+			},
+		};
+	},
+	methods: {
+		submitQuote() {
+			alert("Cotización solicitada");
+		},
+	},
+};
+</script>
+
+<style scoped>
+.accidentes-personales-page {
+	padding-top: 20px;
+}
+
+.cotizador-section form {
+	background-color: #f8f9fa;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.card {
+	border: 1px solid #e0e0e0;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	border-radius: 8px;
+	background-color: #ffffff;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	background-color: #f9f9f9;
+}
+
+.icon-container {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 15px;
+}
+
+.card-title {
+	font-size: 1.4rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: center;
+}
+
+.card-content {
+	text-align: left;
+	color: #666;
+}
+
+h2 {
+	font-size: 1.8rem;
+	color: #003366;
+}
+
+h3 {
+	margin-top: 20px;
+	color: #003366;
+}
+
+ul {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+</style>

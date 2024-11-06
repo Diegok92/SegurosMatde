@@ -38,9 +38,15 @@
 								</li>
 								<li>
 									<router-link to="/art" class="dropdown-item"
-										>A.R.T. / Accidentes Personales</router-link
+										>A.R.T.</router-link
 									>
 								</li>
+								<li>
+									<router-link to="/accidentes-personales" class="dropdown-item"
+										>Accidentes Personales</router-link
+									>
+								</li>
+
 								<li>
 									<router-link to="/comercio" class="dropdown-item"
 										>Integral de Comercio</router-link

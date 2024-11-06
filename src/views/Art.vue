@@ -1,6 +1,6 @@
 <template>
 	<div class="art-page container my-5">
-		<h1 class="text-center mb-4">ART / Accidentes Personales</h1>
+		<h1 class="text-center mb-4">A.R.T.</h1>
 
 		<!-- Cotizador Web -->
 		<section id="cotizador" class="cotizador-section mb-5">
@@ -99,7 +99,7 @@
 
 		<!-- Información sobre ART y Accidentes Personales -->
 		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Información sobre ART y Accidentes Personales</h2>
+			<h2 class="mb-4">Información sobre A.R.T.</h2>
 			<p>
 				Ya sea que trabajes en relación de dependencia o de manera autónoma, es
 				imprescindible que cuentes con un seguro de accidentes. La ART debe ser
@@ -114,11 +114,6 @@
 				formal, mientras que un seguro de Accidentes Personales se dirige a
 				quienes trabajan de manera independiente y no cuentan con empleados en
 				relación de dependencia.
-			</p>
-			<p>
-				El Seguro de Accidentes Personales se adapta a tus necesidades, ante
-				cualquier accidente que puedas tener, ya sea realizando tus actividades
-				laborales + in itinere o bien durante las 24 horas los 365 días del año.
 			</p>
 
 			<div class="row">

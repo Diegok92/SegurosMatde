@@ -57,11 +57,18 @@ export default {
 					icon: "fas fa-car",
 				},
 				{
-					title: "A.R.T. / Accidentes Personales",
+					title: "A.R.T.",
 					description:
 						"Cobertura para empleadores y trabajadores, incluyendo accidentes de trabajo y enfermedades profesionales.",
 					link: "/art",
 					icon: "fas fa-briefcase-medical",
+				},
+				{
+					title: "Accidentes Personales",
+					description:
+						"Cobertura para lesiones, invalidez o fallecimiento causados por accidentes.",
+					link: "/accidentes-personales",
+					icon: "fas fa-user-shield",
 				},
 				{
 					title: "Integral de Comercio",
@@ -192,6 +199,7 @@ export default {
 	font-size: 1.3rem;
 	font-weight: bold;
 	color: #003366;
+	text-align: center;
 }
 
 .card-text {

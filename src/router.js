@@ -97,6 +97,11 @@ const routes = [
 		name: "Bicicletas",
 		component: Bicicletas, // Nueva ruta
 	},
+	{
+		path: "/accidentes-personales",
+		name: "AccidentesPersonales",
+		component: () => import("./views/AccidentesPersonales.vue"),
+	},
 ];
 
 const router = createRouter({

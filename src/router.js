@@ -90,12 +90,12 @@ const routes = [
 	{
 		path: "/todo-riesgo-operativo",
 		name: "TodoRiesgoOperativo",
-		component: TodoRiesgoOperativo, // Nueva ruta
+		component: TodoRiesgoOperativo,
 	},
 	{
 		path: "/bicicletas",
 		name: "Bicicletas",
-		component: Bicicletas, // Nueva ruta
+		component: Bicicletas,
 	},
 	{
 		path: "/accidentes-personales",
@@ -107,6 +107,15 @@ const routes = [
 const router = createRouter({
 	history: createWebHistory(),
 	routes,
+	scrollBehavior(to, from, savedPosition) {
+		// Si existe una posición guardada, vuelve allí (como en navegación hacia atrás).
+		if (savedPosition) {
+			return savedPosition;
+		} else {
+			// De lo contrario, desplázate hasta la parte superior de la página.
+			return { top: 0 };
+		}
+	},
 });
 
 export default router;

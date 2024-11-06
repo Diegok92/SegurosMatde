@@ -1,6 +1,69 @@
 <template>
 	<div class="fleet-page container my-5">
-		<h1 class="text-center mb-4">Seguro para Flotas de Vehiculos</h1>
+		<h1 class="text-center mb-4">Seguro para Flotas de Vehículos</h1>
+
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section mb-5">
+			<h2 class="mb-4">Cotizador Web</h2>
+			<form @submit.prevent="submitQuote" class="row g-3">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="quoteData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label class="form-label">Tipo de Vehículos</label>
+					<div class="d-flex flex-wrap">
+						<div
+							v-for="(tipo, index) in tiposVehiculos"
+							:key="index"
+							class="form-check col-6"
+						>
+							<input
+								type="checkbox"
+								:id="`tipo-${index}`"
+								class="form-check-input"
+								:value="tipo"
+								v-model="quoteData.tipoVehiculos"
+							/>
+							<label :for="`tipo-${index}`" class="form-check-label">
+								{{ tipo }}
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="cantidadVehiculos" class="form-label"
+						>Cantidad de Vehículos</label
+					>
+					<input
+						type="number"
+						id="cantidadVehiculos"
+						v-model="quoteData.cantidadVehiculos"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary w-100">Contactar</button>
+				</div>
+			</form>
+		</section>
 
 		<section id="informacion" class="mb-5">
 			<h2 class="text-center mb-5">Coberturas Disponibles</h2>
@@ -89,6 +152,20 @@
 export default {
 	data() {
 		return {
+			quoteData: {
+				nombre: "",
+				email: "",
+				tipoVehiculos: [],
+				cantidadVehiculos: "",
+			},
+			tiposVehiculos: [
+				"Auto",
+				"Motos",
+				"Camionetas",
+				"Camiones",
+				"Colectivos",
+				"Cuatriciclos",
+			],
 			coverages: [
 				{
 					title: "Responsabilidad Civil Obligatoria",
@@ -141,12 +218,23 @@ export default {
 			],
 		};
 	},
+	methods: {
+		submitQuote() {
+			alert("Cotización solicitada");
+		},
+	},
 };
 </script>
 
 <style scoped>
 .fleet-page {
 	padding-top: 20px;
+}
+
+.cotizador-section form {
+	background-color: #f8f9fa;
+	padding: 20px;
+	border-radius: 10px;
 }
 
 .card {
@@ -185,10 +273,6 @@ export default {
 h2 {
 	font-size: 1.8rem;
 	color: #003366;
-}
-
-h2.text-center {
-	text-align: center;
 }
 
 h3,

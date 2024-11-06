@@ -26,26 +26,7 @@
 						required
 					/>
 				</div>
-				<div class="col-md-6">
-					<label for="provincia" class="form-label">Provincia</label>
-					<input
-						type="text"
-						id="provincia"
-						v-model="quoteData.provincia"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="localidad" class="form-label">Localidad</label>
-					<input
-						type="text"
-						id="localidad"
-						v-model="quoteData.localidad"
-						class="form-control"
-						required
-					/>
-				</div>
+
 				<div class="col-md-6">
 					<label for="contacto" class="form-label">Nombre de Contacto</label>
 					<input
@@ -76,36 +57,7 @@
 						required
 					/>
 				</div>
-				<div class="col-md-6">
-					<label for="origen" class="form-label">Origen del Viaje</label>
-					<input
-						type="text"
-						id="origen"
-						v-model="quoteData.origen"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="destino" class="form-label">Destino del Viaje</label>
-					<input
-						type="text"
-						id="destino"
-						v-model="quoteData.destino"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="vigencia" class="form-label">Vigencia</label>
-					<input
-						type="text"
-						id="vigencia"
-						v-model="quoteData.vigencia"
-						class="form-control"
-						required
-					/>
-				</div>
+
 				<div class="col-md-6">
 					<label for="tipoMercaderia" class="form-label"
 						>Tipo de Mercadería a Transportar</label
@@ -118,71 +70,7 @@
 						required
 					/>
 				</div>
-				<div class="col-md-6">
-					<label for="sumaAsegurada" class="form-label"
-						>Suma Asegurada de la Mercadería</label
-					>
-					<input
-						type="number"
-						id="sumaAsegurada"
-						v-model="quoteData.sumaAsegurada"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="tipoTransporte" class="form-label"
-						>Tipo de Transporte</label
-					>
-					<select
-						id="tipoTransporte"
-						v-model="quoteData.tipoTransporte"
-						class="form-select"
-						required
-					>
-						<option value="" disabled selected>
-							Seleccione el tipo de transporte
-						</option>
-						<option value="Terrestre">Terrestre</option>
-						<option value="Maritimo">Marítimo</option>
-						<option value="Aereo">Aéreo</option>
-					</select>
-				</div>
-				<div class="col-md-6">
-					<label for="modalidad" class="form-label"
-						>Modalidad de Contratación</label
-					>
-					<select
-						id="modalidad"
-						v-model="quoteData.modalidad"
-						class="form-select"
-						required
-					>
-						<option value="" disabled selected>
-							Seleccione la modalidad de contratación
-						</option>
-						<option value="Poliza por viaje">Pólizas por viaje</option>
-						<option value="Poliza por periodos">
-							Pólizas por períodos con vehículos declarados
-						</option>
-						<option value="Poliza flotante mensual">
-							Pólizas flotantes con declaración de viajes a mes vencido
-						</option>
-						<option value="Poliza flotante previa">
-							Pólizas flotantes con declaración previa al inicio de los viajes y
-							liquidación mensual
-						</option>
-					</select>
-				</div>
-				<div class="col-12">
-					<label for="observaciones" class="form-label">Observaciones</label>
-					<textarea
-						id="observaciones"
-						v-model="quoteData.observaciones"
-						class="form-control"
-						rows="3"
-					></textarea>
-				</div>
+
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary w-100">
 						Solicitar Cotización

@@ -51,7 +51,7 @@
 
 			<div class="row justify-content-center">
 				<!-- Tarjeta de Cobertura Básica -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
+				<div class="col-md-6 mb-4" data-aos="fade-up">
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
@@ -59,16 +59,16 @@
 							</div>
 							<h5 class="card-title text-center">Cobertura Básica</h5>
 							<ul class="card-content">
-								<li>Gastos médicos</li>
-								<li>Incapacidad temporal o permanente</li>
-								<li>Indemnización por fallecimiento</li>
+								<p>Gastos médicos</p>
+								<p>Incapacidad temporal o permanente</p>
+								<p>Indemnización por fallecimiento</p>
 							</ul>
 						</div>
 					</div>
 				</div>
 
 				<!-- Tarjeta de Coberturas Adicionales -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
+				<div class="col-md-6 mb-4" data-aos="fade-up">
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
@@ -76,8 +76,8 @@
 							</div>
 							<h5 class="card-title text-center">Coberturas Adicionales</h5>
 							<ul class="card-content">
-								<li>Tratamientos médicos prolongados</li>
-								<li>Rehabilitación</li>
+								<p>Tratamientos médicos prolongados</p>
+								<p>Rehabilitación</p>
 							</ul>
 						</div>
 					</div>
@@ -144,6 +144,7 @@ export default {
 	font-size: 2.5rem;
 	color: #003366;
 	margin-bottom: 15px;
+	text-align: center;
 }
 
 .card-title {
@@ -154,22 +155,26 @@ export default {
 }
 
 .card-content {
-	text-align: left;
+	text-align: center;
 	color: #666;
 }
 
 h2 {
 	font-size: 1.8rem;
 	color: #003366;
+	text-align: center;
 }
 
 h3 {
 	margin-top: 20px;
 	color: #003366;
+	text-align: center;
 }
 
 ul {
 	list-style-type: disc;
-	margin-left: 20px;
+	margin-left: 0;
+	padding-left: 0;
+	text-align: center;
 }
 </style>

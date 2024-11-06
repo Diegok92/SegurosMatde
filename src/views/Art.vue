@@ -27,35 +27,16 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label for="actividad" class="form-label">Actividad</label>
+					<label for="nombre" class="form-label">Nombre</label>
 					<input
 						type="text"
-						id="actividad"
-						v-model="quoteData.actividad"
+						id="nombre"
+						v-model="quoteData.nombre"
 						class="form-control"
 						required
 					/>
 				</div>
-				<div class="col-md-6">
-					<label for="masaSalarial" class="form-label">Masa Salarial</label>
-					<input
-						type="number"
-						id="masaSalarial"
-						v-model="quoteData.masaSalarial"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="capitas" class="form-label">Capitas</label>
-					<input
-						type="number"
-						id="capitas"
-						v-model="quoteData.capitas"
-						class="form-control"
-						required
-					/>
-				</div>
+
 				<div class="col-md-6">
 					<label for="email" class="form-label">Correo Electrónico</label>
 					<input
@@ -77,17 +58,25 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label for="marca" class="form-label">Plan</label>
-					<select
-						id="marca"
-						v-model="quoteData.marca"
-						class="form-control"
-						required
-					>
-						<option value="" disabled>Seleccione un plan</option>
-						<option value="Aurora">ART</option>
-						<option value="Cannondale">Accidente Personales</option>
-					</select>
+					<label class="form-label">Plan/es buscados</label>
+					<div class="d-flex flex-wrap">
+						<div
+							v-for="(plan, index) in planes"
+							:key="index"
+							class="form-check col-6"
+						>
+							<input
+								type="checkbox"
+								:id="`plan-${index}`"
+								class="form-check-input"
+								:value="plan"
+								v-model="quoteData.planes"
+							/>
+							<label :for="`plan-${index}`" class="form-check-label">
+								{{ plan }}
+							</label>
+						</div>
+					</div>
 				</div>
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary w-100">
@@ -117,42 +106,11 @@
 			</p>
 
 			<div class="row">
-				<!-- Tarjeta: Riesgo de Accidentes Personales -->
-				<div class="col-md-4 mb-4">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container">
-								<i class="fas fa-ambulance"></i>
-							</div>
-							<h5 class="card-title text-center">Accidentes Personales</h5>
-							<p class="card-text">
-								Este seguro cubre al asegurado en caso de que sufra un accidente
-								que le cause lesiones, invalidez o muerte.
-							</p>
-							<ul>
-								<li>
-									<strong>Cobertura básica:</strong> Gastos médicos, incapacidad
-									temporal o permanente, e indemnización por fallecimiento.
-								</li>
-								<li>
-									<strong>Coberturas adicionales:</strong> Cobertura para
-									tratamientos médicos prolongados o rehabilitación.
-								</li>
-								<li>
-									<strong>Ejemplo:</strong> Un seguro de accidentes personales
-									cubre el tratamiento médico y la pérdida de ingresos si sufres
-									un accidente que te impide trabajar durante varios meses.
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
 				<!-- Tarjeta: Seguro ART -->
-				<div class="col-md-4 mb-4">
+				<div class="col-md-6 mb-4">
 					<div class="card h-100">
 						<div class="card-body">
-							<div class="icon-container">
+							<div class="icon-container text-center">
 								<i class="fas fa-briefcase-medical"></i>
 							</div>
 							<h5 class="card-title text-center">ART</h5>
@@ -182,10 +140,10 @@
 				</div>
 
 				<!-- Tarjeta: Seguro de Accidentes de Trabajo (ART) para Personal Doméstico -->
-				<div class="col-md-4 mb-4">
+				<div class="col-md-6 mb-4">
 					<div class="card h-100">
 						<div class="card-body">
-							<div class="icon-container">
+							<div class="icon-container text-center">
 								<i class="fas fa-home"></i>
 							</div>
 							<h5 class="card-title text-center">ART - Personal Doméstico</h5>
@@ -214,6 +172,8 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Información adicional -->
 			<h3>Cobertura de Riesgos de Trabajo para Casas Particulares</h3>
 			<p>
 				La cobertura de riesgos del trabajo para personal de casas particulares
@@ -261,7 +221,6 @@
 			</ul>
 
 			<h3>Socios Estratégicos</h3>
-			<br />
 			<div class="partners-grid">
 				<img
 					v-for="(logo, index) in partnerLogos"
@@ -303,12 +262,12 @@ export default {
 			quoteData: {
 				razonSocial: "",
 				cuit: "",
-				actividad: "",
-				masaSalarial: "",
-				capitas: "",
+				nombre: "",
 				email: "",
 				telefono: "",
+				planes: [],
 			},
+			planes: ["ART", "ART - Doméstico"],
 			partnerLogos: [
 				provinciaLogo,
 				expertaLogo,
@@ -341,11 +300,6 @@ export default {
 	border-radius: 10px;
 }
 
-h2 {
-	font-size: 1.8rem;
-	color: #003366;
-}
-
 .card {
 	border: 1px solid #e0e0e0;
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -361,27 +315,35 @@ h2 {
 }
 
 .icon-container {
-	text-align: center;
 	font-size: 2.5rem;
 	color: #003366;
 	margin-bottom: 15px;
+	text-align: center;
 }
 
 .card-title {
 	font-size: 1.4rem;
 	font-weight: bold;
 	color: #003366;
+	text-align: center;
 }
 
-.card-text {
-	font-size: 1rem;
+.card-text,
+ul {
+	text-align: center;
 	color: #666;
 	margin-bottom: 15px;
 }
 
-ul {
-	list-style-type: disc;
-	margin-left: 20px;
+h2 {
+	font-size: 1.8rem;
+	color: #003366;
+	text-align: center;
+}
+
+h3 {
+	margin-top: 20px;
+	color: #003366;
 }
 
 .partner-logo {
@@ -389,5 +351,9 @@ ul {
 	max-width: 200px;
 	height: auto;
 	object-fit: contain;
+}
+
+li {
+	text-align: left;
 }
 </style>

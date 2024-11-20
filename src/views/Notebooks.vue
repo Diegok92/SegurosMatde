@@ -27,6 +27,16 @@
 					/>
 				</div>
 				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
 					<label for="marca" class="form-label">Marca</label>
 					<select
 						id="marca"
@@ -55,6 +65,17 @@
 						type="text"
 						id="modelo"
 						v-model="quoteData.modelo"
+						class="form-control"
+						required
+					/>
+				</div>
+
+				<div class="col-md-6">
+					<label for="sumaAsegurada" class="form-label">Suma Asegurada</label>
+					<input
+						type="number"
+						id="sumaAsegurada"
+						v-model="quoteData.sumaAsegurada"
 						class="form-control"
 						required
 					/>

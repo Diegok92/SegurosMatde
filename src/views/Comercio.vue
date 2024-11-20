@@ -2,6 +2,68 @@
 	<div class="integral-trade-page container my-5">
 		<h1 class="text-center mb-4">Seguro Integral de Comercio</h1>
 
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section mb-5">
+			<h2 class="mb-4">Cotizador Web</h2>
+			<form @submit.prevent="submitQuote" class="row g-3">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="quoteData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="razonSocial" class="form-label">Razón Social</label>
+					<input
+						type="text"
+						id="razonSocial"
+						v-model="quoteData.razonSocial"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="actividad" class="form-label">Actividad</label>
+					<input
+						type="text"
+						id="actividad"
+						v-model="quoteData.actividad"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary w-100">
+						Solicitar Cotización
+					</button>
+				</div>
+			</form>
+		</section>
+
 		<section id="informacion" class="mb-5">
 			<h2 class="mb-4">Protección Integral para tu Comercio</h2>
 			<p>
@@ -54,12 +116,35 @@
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			quoteData: {
+				nombre: "",
+				razonSocial: "",
+				actividad: "",
+				telefono: "",
+				email: "",
+			},
+		};
+	},
+	methods: {
+		submitQuote() {
+			alert("Cotización solicitada");
+		},
+	},
+};
 </script>
 
 <style scoped>
 .integral-trade-page {
 	padding-top: 20px;
+}
+
+.cotizador-section form {
+	background-color: #f8f9fa;
+	padding: 20px;
+	border-radius: 10px;
 }
 
 .card {

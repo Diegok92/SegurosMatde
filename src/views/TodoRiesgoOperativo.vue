@@ -1,116 +1,137 @@
 <template>
-	<div class="todo-riesgo-operativo-page container my-5">
-		<h1 class="text-center mb-4">Seguro de Todo Riesgo Operativo</h1>
+	<div class="todo-riesgo-page container my-5">
+		<h1 class="text-center mb-4">Todo Riesgo Operativo</h1>
+
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section mb-5">
+			<h2 class="mb-4">Cotizador Web</h2>
+			<form @submit.prevent="submitQuote" class="row g-3">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="quoteData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="razonSocial" class="form-label">Razón Social</label>
+					<input
+						type="text"
+						id="razonSocial"
+						v-model="quoteData.razonSocial"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary w-100">
+						Solicitar Cotización
+					</button>
+				</div>
+			</form>
+		</section>
 
 		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Información:</h2>
+			<h2 class="mb-4">
+				Protección para Operaciones Comerciales e Industriales
+			</h2>
 			<p>
-				El Seguro de Todo Riesgo Operativo es una cobertura integral diseñada
-				para empresas, especialmente aquellas que manejan grandes activos,
-				equipos y maquinaria. Este seguro cubre prácticamente cualquier riesgo
-				que pueda interrumpir la operación del negocio, proporcionando una
-				protección amplia frente a daños materiales y pérdidas económicas
-				derivadas de esos daños.
+				El seguro de Todo Riesgo Operativo está diseñado para brindar una
+				protección integral a las empresas, cubriendo daños materiales, pérdidas
+				económicas y otros riesgos que puedan afectar las operaciones diarias.
 			</p>
 
+			<!-- Tarjetas de Cobertura -->
 			<div class="row">
-				<!-- Tarjeta: Cobertura Básica -->
+				<!-- Tarjeta: Cobertura Estándar -->
 				<div class="col-md-6 mb-4">
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
 								<i class="fas fa-warehouse"></i>
 							</div>
-							<h5 class="card-title text-center">Cobertura Básica</h5>
-							<ul>
-								<li>
-									<strong>Daños materiales:</strong> Cubre el daño o pérdida
-									física de bienes, como instalaciones, maquinarias, equipos y
-									otros activos tangibles, causados por accidentes, incendios,
-									explosiones, vandalismo, derrumbes, o fenómenos naturales.
-								</li>
-								<li>
-									<strong>Incendios y explosiones:</strong> Protege contra los
-									daños materiales provocados por fuego, explosiones o
-									cortocircuitos eléctricos.
-								</li>
-								<li>
-									<strong>Robo y vandalismo:</strong> Cubre los daños y pérdidas
-									derivados del robo de bienes o equipos, así como actos de
-									vandalismo.
-								</li>
-								<li>
-									<strong>Fenómenos naturales:</strong> Daños ocasionados por
-									tormentas, inundaciones, granizo, terremotos, etc.
-								</li>
-								<li>
-									<strong>Daños por agua:</strong> Protege contra daños
-									ocasionados por fugas, rotura de cañerías o sistemas de
-									drenaje.
-								</li>
-							</ul>
+							<h5 class="card-title text-center">Cobertura Estándar</h5>
+							<p class="card-text">
+								Esta cobertura incluye daños por incendio, robo y desastres
+								naturales, así como responsabilidad civil para terceros.
+							</p>
 						</div>
 					</div>
 				</div>
 
-				<!-- Tarjeta: Coberturas Adicionales -->
+				<!-- Tarjeta: Cobertura Completa -->
 				<div class="col-md-6 mb-4">
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
 								<i class="fas fa-shield-alt"></i>
 							</div>
-							<h5 class="card-title text-center">Coberturas Adicionales</h5>
-							<ul>
-								<li>
-									<strong>Pérdida de ingresos:</strong> Cubre la pérdida de
-									ingresos derivada de la interrupción de las operaciones debido
-									a un siniestro cubierto.
-								</li>
-								<li>
-									<strong>Daños a maquinaria y equipo:</strong> Cubre las
-									averías o daños accidentales a maquinaria pesada, equipos
-									especializados, o cualquier otro equipo esencial para la
-									operación de la empresa.
-								</li>
-								<li>
-									<strong>Interrupción de la cadena de suministro:</strong>
-									Cubre las pérdidas económicas causadas por la interrupción en
-									la entrega de insumos o materiales esenciales.
-								</li>
-								<li>
-									<strong>Responsabilidad civil:</strong> Protege contra las
-									reclamaciones de terceros por daños personales o materiales
-									causados durante las operaciones de la empresa.
-								</li>
-							</ul>
+							<h5 class="card-title text-center">Cobertura Completa</h5>
+							<p class="card-text">
+								Además de la cobertura estándar, incluye protección contra
+								pérdidas económicas por interrupción de actividades y daños a
+								maquinaria.
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<h3>Ejemplo de Uso</h3>
-			<p>
-				Imagina que una fábrica de productos electrónicos sufre un incendio que
-				afecta su planta de producción. El seguro de Todo Riesgo Operativo
-				cubriría los costos de reparación de la estructura dañada, la reposición
-				de la maquinaria afectada y, si se incluye en la póliza, la pérdida de
-				ingresos mientras la fábrica está fuera de servicio. Además, si el
-				incendio afectara a terceros, como un vecino o un proveedor, la
-				cobertura de responsabilidad civil protegería a la empresa de las
-				demandas.
-			</p>
 		</section>
 	</div>
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			quoteData: {
+				nombre: "",
+				razonSocial: "",
+				telefono: "",
+				email: "",
+			},
+		};
+	},
+	methods: {
+		submitQuote() {
+			alert("Cotización solicitada");
+		},
+	},
+};
 </script>
 
 <style scoped>
-.todo-riesgo-operativo-page {
+.todo-riesgo-page {
 	padding-top: 20px;
+}
+
+.cotizador-section form {
+	background-color: #f8f9fa;
+	padding: 20px;
+	border-radius: 10px;
 }
 
 .card {
@@ -134,17 +155,23 @@ export default {};
 }
 
 .card-title {
-	font-size: 1.3rem;
+	font-size: 1.4rem;
 	font-weight: bold;
 	color: #003366;
 	text-align: center;
 }
 
-ul {
+.section-title {
+	font-size: 1.2rem;
+	color: #003366;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.card-text {
 	font-size: 1rem;
 	color: #666;
 	margin-bottom: 15px;
-	padding-left: 20px;
 }
 
 h2 {
@@ -152,8 +179,8 @@ h2 {
 	color: #003366;
 }
 
-h3 {
-	margin-top: 20px;
-	color: #003366;
+ul {
+	list-style-type: disc;
+	margin-left: 20px;
 }
 </style>

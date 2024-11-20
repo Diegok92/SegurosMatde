@@ -17,6 +17,26 @@
 					/>
 				</div>
 				<div class="col-md-6">
+					<label for="razonSocial" class="form-label">Razón Social</label>
+					<input
+						type="text"
+						id="razonSocial"
+						v-model="quoteData.razonSocial"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
 					<label for="email" class="form-label">Email</label>
 					<input
 						type="email"
@@ -27,37 +47,23 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label class="form-label">Tipo de Vehículos</label>
-					<div class="d-flex flex-wrap">
-						<div
-							v-for="(tipo, index) in tiposVehiculos"
-							:key="index"
-							class="form-check col-6"
-						>
-							<input
-								type="checkbox"
-								:id="`tipo-${index}`"
-								class="form-check-input"
-								:value="tipo"
-								v-model="quoteData.tipoVehiculos"
-							/>
-							<label :for="`tipo-${index}`" class="form-check-label">
-								{{ tipo }}
-							</label>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
 					<label for="cantidadVehiculos" class="form-label"
 						>Cantidad de Vehículos</label
 					>
-					<input
-						type="number"
+					<select
 						id="cantidadVehiculos"
 						v-model="quoteData.cantidadVehiculos"
 						class="form-control"
 						required
-					/>
+					>
+						<option value="" disabled>Seleccione una opción</option>
+						<option value="5">Hasta 5</option>
+						<option value="10">Hasta 10</option>
+						<option value="20">Hasta 20</option>
+						<option value="50">Hasta 50</option>
+						<option value="100">Hasta 100</option>
+						<option value="300">Hasta 300</option>
+					</select>
 				</div>
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary w-100">Contactar</button>
@@ -154,8 +160,9 @@ export default {
 		return {
 			quoteData: {
 				nombre: "",
+				razonSocial: "",
+				telefono: "",
 				email: "",
-				tipoVehiculos: [],
 				cantidadVehiculos: "",
 			},
 			tiposVehiculos: [

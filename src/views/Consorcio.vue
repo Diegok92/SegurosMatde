@@ -1,70 +1,150 @@
 <template>
 	<div class="consorcio-page container my-5">
-		<h1 class="text-center mb-4">Seguro Integral de Consorcio</h1>
+		<h1 class="text-center mb-4">Seguro de Consorcio</h1>
+
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section mb-5">
+			<h2 class="mb-4">Cotizador Web</h2>
+			<form @submit.prevent="submitQuote" class="row g-3">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="quoteData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="razonSocial" class="form-label">Razón Social</label>
+					<input
+						type="text"
+						id="razonSocial"
+						v-model="quoteData.razonSocial"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary w-100">
+						Solicitar Cotización
+					</button>
+				</div>
+			</form>
+		</section>
 
 		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Protección Integral para Consorcios</h2>
+			<h2 class="mb-4">Protección Integral para tu Consorcio</h2>
 			<p>
-				Este seguro está diseñado para proteger los edificios bajo régimen de
-				propiedad horizontal (consorcios). Cubre tanto los daños a las áreas
-				comunes como la responsabilidad civil por accidentes ocurridos en el
-				edificio.
+				El seguro de consorcio está diseñado para brindar protección completa
+				para edificios y complejos residenciales, cubriendo riesgos como daños
+				por incendios, responsabilidad civil, daños a terceros y más.
 			</p>
 
+			<!-- Tarjetas de Cobertura -->
 			<div class="row">
 				<!-- Tarjeta: Cobertura Básica -->
 				<div class="col-md-6 mb-4">
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
-								<i class="fas fa-fire"></i>
+								<i class="fas fa-building"></i>
 							</div>
 							<h5 class="card-title text-center">Cobertura Básica</h5>
-							<p class="card-text">Incluye protección ante:</p>
-							<ul>
-								<li>Daños por incendio</li>
-								<li>Robo en áreas comunes</li>
-								<li>Responsabilidad civil frente a terceros</li>
+							<ul class="card-text">
+								<li>Incendio de edificio.</li>
+								<li>Incendio y robo de bienes comunes del consorcio.</li>
+								<li>Cobertura de cristales.</li>
+								<li>Daños por agua.</li>
+								<li>
+									Plomería, gas, electricidad, cerrajería, cristales, las 24
+									horas.
+								</li>
+								<li>
+									Accidentes personales (encargado, ayudantes y copropietarios).
+								</li>
+								<li>Responsabilidad Civil.</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 
-				<!-- Tarjeta: Coberturas Adicionales -->
+				<!-- Tarjeta: Cobertura Completa -->
 				<div class="col-md-6 mb-4">
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
-								<i class="fas fa-tools"></i>
+								<i class="fas fa-shield-alt"></i>
 							</div>
-							<h5 class="card-title text-center">Coberturas Adicionales</h5>
-							<p class="card-text">Esta cobertura incluye la básica más:</p>
-							<ul>
-								<li>Mantenimiento de ascensores</li>
-								<li>Daños por agua</li>
-								<li>Asistencia para emergencias</li>
-							</ul>
+							<h5 class="card-title text-center">Cobertura Completa</h5>
+							<p class="card-text">
+								Incluye además cobertura por rotura de cañerías, robo de bienes
+								comunes y daños por eventos climáticos.
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
-
 			<h3>Ejemplo de Cobertura</h3>
 			<p>
-				Si una tubería en el edificio se rompe y causa daños en varios
-				departamentos, el seguro de consorcio cubre las reparaciones.
+				Si el edificio sufre daños debido a un evento climático, el seguro
+				cubrirá los costos de reparación de las áreas comunes, así como los
+				daños que puedan afectar a terceros.
 			</p>
 		</section>
 	</div>
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			quoteData: {
+				nombre: "",
+				razonSocial: "",
+				telefono: "",
+				email: "",
+			},
+		};
+	},
+	methods: {
+		submitQuote() {
+			alert("Cotización solicitada");
+		},
+	},
+};
 </script>
 
 <style scoped>
 .consorcio-page {
 	padding-top: 20px;
+}
+
+.cotizador-section form {
+	background-color: #f8f9fa;
+	padding: 20px;
+	border-radius: 10px;
 }
 
 .card {
@@ -88,9 +168,16 @@ export default {};
 }
 
 .card-title {
-	font-size: 1.3rem;
+	font-size: 1.4rem;
 	font-weight: bold;
 	color: #003366;
+	text-align: center;
+}
+
+.section-title {
+	font-size: 1.2rem;
+	color: #003366;
+	margin-top: 20px;
 	text-align: center;
 }
 
@@ -98,11 +185,6 @@ export default {};
 	font-size: 1rem;
 	color: #666;
 	margin-bottom: 15px;
-}
-
-ul {
-	list-style-type: disc;
-	margin-left: 20px;
 }
 
 h2 {
@@ -113,5 +195,10 @@ h2 {
 h3 {
 	margin-top: 20px;
 	color: #003366;
+}
+
+ul {
+	list-style-type: disc;
+	margin-left: 20px;
 }
 </style>

@@ -2,6 +2,69 @@
 	<div class="family-combo-page container my-5">
 		<h1 class="text-center mb-4">Seguro Combinado Familiar</h1>
 
+		<!-- Formulario de Solicitud -->
+		<section id="solicitud-formulario" class="mb-5">
+			<h2 class="mb-4">Solicita tu Cotización</h2>
+			<form @submit.prevent="submitForm" class="row g-3">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="formData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="razonSocial" class="form-label">Razón Social</label>
+					<input
+						type="text"
+						id="razonSocial"
+						v-model="formData.razonSocial"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="actividad" class="form-label">Actividad</label>
+					<input
+						type="text"
+						id="actividad"
+						v-model="formData.actividad"
+						class="form-control"
+						required
+					/>
+				</div>
+
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="formData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="formData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary w-100">
+						Solicitar Cotización
+					</button>
+				</div>
+			</form>
+		</section>
+
 		<section id="informacion" class="mb-5">
 			<h2 class="mb-4">Protección Integral para tu Hogar</h2>
 			<p>
@@ -66,7 +129,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			formData: {
+				nombre: "",
+				razonSocial: "",
+				actividad: "",
+				profesion: "",
+				telefono: "",
+				email: "",
+			},
+		};
+	},
+	methods: {
+		submitForm() {
+			alert("Cotización solicitada con éxito");
+		},
+	},
+};
 </script>
 
 <style scoped>

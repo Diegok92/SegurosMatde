@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "./components/Home.vue";
 import Services from "./views/Services.vue";
 import About from "./views/About.vue";
@@ -105,14 +105,12 @@ const routes = [
 ];
 
 const router = createRouter({
-	history: createWebHistory(),
+	history: createWebHashHistory(),
 	routes,
 	scrollBehavior(to, from, savedPosition) {
-		// Si existe una posición guardada, vuelve allí (como en navegación hacia atrás).
 		if (savedPosition) {
 			return savedPosition;
 		} else {
-			// De lo contrario, desplázate hasta la parte superior de la página.
 			return { top: 0 };
 		}
 	},

@@ -4,17 +4,47 @@
 
 		<!-- Cotizador Web -->
 		<section id="cotizador" class="cotizador-section mb-5">
-			<h2 class="mb-4">Cotizador Web</h2>
+			<h2 class="mb-4">Dejanos tus datos y empezá a sentirte asegurado</h2>
 			<form @submit.prevent="submitQuote" class="row g-3">
 				<div class="col-md-6">
-					<label for="nombre" class="form-label">Nombre</label>
+					<label for="profesion" class="form-label">Profesión</label>
 					<input
 						type="text"
-						id="nombre"
-						v-model="quoteData.nombre"
+						id="profesion"
+						v-model="quoteData.profesion"
 						class="form-control"
 						required
 					/>
+				</div>
+				<div class="col-md-6">
+					<label for="cantidadPersonas" class="form-label"
+						>Cantidad de personas a cubrir</label
+					>
+					<input
+						type="number"
+						id="cantidadPersonas"
+						v-model="quoteData.cantidadPersonas"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="condicionIva" class="form-label"
+						>Condición de I.V.A.</label
+					>
+					<select
+						id="condicionIva"
+						v-model="quoteData.condicionIva"
+						class="form-select"
+						required
+					>
+						<option disabled value="">Selecciona una opción</option>
+						<option value="Extento">Extento</option>
+						<option value="Consumidor Final">Consumidor Final</option>
+						<option value="Responsable Inscripto">Responsable Inscripto</option>
+						<option value="No Categorizado">No Categorizado</option>
+						<option value="Resp. Monotributo">Resp. Monotributo</option>
+					</select>
 				</div>
 				<div class="col-md-6">
 					<label for="email" class="form-label">Email</label>
@@ -22,6 +52,16 @@
 						type="email"
 						id="email"
 						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="number"
+						id="telefono"
+						v-model="quoteData.telefono"
 						class="form-control"
 						required
 					/>
@@ -102,8 +142,11 @@ export default {
 	data() {
 		return {
 			quoteData: {
-				nombre: "",
+				profesion: "",
+				cantidadPersonas: "",
+				condicionIva: "",
 				email: "",
+				telefono: "",
 			},
 		};
 	},

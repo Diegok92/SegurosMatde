@@ -70,7 +70,7 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label for="sumaAsegurada" class="form-label">Suma Asegurada</label>
+					<label for="sumaAsegurada" class="form-label">Suma a Asegurar</label>
 					<input
 						type="range"
 						id="sumaAsegurada"
@@ -82,7 +82,7 @@
 					/>
 					<div class="text-center mt-2">
 						<span
-							>Suma Asegurada: ${{
+							>Suma a Asegurar: ${{
 								formatNumber(quoteData.sumaAsegurada)
 							}}</span
 						>

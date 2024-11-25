@@ -27,6 +27,16 @@
 					/>
 				</div>
 				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
 					<label for="marca" class="form-label">Marca</label>
 					<select
 						id="marca"
@@ -59,7 +69,16 @@
 						required
 					/>
 				</div>
-
+				<div class="col-md-6">
+					<label for="sumaAsegurada" class="form-label">Suma Asegurada</label>
+					<input
+						type="number"
+						id="sumaAsegurada"
+						v-model="quoteData.sumaAsegurada"
+						class="form-control"
+						required
+					/>
+				</div>
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary w-100">
 						Solicitar Cotización
@@ -70,7 +89,7 @@
 
 		<!-- Información sobre el Seguro de Celulares -->
 		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Protección para tu Smartphone</h2>
+			<h2 class="mb-4">Protección para tu Celular</h2>
 			<p>
 				El seguro de celulares cubre el dispositivo frente a robo, daños
 				accidentales o problemas técnicos. Es ideal para proteger smartphones,

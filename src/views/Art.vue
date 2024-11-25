@@ -4,7 +4,7 @@
 
 		<!-- Cotizador Web -->
 		<section id="cotizador" class="cotizador-section mb-5">
-			<h2 class="mb-4">Cotizador Web</h2>
+			<h2 class="mb-4">Dejanos tus datos y empezá a sentirte seguro</h2>
 			<form @submit.prevent="submitQuote" class="row g-3">
 				<div class="col-md-6">
 					<label for="razonSocial" class="form-label">Razón Social</label>
@@ -36,7 +36,6 @@
 						required
 					/>
 				</div>
-
 				<div class="col-md-6">
 					<label for="email" class="form-label">Correo Electrónico</label>
 					<input
@@ -72,9 +71,9 @@
 								:value="plan"
 								v-model="quoteData.planes"
 							/>
-							<label :for="`plan-${index}`" class="form-check-label">
-								{{ plan }}
-							</label>
+							<label :for="`plan-${index}`" class="form-check-label">{{
+								plan
+							}}</label>
 						</div>
 					</div>
 				</div>
@@ -230,31 +229,36 @@
 					class="partner-logo"
 				/>
 			</div>
+		</section>
 
-			<h3>Preguntas Frecuentes</h3>
-			<p>
-				Puedes encontrar respuestas a las preguntas más frecuentes sobre ART en
-				el siguiente enlace:
-				<a
-					href="https://www.prevencionart.com.ar/preguntas-frecuentes?perfil=AsesorLaboral"
-					target="_blank"
-					>Preguntas Frecuentes sobre ART</a
-				>.
-			</p>
+		<!-- Preguntas Frecuentes -->
+		<section id="preguntas-frecuentes" class="faq-section mb-5">
+			<h2 class="mb-4 text-center">Preguntas Frecuentes</h2>
+			<div v-for="(faq, index) in faqs" :key="index" class="faq-item mb-3">
+				<h5 @click="toggleFaq(index)" class="faq-question">
+					<i
+						:class="faq.open ? 'fas fa-chevron-down' : 'fas fa-chevron-right'"
+						class="mr-2"
+					></i>
+					{{ faq.question }}
+				</h5>
+				<p v-if="faq.open" class="faq-answer">{{ faq.answer }}</p>
+			</div>
 		</section>
 	</div>
 </template>
 
 <script>
-import provinciaLogo from "../assets/images/provincia_logo.png";
-import expertaLogo from "../assets/images/experta_logo.png";
-import prevencionLogo from "../assets/images/prevencion_logo.png";
-import federacionLogo from "../assets/images/federacion_patronal_logo.png";
-import omintLogo from "../assets/images/omint_logo.png";
-import smgLogo from "../assets/images/smg_logo.png";
-import berkleyLogo from "../assets/images/berkley_logo.png";
-import andinaLogo from "../assets/images/andina_logo.png";
-import galenoLogo from "../assets/images/galeno_logo.png";
+import provinciaLogo from "../assets/images/Logos/ProvinciaArt.jpg";
+import expertaLogo from "../assets/images/Logos/ExpertaArt.jpg";
+import prevencionLogo from "../assets/images/Logos/PrevencionSancorArt.jpg";
+import federacionLogo from "../assets/images/Logos/PatronalArt.png";
+import omintLogo from "../assets/images/Logos/OmintArt.jpg";
+import smgLogo from "../assets/images/Logos/SmgArt.svg";
+import berkleyLogo from "../assets/images/Logos/BerkleyArt.jpg";
+import andinaLogo from "../assets/images/Logos/AndinaArt.jpg";
+import galenoLogo from "../assets/images/Logos/GalenoArt.jpg";
+import faqs from "../faqs/art.js"; // Importa el archivo con las FAQs
 
 export default {
 	data() {
@@ -279,11 +283,15 @@ export default {
 				andinaLogo,
 				galenoLogo,
 			],
+			faqs: faqs, // Usa las FAQs importadas
 		};
 	},
 	methods: {
 		submitQuote() {
 			alert("Cotización solicitada");
+		},
+		toggleFaq(index) {
+			this.faqs[index].open = !this.faqs[index].open;
 		},
 	},
 };
@@ -355,5 +363,27 @@ h3 {
 
 li {
 	text-align: left;
+}
+
+.faq-section {
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.faq-item {
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 10px;
+}
+
+.faq-question {
+	cursor: pointer;
+	font-weight: bold;
+	color: #003366;
+}
+
+.faq-answer {
+	color: #666;
+	margin-top: 5px;
 }
 </style>

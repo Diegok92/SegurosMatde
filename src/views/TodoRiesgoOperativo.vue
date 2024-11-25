@@ -27,6 +27,16 @@
 					/>
 				</div>
 				<div class="col-md-6">
+					<label for="actividad" class="form-label">Actividad</label>
+					<input
+						type="text"
+						id="actividad"
+						v-model="quoteData.actividad"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
 					<label for="telefono" class="form-label">Teléfono</label>
 					<input
 						type="tel"

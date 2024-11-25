@@ -27,7 +27,7 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label for="telefono" class="form-label">Teléfono</label>
+					<label for="telefono" class="form-label">Teléfono de Contacto</label>
 					<input
 						type="tel"
 						id="telefono"
@@ -72,12 +72,21 @@
 				<div class="col-md-6">
 					<label for="sumaAsegurada" class="form-label">Suma Asegurada</label>
 					<input
-						type="number"
+						type="range"
 						id="sumaAsegurada"
 						v-model="quoteData.sumaAsegurada"
-						class="form-control"
-						required
+						class="form-range custom-range"
+						min="300000"
+						max="1200000"
+						step="100000"
 					/>
+					<div class="text-center mt-2">
+						<span
+							>Suma Asegurada: ${{
+								formatNumber(quoteData.sumaAsegurada)
+							}}</span
+						>
+					</div>
 				</div>
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary w-100">
@@ -107,7 +116,7 @@
 							<h5 class="card-title text-center">Cobertura Básica</h5>
 							<p class="card-text">Incluye protección ante:</p>
 							<ul>
-								<li>Robo</li>
+								<li>Robo, daño por tentativa</li>
 								<li>Daños accidentales (pantalla rota, inmersión en agua)</li>
 							</ul>
 						</div>
@@ -137,6 +146,16 @@
 				Si tu teléfono cae y se rompe la pantalla, el seguro cubrirá los costos
 				de reparación.
 			</p>
+			<h3>Documentación a presentar para denunciar un robo</h3>
+			<ul>
+				<li>Certificado de denuncia policial hecho en la comisaría</li>
+				<li>
+					Alguna constancia de preexistencia del celular (factura, caja IMEI,
+					etc.)
+				</li>
+				<li>Denuncia de robo en tu compañía telefónica</li>
+				<li>Constancia de bloqueo del IMEI ante el ENACOM</li>
+			</ul>
 		</section>
 	</div>
 </template>
@@ -148,14 +167,19 @@ export default {
 			quoteData: {
 				nombre: "",
 				email: "",
+				telefono: "",
 				marca: "",
 				modelo: "",
+				sumaAsegurada: 300000,
 			},
 		};
 	},
 	methods: {
 		submitQuote() {
 			alert("Cotización solicitada");
+		},
+		formatNumber(value) {
+			return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 		},
 	},
 };
@@ -229,5 +253,36 @@ h3 {
 
 .btn-primary:hover {
 	background-color: #005399;
+}
+
+/* Mejoras en el input range */
+input[type="range"] {
+	width: 100%;
+	-webkit-appearance: none;
+	appearance: none;
+	height: 10px;
+	background: #ccc;
+	border-radius: 5px;
+	outline: none;
+	opacity: 0.9;
+	transition: opacity 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	background: #005399;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	background: #005399;
+	cursor: pointer;
+	border-radius: 50%;
 }
 </style>

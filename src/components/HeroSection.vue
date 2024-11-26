@@ -1,60 +1,69 @@
 <template>
-    <section class="hero animate__animated animate__fadeIn" data-aos="fade-in">
-        <img :src="heroImage" alt="Hero Image" class="hero-image img-fluid" />
-        <div class="hero-text">
-            <h2 class="display-4">Protegemos lo que más valoras</h2>
-            <p>Seguros para barcos, camiones y ART para empleados. Confianza y profesionalismo.</p>
-        </div>
-    </section>
+	<section class="hero animate__animated animate__fadeIn" data-aos="fade-in">
+		<img :src="heroImage" alt="Hero Image" class="hero-image img-fluid" />
+		<div class="hero-text">
+			<h2 class="display-4">Protegemos Todo lo que Valoras</h2>
+			<!-- <p class="hero-subtext">
+				Seguros adaptados a las necesidades de grandes clientes. Confianza y
+				profesionalismo a tu servicio.
+			</p> -->
+			<router-link to="/services" class="btn btn-primary mt-3"
+				>Conoce Nuestros Servicios</router-link
+			>
+		</div>
+	</section>
 </template>
 
 <script>
-import heroImage from '../assets/images/hero_image_matde.jpg';
+import heroImage from "../assets/images/hero_image_matde.jpg";
 
 export default {
-    data() {
-        return {
-            heroImage
-        };
-    }
+	data() {
+		return {
+			heroImage,
+		};
+	},
 };
 </script>
 
 <style scoped>
 .hero {
-    position: relative;
-    text-align: center;
-    color: white;
-    margin-top: 50px;
+	position: relative;
+	text-align: center;
+	color: white;
+	margin-top: 0; /* Ajustado para eliminar el espacio innecesario */
 }
 
 .hero-image {
-    width: 100%;
-    height: 70vh;
-    object-fit: cover;
+	width: 100%;
+	height: 70vh;
+	object-fit: cover;
 }
 
 .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.6);
-    padding: 20px;
-    border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0, 0.6);
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Añadido para resaltar */
 }
 
-@media (max-width: 768px) {
-    .hero-image {
-        height: 40vh;
-    }
+.hero-subtext {
+	font-size: 1.2rem;
+	margin-top: 10px;
+	color: #f1f1f1;
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Mejora la legibilidad del texto */
+}
 
-    .hero-text h2 {
-        font-size: 1.5rem;
-    }
+.btn-primary {
+	background-color: #0056b3;
+	border: none;
+}
 
-    .hero-text p {
-        font-size: 1rem;
-    }
+.btn-primary:hover {
+	background-color: #004080;
 }
 </style>

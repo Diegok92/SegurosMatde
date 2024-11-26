@@ -4,9 +4,7 @@
 
 		<!-- Resumen de Servicios -->
 		<section class="services-summary container my-4">
-			<h2 class="services-title text-center mb-5">
-				Conocé Todos Nuestros Seguros
-			</h2>
+			<h2 class="services-title text-center mb-5">Conocé Nuestros Seguros</h2>
 			<div class="row">
 				<div
 					class="col-md-4 mb-4"
@@ -23,7 +21,7 @@
 							<p class="card-text">{{ service.description }}</p>
 							<router-link
 								:to="service.link"
-								class="btn btn-primary mt-auto align-self-start"
+								class="btn btn-outline-primary mt-auto align-self-start"
 								>Más Información</router-link
 							>
 						</div>
@@ -156,7 +154,7 @@ export default {
 }
 
 .services-title {
-	font-size: 2rem;
+	font-size: 2.5rem;
 	font-weight: bold;
 	color: #003366;
 	text-transform: uppercase;
@@ -167,7 +165,7 @@ export default {
 .services-title::after {
 	content: "";
 	display: block;
-	width: 60px;
+	width: 80px;
 	height: 4px;
 	background-color: #003366;
 	margin: 8px auto 0;
@@ -190,13 +188,13 @@ export default {
 
 .icon-container {
 	text-align: center;
-	font-size: 2.5rem;
-	color: #003366;
-	margin-bottom: 15px;
+	font-size: 3rem;
+	color: #0056b3;
+	margin-bottom: 20px;
 }
 
 .card-title {
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	font-weight: bold;
 	color: #003366;
 	text-align: center;
@@ -208,14 +206,14 @@ export default {
 	margin-bottom: 15px;
 }
 
-.btn-primary {
-	background-color: #003366;
-	border: none;
-	color: white;
-	transition: background-color 0.3s;
+.btn-outline-primary {
+	border-color: #0056b3;
+	color: #0056b3;
+	transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-	background-color: #005399;
+.btn-outline-primary:hover {
+	background-color: #0056b3;
+	color: #ffffff;
 }
 </style>

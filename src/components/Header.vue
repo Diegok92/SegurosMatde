@@ -1,8 +1,18 @@
 <template>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark">
+		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container-fluid">
-				<router-link to="/" class="navbar-brand">MATDE</router-link>
+				<router-link to="/" class="navbar-brand d-flex align-items-center">
+					<div class="logo-container">
+						<img
+							src="../assets/images/MatdeLogo.png"
+							alt="MATDE Logo"
+							class="brand-logo"
+						/>
+						<span class="brand-text ms-2">MATDE</span>
+						<!-- Se agregó la clase 'ms-2' para agregar un espacio -->
+					</div>
+				</router-link>
 				<button
 					class="navbar-toggler"
 					type="button"
@@ -46,7 +56,6 @@
 										>Accidentes Personales</router-link
 									>
 								</li>
-
 								<li>
 									<router-link to="/comercio" class="dropdown-item"
 										>Integral de Comercio</router-link
@@ -129,6 +138,25 @@ header {
 	padding: 10px 0;
 }
 
+.logo-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.brand-logo {
+	width: 50px; /* Ajuste del tamaño del logo para una apariencia más proporcionada */
+	height: auto;
+}
+
+.brand-text {
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin-top: 5px;
+	text-align: center;
+}
+
 .navbar-brand {
 	color: white;
 	font-size: 1.5rem;
@@ -142,10 +170,12 @@ header {
 
 .navbar-nav .dropdown-menu {
 	background-color: #003366;
+	border-radius: 5px; /* Mejora la apariencia del dropdown */
 }
 
 .dropdown-item {
 	color: white;
+	transition: background-color 0.3s ease;
 }
 
 .dropdown-item:hover {

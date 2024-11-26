@@ -31,7 +31,7 @@
 					<input
 						type="text"
 						id="actividad"
-						v-model="quoteData.actividad"
+						v-model="formData.actividad"
 						class="form-control"
 						required
 					/>
@@ -68,40 +68,25 @@
 			<h2 class="mb-4">Ofrecemos:</h2>
 
 			<div class="row">
-				<!-- Tarjeta 1: Garantías para obras o servicios públicos y privados -->
+				<!-- Tarjeta 4: Garantía de actividad o profesión -->
 				<div class="col-md-4 mb-4" data-aos="fade-up">
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
-								<i class="fas fa-tools"></i>
+								<i class="fas fa-briefcase"></i>
 							</div>
-							<h5 class="card-title text-center">Obras y Servicios Públicos</h5>
-							<ul class="card-content">
-								<li>Mantenimiento de la oferta.</li>
-								<li>Ejecución de contrato / garantía de adjudicación.</li>
-								<li>Sustitución de fondos de reparos.</li>
-								<li>Anticipos por acopio o financieros.</li>
-								<li>Tenencia de materiales.</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tarjeta 2: Garantías IATA -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-plane"></i>
-							</div>
-							<h5 class="card-title text-center">Garantías IATA</h5>
+							<h5 class="card-title text-center">Garantía de Profesión</h5>
 							<p class="card-content">
-								Garantías solicitadas por la Asociación Internacional de
-								Transporte Aéreo (IATA) para agencias de viajes y carga.
+								Garantizan el pago de multas y protección al consumidor en caso
+								de incumplimiento profesional.
 							</p>
 							<ul class="card-content">
-								<li>Para agencias de carga IATA</li>
-								<li>Para agencias de viaje IATA</li>
+								<li>Directores y gerentes.</li>
+								<li>Agentes de lotería, martilleros, corredores.</li>
+								<li>
+									Agencias de seguridad y talleres de verificación técnica.
+								</li>
+								<li>Operadores de GNC y distribuidoras de combustibles.</li>
 							</ul>
 						</div>
 					</div>
@@ -129,26 +114,39 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Tarjeta 4: Garantía de actividad o profesión -->
+				<!-- Tarjeta 1: Garantías para obras o servicios públicos y privados -->
 				<div class="col-md-4 mb-4" data-aos="fade-up">
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
-								<i class="fas fa-briefcase"></i>
+								<i class="fas fa-tools"></i>
 							</div>
-							<h5 class="card-title text-center">Garantía de Profesión</h5>
+							<h5 class="card-title text-center">Obras y Servicios Públicos</h5>
+							<ul class="card-content">
+								<li>Mantenimiento de la oferta.</li>
+								<li>Ejecución de contrato / garantía de adjudicación.</li>
+								<li>Sustitución de fondos de reparos.</li>
+								<li>Anticipos por acopio o financieros.</li>
+								<li>Tenencia de materiales.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Tarjeta 2: Garantías IATA -->
+				<div class="col-md-4 mb-4" data-aos="fade-up">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-plane"></i>
+							</div>
+							<h5 class="card-title text-center">Garantías IATA</h5>
 							<p class="card-content">
-								Garantizan el pago de multas y protección al consumidor en caso
-								de incumplimiento profesional.
+								Garantías solicitadas por la Asociación Internacional de
+								Transporte Aéreo (IATA) para agencias de viajes y carga.
 							</p>
 							<ul class="card-content">
-								<li>Directores y gerentes.</li>
-								<li>Agentes de lotería, martilleros, corredores.</li>
-								<li>
-									Agencias de seguridad y talleres de verificación técnica.
-								</li>
-								<li>Operadores de GNC y distribuidoras de combustibles.</li>
+								<li>Para agencias de carga IATA</li>
+								<li>Para agencias de viaje IATA</li>
 							</ul>
 						</div>
 					</div>

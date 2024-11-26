@@ -135,6 +135,7 @@ export default {
 header {
 	background-color: #003366;
 	color: white;
+
 	padding: 10px 0;
 }
 
@@ -150,7 +151,8 @@ header {
 }
 
 .brand-text {
-	color: white;
+	/* color: white; */
+	color: #ff6600;
 	font-size: 1.2rem;
 	font-weight: bold;
 	margin-top: 5px;
@@ -158,14 +160,16 @@ header {
 }
 
 .navbar-brand {
-	color: white;
+	/* color: white; */
+	color: #ff6600;
 	font-size: 1.5rem;
 	font-weight: bold;
 }
 
 .navbar-nav .nav-link {
-	color: white !important;
+	color: #ff6600 !important;
 	padding: 10px 15px;
+	font-weight: bold;
 }
 
 .navbar-nav .dropdown-menu {
@@ -174,8 +178,9 @@ header {
 }
 
 .dropdown-item {
-	color: white;
+	color: #ff6600;
 	transition: background-color 0.3s ease;
+	font-weight: bold;
 }
 
 .dropdown-item:hover {

@@ -212,16 +212,6 @@ export default {
 						"Cubre los costos de reparación de tu auto, descontando la franquicia acordada, si eres responsable del accidente.",
 					icon: "fas fa-hand-holding-usd",
 				},
-				{
-					title: "Seguro Todo Riesgo Sin Franquicia",
-					description:
-						"Cobertura más amplia sin necesidad de pagar franquicia en caso de siniestro.",
-					coverage:
-						"Todo lo que incluye el seguro todo riesgo, sin costo adicional en caso de siniestro.",
-					example:
-						"Si sufres un accidente, el seguro cubrirá el 100% de los costos de reparación sin que debas pagar nada más.",
-					icon: "fas fa-check-circle",
-				},
 			],
 		};
 	},

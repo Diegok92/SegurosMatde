@@ -24,7 +24,7 @@
 					</div>
 				</div>
 			</div>
-			<button
+			<!-- <button
 				class="carousel-control-prev"
 				type="button"
 				data-bs-target="#partnersCarousel"
@@ -41,7 +41,7 @@
 			>
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Siguiente</span>
-			</button>
+			</button> -->
 		</div>
 	</section>
 </template>
@@ -56,6 +56,16 @@ import PatronalArt from "../assets/images/Logos/PatronalArt.png";
 import PrevencionSancorArt from "../assets/images/Logos/PrevencionSancorArt.jpg";
 import ProvinciaArt from "../assets/images/Logos/ProvinciaArt.jpg";
 import SmgArt from "../assets/images/Logos/SmgArt.svg";
+import Allianz from "../assets/images/Logos/AllianzGral.png";
+import GaliciaSeguros from "../assets/images/Logos/galiciaSeguros.png";
+import MercantilAndina from "../assets/images/Logos/MercantilAndina.png";
+import MeridionalSeguros from "../assets/images/Logos/MeridionalSeguros.jpg";
+import rusSeguros from "../assets/images/Logos/rusSeguros.png";
+import SancorSeguros from "../assets/images/Logos/SancorSeguros.png";
+import SanCristobal from "../assets/images/Logos/SanCristobal.png";
+import SanPatricioSeguros from "../assets/images/Logos/SanPatricioSeguros.png";
+import universalAsistance from "../assets/images/Logos/universalAsistance.png";
+import ZurichGral from "../assets/images/Logos/ZurichGral.png";
 
 export default {
 	data() {
@@ -70,6 +80,16 @@ export default {
 				PrevencionSancorArt,
 				ProvinciaArt,
 				SmgArt,
+				Allianz,
+				GaliciaSeguros,
+				MercantilAndina,
+				MeridionalSeguros,
+				rusSeguros,
+				SancorSeguros,
+				SanCristobal,
+				SanPatricioSeguros,
+				universalAsistance,
+				ZurichGral,
 			],
 		};
 	},
@@ -92,7 +112,7 @@ export default {
 }
 
 .partner-logo {
-	max-width: 100px;
+	max-width: 200px;
 	height: auto;
 	object-fit: contain;
 	transition: transform 0.3s ease;

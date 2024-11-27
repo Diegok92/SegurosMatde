@@ -151,8 +151,8 @@ header {
 }
 
 .brand-text {
-	/* color: white; */
-	color: #ff6600;
+	/* color: #ff6600; */
+	color: white;
 	font-size: 1.2rem;
 	font-weight: bold;
 	margin-top: 5px;
@@ -160,8 +160,8 @@ header {
 }
 
 .navbar-brand {
-	/* color: white; */
 	color: #ff6600;
+
 	font-size: 1.5rem;
 	font-weight: bold;
 }

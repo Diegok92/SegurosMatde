@@ -62,6 +62,16 @@
 									>
 								</li>
 								<li>
+									<router-link to="/consorcio" class="dropdown-item"
+										>Integral de Consorcio</router-link
+									>
+								</li>
+								<li>
+									<router-link to="/todo-riesgo-operativo" class="dropdown-item"
+										>Todo Riesgo Operativo</router-link
+									>
+								</li>
+								<li>
 									<router-link to="/transport" class="dropdown-item"
 										>Transporte de Mercancías</router-link
 									>
@@ -72,8 +82,18 @@
 									>
 								</li>
 								<li>
+									<router-link to="/mala-praxis" class="dropdown-item"
+										>Mala Praxis</router-link
+									>
+								</li>
+								<li>
 									<router-link to="/combinado-familiar" class="dropdown-item"
 										>Combinado Familiar</router-link
+									>
+								</li>
+								<li>
+									<router-link to="/bicicletas" class="dropdown-item"
+										>Bicicletas</router-link
 									>
 								</li>
 								<li>
@@ -84,26 +104,6 @@
 								<li>
 									<router-link to="/celulares" class="dropdown-item"
 										>Celulares</router-link
-									>
-								</li>
-								<li>
-									<router-link to="/consorcio" class="dropdown-item"
-										>Integral de Consorcio</router-link
-									>
-								</li>
-								<li>
-									<router-link to="/mala-praxis" class="dropdown-item"
-										>Mala Praxis</router-link
-									>
-								</li>
-								<li>
-									<router-link to="/todo-riesgo-operativo" class="dropdown-item"
-										>Todo Riesgo Operativo</router-link
-									>
-								</li>
-								<li>
-									<router-link to="/bicicletas" class="dropdown-item"
-										>Bicicletas</router-link
 									>
 								</li>
 							</ul>

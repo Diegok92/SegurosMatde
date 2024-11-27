@@ -76,6 +76,20 @@ export default {
 					icon: "fas fa-store",
 				},
 				{
+					title: "Integral de Consorcio",
+					description:
+						"Protección para edificios en régimen de propiedad horizontal, incluyendo áreas comunes y responsabilidad civil.",
+					link: "/consorcio",
+					icon: "fas fa-building",
+				},
+				{
+					title: "Todo Riesgo Operativo",
+					description:
+						"Cobertura integral para empresas, protegiendo contra daños materiales y pérdidas económicas.",
+					link: "/todo-riesgo-operativo",
+					icon: "fas fa-industry",
+				},
+				{
 					title: "Transporte de Mercancías",
 					description:
 						"Cobertura para la carga durante el transporte terrestre, marítimo o aéreo. Coberturas básicas y adicionales disponibles.",
@@ -90,11 +104,25 @@ export default {
 					icon: "fas fa-shield-alt",
 				},
 				{
+					title: "Mala Praxis",
+					description:
+						"Cobertura para profesionales que enfrentan demandas por errores ejerciendo su labor.",
+					link: "/mala-praxis",
+					icon: "fas fa-user-md",
+				},
+				{
 					title: "Combinado Familiar",
 					description:
 						"Protección para la vivienda y sus bienes frente a diversos riesgos como incendios y robos.",
 					link: "/combinado-familiar",
 					icon: "fas fa-home",
+				},
+				{
+					title: "Bicicletas",
+					description:
+						"Cobertura contra robo, daños accidentales, y responsabilidad civil para bicicletas.",
+					link: "/bicicletas",
+					icon: "fas fa-bicycle",
 				},
 				{
 					title: "Notebooks",
@@ -109,34 +137,6 @@ export default {
 						"Cobertura contra el robo, daños accidentales y fallas técnicas de dispositivos móviles.",
 					link: "/celulares",
 					icon: "fas fa-mobile-alt",
-				},
-				{
-					title: "Integral de Consorcio",
-					description:
-						"Protección para edificios en régimen de propiedad horizontal, incluyendo áreas comunes y responsabilidad civil.",
-					link: "/consorcio",
-					icon: "fas fa-building",
-				},
-				{
-					title: "Mala Praxis",
-					description:
-						"Cobertura para profesionales que enfrentan demandas por errores ejerciendo su labor.",
-					link: "/mala-praxis",
-					icon: "fas fa-user-md",
-				},
-				{
-					title: "Todo Riesgo Operativo",
-					description:
-						"Cobertura integral para empresas, protegiendo contra daños materiales y pérdidas económicas.",
-					link: "/todo-riesgo-operativo",
-					icon: "fas fa-industry",
-				},
-				{
-					title: "Bicicletas",
-					description:
-						"Cobertura contra robo, daños accidentales, y responsabilidad civil para bicicletas.",
-					link: "/bicicletas",
-					icon: "fas fa-bicycle",
 				},
 			],
 		};

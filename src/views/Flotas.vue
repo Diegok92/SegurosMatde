@@ -211,9 +211,23 @@ export default {
 	},
 	methods: {
 		submitQuote() {
+			// Obtener la fecha y hora actual
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1; // Los meses empiezan desde 0
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Crear los datos para enviar al App Script
 			const data = {
 				HOJA: "Leads", // Nombre de la hoja en Google Sheets
 				PRODUCTO: "FlotaAutos", // Producto específico para esta solicitud
+				FECHA: now.toLocaleDateString(), // Fecha completa
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`, // Hora en formato HH:MM
 				nombre: this.quoteData.nombre,
 				razonSocial: this.quoteData.razonSocial,
 				cuit: "", // No aplicable para este formulario, se envía vacío
@@ -235,12 +249,13 @@ export default {
 				sumaAsegurada: "",
 			};
 
-			// Enviar los datos al Google Sheets mediante el App Script
+			// Utilizar un proxy para evitar el problema de CORS
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
 			axios
-				.post(
-					"https://script.google.com/macros/s/AKfycbwqbx5lJL5a3XeeXlaj_GjzCgMKVj_CHqlDdHi8SaXup4v9DnTShzVrl1EU40RSGT2N/exec",
-					data
-				)
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
 				.then((response) => {
 					if (response.data.result === "success") {
 						alert("Cotización solicitada y datos enviados a Google Sheets");

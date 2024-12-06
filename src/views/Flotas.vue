@@ -155,6 +155,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
@@ -165,14 +167,6 @@ export default {
 				email: "",
 				cantidadVehiculos: "",
 			},
-			tiposVehiculos: [
-				"Auto",
-				"Motos",
-				"Camionetas",
-				"Camiones",
-				"Colectivos",
-				"Cuatriciclos",
-			],
 			coverages: [
 				{
 					title: "Responsabilidad Civil Obligatoria",
@@ -217,7 +211,49 @@ export default {
 	},
 	methods: {
 		submitQuote() {
-			alert("Cotización solicitada");
+			const data = {
+				HOJA: "Leads", // Nombre de la hoja en Google Sheets
+				PRODUCTO: "FlotaAutos", // Producto específico para esta solicitud
+				nombre: this.quoteData.nombre,
+				razonSocial: this.quoteData.razonSocial,
+				cuit: "", // No aplicable para este formulario, se envía vacío
+				telefono: this.quoteData.telefono,
+				email: this.quoteData.email,
+				cantidadVehiculos: this.quoteData.cantidadVehiculos,
+				PLAN_ART: "",
+				profesion: "",
+				cantidadPersonas: "",
+				condicionIva: "",
+				actividad: "",
+				tipoMercaderia: "",
+				marcaBici: "",
+				modeloBici: "",
+				marcaNote: "",
+				modeloNote: "",
+				marcaCelu: "",
+				modeloCelu: "",
+				sumaAsegurada: "",
+			};
+
+			// Enviar los datos al Google Sheets mediante el App Script
+			axios
+				.post(
+					"https://script.google.com/macros/s/AKfycbwqbx5lJL5a3XeeXlaj_GjzCgMKVj_CHqlDdHi8SaXup4v9DnTShzVrl1EU40RSGT2N/exec",
+					data
+				)
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización solicitada y datos enviados a Google Sheets");
+					} else {
+						alert(
+							"Error inesperado al enviar la cotización: " + response.data.error
+						);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Error al enviar la cotización");
+				});
 		},
 	},
 };

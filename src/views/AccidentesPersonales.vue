@@ -39,7 +39,7 @@
 						required
 					>
 						<option disabled value="">Selecciona una opción</option>
-						<option value="Extento">Extento</option>
+						<option value="Exento">Exento</option>
 						<option value="Consumidor Final">Consumidor Final</option>
 						<option value="Responsable Inscripto">Responsable Inscripto</option>
 						<option value="No Categorizado">No Categorizado</option>
@@ -138,6 +138,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
@@ -152,7 +154,49 @@ export default {
 	},
 	methods: {
 		submitQuote() {
-			alert("Cotización solicitada");
+			// Obtener fecha y hora actuales
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1;
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Datos para Google Sheets
+			const data = {
+				HOJA: "Leads",
+				PRODUCTO: "AccidentesPersonales",
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				profesion: this.quoteData.profesion,
+				cantidadPersonas: this.quoteData.cantidadPersonas,
+				condicionIva: this.quoteData.condicionIva,
+				email: this.quoteData.email,
+				telefono: this.quoteData.telefono,
+			};
+
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización solicitada y datos enviados a Google Sheets");
+					} else {
+						alert(
+							"Error inesperado al enviar la cotización: " + response.data.error
+						);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Error al enviar la cotización");
+				});
 		},
 	},
 };

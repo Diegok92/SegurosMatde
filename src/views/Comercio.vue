@@ -116,6 +116,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
@@ -130,7 +132,51 @@ export default {
 	},
 	methods: {
 		submitQuote() {
-			alert("Cotización solicitada");
+			// Obtener la fecha y hora actuales
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1; // Meses empiezan desde 0
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Datos para enviar a Google Sheets
+			const data = {
+				HOJA: "Leads",
+				PRODUCTO: "IntegralComercio",
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				nombre: this.quoteData.nombre,
+				razonSocial: this.quoteData.razonSocial,
+				actividad: this.quoteData.actividad,
+				telefono: this.quoteData.telefono,
+				email: this.quoteData.email,
+			};
+
+			// URL del App Script
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			// Enviar datos usando Axios
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización solicitada y datos enviados a Google Sheets");
+					} else {
+						alert(
+							"Error inesperado al enviar la cotización: " + response.data.error
+						);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Error al enviar la cotización");
+				});
 		},
 	},
 };

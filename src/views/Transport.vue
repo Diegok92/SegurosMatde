@@ -28,11 +28,11 @@
 				</div>
 
 				<div class="col-md-6">
-					<label for="contacto" class="form-label">Nombre de Contacto</label>
+					<label for="nombre" class="form-label">Nombre de Contacto</label>
 					<input
 						type="text"
-						id="contacto"
-						v-model="quoteData.contacto"
+						id="nombre"
+						v-model="quoteData.nombre"
 						class="form-control"
 						required
 					/>
@@ -144,31 +144,68 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
 			quoteData: {
 				razonSocial: "",
 				cuit: "",
-				provincia: "",
-				localidad: "",
-				contacto: "",
+				nombre: "",
 				email: "",
 				telefono: "",
-				origen: "",
-				destino: "",
-				vigencia: "",
 				tipoMercaderia: "",
-				sumaAsegurada: "",
-				tipoTransporte: "",
-				modalidad: "",
-				observaciones: "",
 			},
 		};
 	},
 	methods: {
 		submitQuote() {
-			alert("Cotización solicitada");
+			// Obtener la fecha y hora actuales
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1; // Meses comienzan desde 0
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Datos para Google Sheets
+			const data = {
+				HOJA: "Leads",
+				PRODUCTO: "Transporte",
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				razonSocial: this.quoteData.razonSocial,
+				cuit: this.quoteData.cuit,
+				nombre: this.quoteData.nombre,
+				email: this.quoteData.email,
+				telefono: this.quoteData.telefono,
+				tipoMercaderia: this.quoteData.tipoMercaderia,
+			};
+
+			// URL del App Script
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización solicitada y datos enviados a Google Sheets");
+					} else {
+						alert(
+							"Error inesperado al enviar la cotización: " + response.data.error
+						);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Error al enviar la cotización");
+				});
 		},
 	},
 };

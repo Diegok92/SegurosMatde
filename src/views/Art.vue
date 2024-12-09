@@ -57,25 +57,20 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label class="form-label">Plan/es buscados</label>
-					<div class="d-flex flex-wrap">
-						<div
-							v-for="(plan, index) in planes"
-							:key="index"
-							class="form-check col-6"
-						>
-							<input
-								type="checkbox"
-								:id="`plan-${index}`"
-								class="form-check-input"
-								:value="plan"
-								v-model="quoteData.planes"
-							/>
-							<label :for="`plan-${index}`" class="form-check-label">{{
-								plan
-							}}</label>
-						</div>
-					</div>
+					<label for="planART" class="form-label">Plan/es buscados</label>
+					<select
+						id="planART"
+						v-model="quoteData.planes"
+						class="form-control"
+						required
+					>
+						<option value="" disabled>Seleccione una opción</option>
+						<option value="A.R.T.">A.R.T.</option>
+						<option value="A.R.T. Doméstico">A.R.T. Doméstico</option>
+						<option value="A.R.T. y A.R.T. Doméstico">
+							A.R.T. y A.R.T. Doméstico
+						</option>
+					</select>
 				</div>
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary w-100">
@@ -172,7 +167,6 @@
 				</div>
 			</div>
 
-			<!-- Información adicional -->
 			<h3>Cobertura de Riesgos de Trabajo para Casas Particulares</h3>
 			<p>
 				La cobertura de riesgos del trabajo para personal de casas particulares
@@ -249,6 +243,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import provinciaLogo from "../assets/images/Logos/ProvinciaArt.jpg";
 import expertaLogo from "../assets/images/Logos/ExpertaArt.jpg";
 import prevencionLogo from "../assets/images/Logos/PrevencionSancorArt.jpg";
@@ -258,7 +253,7 @@ import smgLogo from "../assets/images/Logos/SmgArt.svg";
 import berkleyLogo from "../assets/images/Logos/BerkleyArt.jpg";
 import andinaLogo from "../assets/images/Logos/AndinaArt.jpg";
 import galenoLogo from "../assets/images/Logos/GalenoArt.jpg";
-import faqs from "../faqs/art.js"; // Importa el archivo con las FAQs
+import faqs from "../faqs/art.js";
 
 export default {
 	data() {
@@ -269,9 +264,8 @@ export default {
 				nombre: "",
 				email: "",
 				telefono: "",
-				planes: [],
+				planes: "",
 			},
-			planes: ["ART", "ART - Doméstico"],
 			partnerLogos: [
 				provinciaLogo,
 				expertaLogo,
@@ -283,12 +277,55 @@ export default {
 				andinaLogo,
 				galenoLogo,
 			],
-			faqs: faqs, // Usa las FAQs importadas
+			faqs: faqs,
 		};
 	},
 	methods: {
 		submitQuote() {
-			alert("Cotización solicitada");
+			// Obtener fecha y hora actuales
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1;
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Datos para Google Sheets
+			const data = {
+				HOJA: "Leads",
+				PRODUCTO: "ART",
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				razonSocial: this.quoteData.razonSocial,
+				cuit: this.quoteData.cuit,
+				nombre: this.quoteData.nombre,
+				email: this.quoteData.email,
+				telefono: this.quoteData.telefono,
+				planART: this.quoteData.planes,
+			};
+
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización solicitada y datos enviados a Google Sheets");
+					} else {
+						alert(
+							"Error inesperado al enviar la cotización: " + response.data.error
+						);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Error al enviar la cotización");
+				});
 		},
 		toggleFaq(index) {
 			this.faqs[index].open = !this.faqs[index].open;

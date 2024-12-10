@@ -37,10 +37,10 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label for="marca" class="form-label">Marca</label>
+					<label for="marcaCelu" class="form-label">Marca</label>
 					<select
-						id="marca"
-						v-model="quoteData.marca"
+						id="marcaCelu"
+						v-model="quoteData.marcaCelu"
 						class="form-control"
 						required
 					>
@@ -58,13 +58,12 @@
 						<option value="Otro">Otro</option>
 					</select>
 				</div>
-
 				<div class="col-md-6">
-					<label for="modelo" class="form-label">Modelo</label>
+					<label for="modeloCelu" class="form-label">Modelo</label>
 					<input
 						type="text"
-						id="modelo"
-						v-model="quoteData.modelo"
+						id="modeloCelu"
+						v-model="quoteData.modeloCelu"
 						class="form-control"
 						required
 					/>
@@ -82,9 +81,8 @@
 					/>
 					<div class="text-center mt-2">
 						<span
-							>Suma a Asegurar: ${{
-								formatNumber(quoteData.sumaAsegurada)
-							}}</span
+							>Suma a Asegurar: $
+							{{ formatNumber(quoteData.sumaAsegurada) }}</span
 						>
 					</div>
 				</div>
@@ -161,6 +159,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
@@ -168,24 +168,62 @@ export default {
 				nombre: "",
 				email: "",
 				telefono: "",
-				marca: "",
-				modelo: "",
+				marcaCelu: "",
+				modeloCelu: "",
 				sumaAsegurada: 300000,
 			},
 		};
 	},
 	methods: {
 		submitQuote() {
-			alert("Cotización solicitada");
+			// Obtener fecha y hora actuales
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1;
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Datos a enviar
+			const data = {
+				HOJA: "Leads",
+				PRODUCTO: "Celulares",
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				...this.quoteData,
+			};
+
+			// Proxy y URL
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización enviada correctamente. ¡Gracias!");
+					} else {
+						alert("Error al enviar la cotización: " + response.data.error);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
+				});
 		},
 		formatNumber(value) {
-			return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			return value.toLocaleString("es-AR");
 		},
 	},
 };
 </script>
 
 <style scoped>
+/* Estilos originales del archivo */
 .celulares-page {
 	padding-top: 20px;
 }
@@ -255,7 +293,6 @@ h3 {
 	background-color: #005399;
 }
 
-/* Mejoras en el input range */
 input[type="range"] {
 	width: 100%;
 	-webkit-appearance: none;

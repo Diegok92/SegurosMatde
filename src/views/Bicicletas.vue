@@ -37,10 +37,10 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label for="marca" class="form-label">Marca</label>
+					<label for="marcaBici" class="form-label">Marca</label>
 					<select
-						id="marca"
-						v-model="quoteData.marca"
+						id="marcaBici"
+						v-model="quoteData.marcaBici"
 						class="form-control"
 						required
 					>
@@ -60,11 +60,11 @@
 				</div>
 
 				<div class="col-md-6">
-					<label for="marcaModelo" class="form-label">Modelo</label>
+					<label for="modeloBici" class="form-label">Modelo</label>
 					<input
 						type="text"
-						id="marcaModelo"
-						v-model="quoteData.marcaModelo"
+						id="modeloBici"
+						v-model="quoteData.modeloBici"
 						class="form-control"
 						required
 					/>
@@ -140,13 +140,15 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
 			quoteData: {
 				nombre: "",
-				marca: "",
-				marcaModelo: "",
+				marcaBici: "",
+				modeloBici: "",
 				email: "",
 				telefono: "",
 				sumaAsegurada: "",
@@ -155,7 +157,44 @@ export default {
 	},
 	methods: {
 		submitQuote() {
-			alert("Cotización solicitada");
+			// Obtener la fecha y hora actual
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1;
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Crear los datos para enviar al App Script
+			const data = {
+				HOJA: "Leads", // Nombre de la hoja en Google Sheets
+				PRODUCTO: "Bicicletas", // Producto específico para esta solicitud
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				...this.quoteData,
+			};
+
+			// Utilizar un proxy para evitar problemas de CORS
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización enviada correctamente. ¡Gracias!");
+					} else {
+						alert("Error al enviar la cotización: " + response.data.error);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
+				});
 		},
 	},
 };

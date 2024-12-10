@@ -37,10 +37,10 @@
 					/>
 				</div>
 				<div class="col-md-6">
-					<label for="marca" class="form-label">Marca</label>
+					<label for="marcaNote" class="form-label">Marca</label>
 					<select
-						id="marca"
-						v-model="quoteData.marca"
+						id="marcaNote"
+						v-model="quoteData.marcaNote"
 						class="form-control"
 						required
 					>
@@ -60,11 +60,11 @@
 				</div>
 
 				<div class="col-md-6">
-					<label for="modelo" class="form-label">Modelo</label>
+					<label for="modeloNote" class="form-label">Modelo</label>
 					<input
 						type="text"
-						id="modelo"
-						v-model="quoteData.modelo"
+						id="modeloNote"
+						v-model="quoteData.modeloNote"
 						class="form-control"
 						required
 					/>
@@ -145,20 +145,61 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
 			quoteData: {
 				nombre: "",
 				email: "",
-				marca: "",
-				modelo: "",
+				telefono: "",
+				marcaNote: "",
+				modeloNote: "",
+				sumaAsegurada: "",
 			},
 		};
 	},
 	methods: {
 		submitQuote() {
-			alert("Cotización solicitada");
+			// Obtener fecha y hora actuales
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1;
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Datos para enviar a Google Sheets
+			const data = {
+				HOJA: "Leads",
+				PRODUCTO: "Notebooks",
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				...this.quoteData,
+			};
+
+			// Proxy y URL del script
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización enviada correctamente. ¡Gracias!");
+					} else {
+						alert("Error al enviar la cotización: " + response.data.error);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
+				});
 		},
 	},
 };
@@ -202,17 +243,6 @@ export default {
 	text-align: center;
 }
 
-.card-text {
-	font-size: 1rem;
-	color: #666;
-	margin-bottom: 15px;
-}
-
-ul {
-	list-style-type: disc;
-	margin-left: 20px;
-}
-
 h2 {
 	font-size: 1.8rem;
 	color: #003366;
@@ -221,6 +251,11 @@ h2 {
 h3 {
 	margin-top: 20px;
 	color: #003366;
+}
+
+ul {
+	list-style-type: disc;
+	margin-left: 20px;
 }
 
 .btn-primary {

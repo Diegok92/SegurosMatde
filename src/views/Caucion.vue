@@ -64,178 +64,37 @@
 			</form>
 		</section>
 
+		<!-- Información sobre Seguro de Caución -->
 		<section id="informacion" class="mb-5">
 			<h2 class="mb-4">Ofrecemos:</h2>
 
 			<div class="row">
-				<!-- Tarjeta 4: Garantía de actividad o profesión -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
+				<!-- Todas las tarjetas -->
+				<div
+					v-for="(card, index) in cards"
+					:key="index"
+					class="col-md-4 mb-4"
+					data-aos="fade-up"
+				>
 					<div class="card h-100">
 						<div class="card-body">
 							<div class="icon-container text-center">
-								<i class="fas fa-briefcase"></i>
+								<i :class="card.icon"></i>
 							</div>
-							<h5 class="card-title text-center">Garantía de Profesión</h5>
-							<p class="card-content">
-								Garantizan el pago de multas y protección al consumidor en caso
-								de incumplimiento profesional.
+							<h5 class="card-title text-center">{{ card.title }}</h5>
+							<p class="card-content" v-if="card.description">
+								{{ card.description }}
 							</p>
-							<ul class="card-content">
-								<li>Directores y gerentes.</li>
-								<li>Agentes de lotería, martilleros, corredores.</li>
-								<li>
-									Agencias de seguridad y talleres de verificación técnica.
-								</li>
-								<li>Operadores de GNC y distribuidoras de combustibles.</li>
+							<ul v-if="card.list">
+								<li v-for="(item, i) in card.list" :key="i">{{ item }}</li>
 							</ul>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tarjeta 3: Garantías Aduaneras -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-warehouse"></i>
-							</div>
-							<h5 class="card-title text-center">Garantías Aduaneras</h5>
-							<p class="card-content">
-								Instrumentos financieros para asegurar el pago de impuestos y
-								aranceles en operaciones aduaneras.
-							</p>
-							<ul class="card-content">
-								<li>Falta de documentación.</li>
-								<li>Importación y exportación temporal.</li>
-								<li>Operadores portuarios y depósitos fiscales.</li>
-								<li>Sumario contencioso y recurso administrativo.</li>
-								<li>Otros.</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- Tarjeta 1: Garantías para obras o servicios públicos y privados -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-tools"></i>
-							</div>
-							<h5 class="card-title text-center">Obras y Servicios Públicos</h5>
-							<ul class="card-content">
-								<li>Mantenimiento de la oferta.</li>
-								<li>Ejecución de contrato / garantía de adjudicación.</li>
-								<li>Sustitución de fondos de reparos.</li>
-								<li>Anticipos por acopio o financieros.</li>
-								<li>Tenencia de materiales.</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- Tarjeta 2: Garantías IATA -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-plane"></i>
-							</div>
-							<h5 class="card-title text-center">Garantías IATA</h5>
-							<p class="card-content">
-								Garantías solicitadas por la Asociación Internacional de
-								Transporte Aéreo (IATA) para agencias de viajes y carga.
-							</p>
-							<ul class="card-content">
-								<li>Para agencias de carga IATA</li>
-								<li>Para agencias de viaje IATA</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tarjeta 5: Garantías Judiciales -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-gavel"></i>
-							</div>
-							<h5 class="card-title text-center">Garantías Judiciales</h5>
-							<p class="card-content">
-								Se utilizan en contratos de concesión otorgados por entidades
-								para operar o desarrollar servicios públicos.
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tarjeta 6: Garantías de Concesiones -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-handshake"></i>
-							</div>
-							<h5 class="card-title text-center">Garantías de Concesiones</h5>
-							<p class="card-content">
-								Para empresas que operan, desarrollan o mantienen
-								infraestructura o servicios públicos por concesión.
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tarjeta 7: Garantías de cumplimiento de turismo estudiantil -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-graduation-cap"></i>
-							</div>
-							<h5 class="card-title text-center">Turismo Estudiantil</h5>
-							<p class="card-content">
-								Garantiza la prestación de servicios básicos contratados por
-								agencias de turismo estudiantil.
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tarjeta 8: Garantía de alquiler -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-home"></i>
-							</div>
-							<h5 class="card-title text-center">Garantía de Alquiler</h5>
-							<p class="card-content">
-								Garantiza el pago del alquiler al propietario del inmueble.
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tarjeta 9: Garantía del Cumplimiento de Obligaciones -->
-				<div class="col-md-4 mb-4" data-aos="fade-up">
-					<div class="card h-100">
-						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-check-circle"></i>
-							</div>
-							<h5 class="card-title text-center">
-								Cumplimiento de Obligaciones
-							</h5>
-							<p class="card-content">
-								Garantiza el cumplimiento de obligaciones contractuales,
-								indemnizando en caso de incumplimiento.
-							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- Nueva Sección de Información Adicional -->
+		<!-- Información Adicional -->
 		<section id="informacion-adicional" class="mb-5">
 			<h3>Ejemplo de Cobertura</h3>
 			<p>
@@ -247,20 +106,134 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
 			formData: {
 				nombre: "",
 				razonSocial: "",
+				actividad: "",
 				telefono: "",
 				email: "",
 			},
+			cards: [
+				{
+					icon: "fas fa-briefcase",
+					title: "Garantía de Profesión",
+					description:
+						"Garantizan el pago de multas y protección al consumidor en caso de incumplimiento profesional.",
+					list: [
+						"Directores y gerentes",
+						"Agentes de lotería, martilleros, corredores",
+						"Agencias de seguridad y talleres de verificación técnica",
+						"Operadores de GNC y distribuidoras de combustibles",
+					],
+				},
+				{
+					icon: "fas fa-warehouse",
+					title: "Garantías Aduaneras",
+					description:
+						"Instrumentos financieros para asegurar el pago de impuestos y aranceles en operaciones aduaneras.",
+					list: [
+						"Falta de documentación",
+						"Importación y exportación temporal",
+						"Operadores portuarios y depósitos fiscales",
+						"Sumario contencioso y recurso administrativo",
+						"Otros",
+					],
+				},
+				{
+					icon: "fas fa-tools",
+					title: "Obras y Servicios Públicos",
+					list: [
+						"Mantenimiento de la oferta",
+						"Ejecución de contrato / garantía de adjudicación",
+						"Sustitución de fondos de reparos",
+						"Anticipos por acopio o financieros",
+						"Tenencia de materiales",
+					],
+				},
+				{
+					icon: "fas fa-plane",
+					title: "Garantías IATA",
+					description:
+						"Garantías solicitadas por la Asociación Internacional de Transporte Aéreo (IATA) para agencias de viajes y carga.",
+					list: ["Para agencias de carga IATA", "Para agencias de viaje IATA"],
+				},
+				{
+					icon: "fas fa-gavel",
+					title: "Garantías Judiciales",
+					description:
+						"Se utilizan en contratos de concesión otorgados por entidades para operar o desarrollar servicios públicos.",
+				},
+				{
+					icon: "fas fa-handshake",
+					title: "Garantías de Concesiones",
+					description:
+						"Para empresas que operan, desarrollan o mantienen infraestructura o servicios públicos por concesión.",
+				},
+				{
+					icon: "fas fa-graduation-cap",
+					title: "Turismo Estudiantil",
+					description:
+						"Garantiza la prestación de servicios básicos contratados por agencias de turismo estudiantil.",
+				},
+				{
+					icon: "fas fa-home",
+					title: "Garantía de Alquiler",
+					description:
+						"Garantiza el pago del alquiler al propietario del inmueble.",
+				},
+				{
+					icon: "fas fa-check-circle",
+					title: "Cumplimiento de Obligaciones",
+					description:
+						"Garantiza el cumplimiento de obligaciones contractuales, indemnizando en caso de incumplimiento.",
+				},
+			],
 		};
 	},
 	methods: {
 		submitForm() {
-			alert("Cotización solicitada con éxito");
+			// Obtener fecha y hora actuales
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1;
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Datos para enviar a Google Sheets
+			const data = {
+				HOJA: "Leads",
+				PRODUCTO: "Caucion",
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				...this.formData,
+			};
+
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización enviada correctamente. ¡Gracias!");
+					} else {
+						alert("Error al enviar la cotización: " + response.data.error);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
+				});
 		},
 	},
 };

@@ -119,14 +119,14 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
 	data() {
 		return {
 			formData: {
 				nombre: "",
 				razonSocial: "",
-				actividad: "",
-				profesion: "",
 				telefono: "",
 				email: "",
 			},
@@ -134,7 +134,44 @@ export default {
 	},
 	methods: {
 		submitForm() {
-			alert("Cotización solicitada con éxito");
+			// Obtener la fecha y hora actual
+			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1;
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Crear los datos para enviar al App Script
+			const data = {
+				HOJA: "Leads", // Nombre de la hoja en Google Sheets
+				PRODUCTO: "CombinadoFamiliar", // Producto específico para esta solicitud
+				FECHA: now.toLocaleDateString(),
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				...this.formData,
+			};
+
+			// Utilizar un proxy para evitar problemas de CORS
+			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+			const googleScriptUrl =
+				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
+
+			axios
+				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización enviada correctamente. ¡Gracias!");
+					} else {
+						alert("Error al enviar la cotización: " + response.data.error);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
+				});
 		},
 	},
 };

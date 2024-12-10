@@ -66,7 +66,7 @@
 					>
 						<option value="" disabled>Seleccione una opción</option>
 						<option value="A.R.T.">A.R.T.</option>
-						<option value="A.R.T. Doméstico">A.R.T. Doméstico</option>
+						<option value="A.R.T. Domestico">A.R.T. Doméstico</option>
 						<option value="A.R.T. y A.R.T. Doméstico">
 							A.R.T. y A.R.T. Doméstico
 						</option>

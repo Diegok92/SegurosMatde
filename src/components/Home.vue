@@ -13,15 +13,20 @@
 					:key="service.title"
 				>
 					<div class="card h-100 d-flex flex-column">
+						<!-- Imagen -->
+						<img
+							:src="getServiceImage(service.image)"
+							alt="Service Image"
+							class="card-img-top"
+						/>
+						<!-- Línea divisoria -->
+						<div class="divider"></div>
 						<div class="card-body d-flex flex-column">
-							<div class="icon-container">
-								<i :class="service.icon"></i>
-							</div>
 							<h5 class="card-title">{{ service.title }}</h5>
 							<p class="card-text">{{ service.description }}</p>
 							<router-link
 								:to="service.link"
-								class="btn btn-custom mt-auto align-self-start"
+								class="btn btn-custom mt-auto align-self-end"
 								>Más Información</router-link
 							>
 						</div>
@@ -50,96 +55,104 @@ export default {
 				{
 					title: "Flotas de Autos",
 					description:
-						"Cobertura integral para flotas de vehículos comerciales, adaptada a las necesidades de cada empresa.",
+						"Cobertura integral para flotas de vehículos comerciales, adaptada a cada empresa.",
 					link: "/flotas",
-					icon: "fas fa-car",
+					image: "Flotas.PNG",
 				},
 				{
 					title: "A.R.T.",
 					description:
-						"Cobertura para empleadores y trabajadores, incluyendo accidentes de trabajo y enfermedades profesionales.",
+						"Cobertura para empleadores y trabajadores, incluye accidentes y enfermedades profesionales.",
 					link: "/art",
-					icon: "fas fa-briefcase-medical",
+					image: "Art.PNG",
 				},
 				{
 					title: "Accidentes Personales",
 					description:
 						"Cobertura para lesiones, invalidez o fallecimiento causados por accidentes.",
 					link: "/accidentes-personales",
-					icon: "fas fa-user-shield",
+					image: "AP.png",
 				},
 				{
 					title: "Integral de Comercio",
 					description:
 						"Protección para la estructura física del comercio, inventario y responsabilidad civil.",
 					link: "/comercio",
-					icon: "fas fa-store",
+					image: "comercio.PNG",
 				},
 				{
 					title: "Integral de Consorcio",
 					description:
-						"Protección para edificios en régimen de propiedad horizontal, incluyendo áreas comunes y responsabilidad civil.",
+						"Protección para edificios / propiedad horizontal, incluyendo áreas comunes y responsabilidad civil.",
 					link: "/consorcio",
-					icon: "fas fa-building",
+					image: "Consorcio.PNG",
 				},
 				{
 					title: "Todo Riesgo Operativo",
 					description:
 						"Cobertura integral para empresas, protegiendo contra daños materiales y pérdidas económicas.",
 					link: "/todo-riesgo-operativo",
-					icon: "fas fa-industry",
+					image: "TRO.PNG",
 				},
 				{
 					title: "Transporte de Mercancías",
 					description:
-						"Cobertura para la carga durante el transporte terrestre, marítimo o aéreo. Coberturas básicas y adicionales disponibles.",
+						"Cobertura para la carga durante el transporte terrestre, marítimo o aéreo. Incluye robo, daños y mas.",
 					link: "/transport",
-					icon: "fas fa-truck",
+					image: "TrnspMerc.PNG",
 				},
 				{
 					title: "Caución",
 					description:
 						"Garantías para el cumplimiento de obligaciones contractuales y demandas judiciales.",
 					link: "/caucion",
-					icon: "fas fa-shield-alt",
+					image: "Caucion.jpeg",
 				},
 				{
 					title: "Mala Praxis",
 					description:
 						"Cobertura para profesionales que enfrentan demandas por errores ejerciendo su labor.",
 					link: "/mala-praxis",
-					icon: "fas fa-user-md",
+					image: "MalaPraxis.jpeg",
 				},
 				{
 					title: "Combinado Familiar",
 					description:
 						"Protección para la vivienda y sus bienes frente a diversos riesgos como incendios y robos.",
 					link: "/combinado-familiar",
-					icon: "fas fa-home",
+					image: "familiar.PNG",
 				},
 				{
 					title: "Bicicletas",
 					description:
 						"Cobertura contra robo, daños accidentales, y responsabilidad civil para bicicletas.",
 					link: "/bicicletas",
-					icon: "fas fa-bicycle",
+					image: "Bici.PNG",
 				},
 				{
 					title: "Notebooks",
 					description:
 						"Protección contra robo o daños accidentales para notebooks y computadoras portátiles.",
 					link: "/notebooks",
-					icon: "fas fa-laptop",
+					image: "Note.PNG",
 				},
 				{
 					title: "Celulares",
 					description:
 						"Cobertura contra el robo, daños accidentales y fallas técnicas de dispositivos móviles.",
 					link: "/celulares",
-					icon: "fas fa-mobile-alt",
+					image: "Celu.PNG",
 				},
 			],
 		};
+	},
+	methods: {
+		getServiceImage(imageName) {
+			return new URL(
+				`../assets/images/imgTarjetasHome/${imageName}`,
+				import.meta.url
+			).href;
+		},
 	},
 };
 </script>
@@ -189,11 +202,21 @@ export default {
 	background: #f5f9ff;
 }
 
-.icon-container {
-	text-align: center;
-	font-size: 3rem;
-	color: #ff6600;
-	margin-bottom: 20px;
+.card-img-top {
+	height: 150px;
+	object-fit: cover;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.card-body {
+	height: 250px;
+}
+
+.divider {
+	height: 4px;
+	background-color: #ff6600;
+	margin: 0;
 }
 
 .card-title {
@@ -201,6 +224,7 @@ export default {
 	font-weight: bold;
 	color: #003366;
 	text-align: center;
+	margin-top: 15px;
 }
 
 .card-text {
@@ -218,6 +242,7 @@ export default {
 	padding: 10px 20px;
 	font-weight: bold;
 	border-radius: 5px;
+	align-self: flex-end;
 }
 
 .btn-custom:hover {

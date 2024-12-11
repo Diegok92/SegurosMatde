@@ -5,12 +5,10 @@
 				<router-link to="/" class="navbar-brand d-flex align-items-center">
 					<div class="logo-container">
 						<img
-							src="../assets/images/MatdeLogo.png"
+							src="../assets/images/Designs/Navbar - Logo Matde Hor Fond Osc.svg"
 							alt="MATDE Logo"
 							class="brand-logo"
 						/>
-						<span class="brand-text ms-2">MATDE</span>
-						<!-- Se agregó la clase 'ms-2' para agregar un espacio -->
 					</div>
 				</router-link>
 				<button
@@ -27,7 +25,7 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ms-auto">
 						<li class="nav-item">
-							<router-link to="/" class="nav-link">Inicio</router-link>
+							<router-link to="/" class="nav-link">INICIO</router-link>
 						</li>
 						<li class="nav-item dropdown">
 							<a
@@ -38,7 +36,7 @@
 								data-bs-toggle="dropdown"
 								aria-expanded="false"
 							>
-								Seguros
+								SEGUROS
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="segurosDropdown">
 								<li>
@@ -109,10 +107,10 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<router-link to="/about" class="nav-link">Nosotros</router-link>
+							<router-link to="/about" class="nav-link">NOSOTROS</router-link>
 						</li>
 						<li class="nav-item">
-							<router-link to="/contact" class="nav-link">Contacto</router-link>
+							<router-link to="/contact" class="nav-link">CONTACTO</router-link>
 						</li>
 					</ul>
 				</div>
@@ -135,7 +133,6 @@ export default {
 header {
 	background-color: #003366;
 	color: white;
-
 	padding: 10px 0;
 }
 
@@ -146,44 +143,45 @@ header {
 }
 
 .brand-logo {
-	width: 50px; /* Ajuste del tamaño del logo para una apariencia más proporcionada */
+	width: 150px;
 	height: auto;
-}
-
-.brand-text {
-	/* color: #ff6600; */
-	color: white;
-	font-size: 1.2rem;
-	font-weight: bold;
-	margin-top: 5px;
-	text-align: center;
 }
 
 .navbar-brand {
 	color: #ff6600;
-
-	font-size: 1.5rem;
+	font-size: 1rem;
 	font-weight: bold;
 }
 
 .navbar-nav .nav-link {
-	color: #ff6600 !important;
+	color: white !important;
 	padding: 10px 15px;
 	font-weight: bold;
+	transition: color 0.3s ease;
+}
+
+/* Cambiar color de texto al pasar el mouse */
+.navbar-nav .nav-link:hover {
+	color: #ff6600 !important;
+}
+
+.nav-item.dropdown:hover > .nav-link {
+	color: #ff6600 !important;
 }
 
 .navbar-nav .dropdown-menu {
-	background-color: #003366;
-	border-radius: 5px; /* Mejora la apariencia del dropdown */
+	background-color: white;
+	border-radius: 5px;
 }
 
 .dropdown-item {
 	color: #ff6600;
-	transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease, color 0.3s ease;
 	font-weight: bold;
 }
 
 .dropdown-item:hover {
 	background-color: #004080;
+	color: #ffffff;
 }
 </style>

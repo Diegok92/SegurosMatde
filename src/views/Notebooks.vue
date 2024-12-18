@@ -3,7 +3,7 @@
 		<!-- Imagen de Encabezado -->
 		<div class="image-header">
 			<img
-				:src="getServiceImage('Notebooks.PNG')"
+				:src="getServiceImage('Note.PNG')"
 				alt="Seguro de Notebooks"
 				class="header-image"
 			/>

@@ -1,11 +1,18 @@
 <template>
-	<div class="transport-page container my-5">
-		<h1 class="text-center mb-4">Seguro de Transporte de Mercancías</h1>
+	<div class="fleet-page">
+		<!-- Imagen Encabezado -->
+		<div class="image-header">
+			<img
+				:src="getServiceImage('TrnspMerc.PNG')"
+				alt="Transporte de Mercancías Image"
+				class="header-image"
+			/>
+		</div>
 
 		<!-- Cotizador Web -->
-		<section id="cotizador" class="cotizador-section mb-5">
-			<h2 class="mb-4">Cotizador Web</h2>
-			<form @submit.prevent="submitQuote" class="row g-3">
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">Cotizador Web</h2>
+			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="razonSocial" class="form-label">Razón Social</label>
 					<input
@@ -26,7 +33,6 @@
 						required
 					/>
 				</div>
-
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre de Contacto</label>
 					<input
@@ -57,7 +63,6 @@
 						required
 					/>
 				</div>
-
 				<div class="col-md-6">
 					<label for="tipoMercaderia" class="form-label"
 						>Tipo de Mercadería a Transportar</label
@@ -70,9 +75,8 @@
 						required
 					/>
 				</div>
-
 				<div class="col-12">
-					<button type="submit" class="btn btn-primary w-100">
+					<button type="submit" class="btn btn-custom w-100">
 						Solicitar Cotización
 					</button>
 				</div>
@@ -80,8 +84,8 @@
 		</section>
 
 		<!-- Información sobre Transporte de Mercancías -->
-		<section id="informacion" class="mb-5">
-			<h4>Cobertura Básica</h4>
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">Cobertura Básica</h2>
 			<p>
 				Ampara: choque, vuelco, desbarrancamiento o descarrilamiento del
 				vehículo transportador, derrumbe, caída de árboles o postes, incendio,
@@ -92,7 +96,7 @@
 				consecuencia de siniestro cubierto por accidentes.
 			</p>
 
-			<h4>Coberturas Adicionales</h4>
+			<h2 class="section-title mb-4">Coberturas Adicionales</h2>
 			<ul>
 				<li>Eximición de Responsabilidad al Transportista</li>
 				<li>Descompostura de Maquinaria Frigorífica</li>
@@ -131,14 +135,13 @@
 				cualquier siniestro que pueda sufrir tu mercadería durante su
 				transporte. Puerta a puerta.
 			</p>
-			<section id="informacion-adicional" class="mb-5">
-				<h3>Ejemplo de Cobertura</h3>
-				<p>
-					Si una empresa transporta mercancías en un camión y este sufre un
-					accidente, el seguro cubrirá la pérdida de las mercancías dañadas o
-					destruidas.
-				</p>
-			</section>
+
+			<h3 class="section-title mb-4">Ejemplo de Cobertura</h3>
+			<p>
+				Si una empresa transporta mercancías en un camión y este sufre un
+				accidente, el seguro cubrirá la pérdida de las mercancías dañadas o
+				destruidas.
+			</p>
 		</section>
 	</div>
 </template>
@@ -161,76 +164,73 @@ export default {
 	},
 	methods: {
 		submitQuote() {
-			// Obtener la fecha y hora actuales
 			const now = new Date();
-			const year = now.getFullYear();
-			const month = now.getMonth() + 1; // Meses comienzan desde 0
-			const day = now.getDate();
-			const hours = now.getHours();
-			const minutes = now.getMinutes();
-
-			// Datos para Google Sheets
 			const data = {
 				HOJA: "Leads",
 				PRODUCTO: "Transporte",
 				FECHA: now.toLocaleDateString(),
-				AÑO: year,
-				MES: month,
-				DIA: day,
-				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
-				razonSocial: this.quoteData.razonSocial,
-				cuit: this.quoteData.cuit,
-				nombre: this.quoteData.nombre,
-				email: this.quoteData.email,
-				telefono: this.quoteData.telefono,
-				tipoMercaderia: this.quoteData.tipoMercaderia,
+				AÑO: now.getFullYear(),
+				MES: now.getMonth() + 1,
+				DIA: now.getDate(),
+				"HH:MM": `${now.getHours()}:${now.getMinutes()}`,
+				...this.quoteData,
 			};
 
-			// URL del App Script
 			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 			const googleScriptUrl =
 				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
 
 			axios
 				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
-				.then((response) => {
-					if (response.data.result === "success") {
-						alert("Cotización solicitada y datos enviados a Google Sheets");
-					} else {
-						alert(
-							"Error inesperado al enviar la cotización: " + response.data.error
-						);
-					}
-				})
-				.catch((error) => {
-					console.error("Error al enviar datos:", error);
-					alert("Error al enviar la cotización");
-				});
+				.then(() =>
+					alert("Cotización solicitada y datos enviados a Google Sheets")
+				)
+				.catch(() => alert("Error al enviar la cotización"));
+		},
+		getServiceImage(imageName) {
+			return new URL(
+				`../assets/images/imgTarjetasHome/${imageName}`,
+				import.meta.url
+			).href;
 		},
 	},
 };
 </script>
 
 <style scoped>
-.transport-page {
-	padding-top: 20px;
+.image-header {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
-.cotizador-section form {
-	background-color: #f8f9fa;
-	padding: 20px;
+.header-image {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: left;
+}
+
+.form-background {
+	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
-h2 {
-	font-size: 1.8rem;
-	color: #003366;
+.btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	transition: background-color 0.3s;
 }
 
-h3,
-h4 {
-	margin-top: 20px;
-	color: #003366;
+.btn-custom:hover {
+	background-color: #d94e00;
 }
 
 ul {

@@ -1,11 +1,18 @@
 <template>
-	<div class="celulares-page container my-5">
-		<h1 class="text-center mb-4">Seguro de Celulares</h1>
+	<div class="celulares-page">
+		<!-- Imagen Encabezado -->
+		<div class="image-header">
+			<img
+				:src="getServiceImage('Celu.PNG')"
+				alt="Seguro de Celulares"
+				class="header-image"
+			/>
+		</div>
 
 		<!-- Cotizador Web -->
-		<section id="cotizador" class="cotizador-section mb-5">
-			<h2 class="mb-4">Cotizador Web</h2>
-			<form @submit.prevent="submitQuote" class="row g-3">
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">Solicita tu Cotización</h2>
+			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre</label>
 					<input
@@ -45,17 +52,9 @@
 						required
 					>
 						<option value="" disabled>Seleccione una opción</option>
-						<option value="Apple">Apple</option>
-						<option value="Huawei">Huawei</option>
-						<option value="LG">LG</option>
-						<option value="Motorola">Motorola</option>
-						<option value="Nokia">Nokia</option>
-						<option value="OnePlus">OnePlus</option>
-						<option value="Realme">Realme</option>
-						<option value="Samsung">Samsung</option>
-						<option value="Xiaomi">Xiaomi</option>
-						<option value="ZTE">ZTE</option>
-						<option value="Otro">Otro</option>
+						<option v-for="marca in marcas" :key="marca" :value="marca">
+							{{ marca }}
+						</option>
 					</select>
 				</div>
 				<div class="col-md-6">
@@ -87,7 +86,7 @@
 					</div>
 				</div>
 				<div class="col-12">
-					<button type="submit" class="btn btn-primary w-100">
+					<button type="submit" class="btn btn-custom w-100">
 						Solicitar Cotización
 					</button>
 				</div>
@@ -95,64 +94,56 @@
 		</section>
 
 		<!-- Información sobre el Seguro de Celulares -->
-		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Protección para tu Celular</h2>
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">Protección para tu Celular</h2>
 			<p>
 				El seguro de celulares cubre el dispositivo frente a robo, daños
 				accidentales o problemas técnicos. Es ideal para proteger smartphones,
 				que suelen tener un valor significativo.
 			</p>
-
 			<div class="row">
-				<!-- Tarjeta: Cobertura Básica -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-shield-alt coverage-icon"></i>
+							<h5 class="card-title mb-0">Cobertura Básica</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-shield-alt"></i>
-							</div>
-							<h5 class="card-title text-center">Cobertura Básica</h5>
-							<p class="card-text">Incluye protección ante:</p>
 							<ul>
-								<li>Robo, daño por tentativa</li>
-								<li>Daños accidentales (pantalla rota, inmersión en agua)</li>
+								<li>Robo y daño accidental</li>
+								<li>Pantalla rota o inmersión en agua</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-
-				<!-- Tarjeta: Coberturas Adicionales -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-globe coverage-icon"></i>
+							<h5 class="card-title mb-0">Coberturas Adicionales</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-globe"></i>
-							</div>
-							<h5 class="card-title text-center">Coberturas Adicionales</h5>
-							<p class="card-text">Esta cobertura incluye la básica más:</p>
 							<ul>
-								<li>Cobertura para uso en el extranjero</li>
-								<li>Fallas técnicas fuera de la garantía</li>
+								<li>Uso en el extranjero</li>
+								<li>Fallas técnicas fuera de garantía</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<h3>Ejemplo de Cobertura</h3>
+			<h3 class="section-title mb-4">Ejemplo</h3>
 			<p>
 				Si tu teléfono cae y se rompe la pantalla, el seguro cubrirá los costos
 				de reparación.
 			</p>
-			<h3>Documentación a presentar para denunciar un robo</h3>
+			<h3 class="section-title mb-4">Documentación a presentar</h3>
 			<ul>
-				<li>Certificado de denuncia policial hecho en la comisaría</li>
-				<li>
-					Alguna constancia de preexistencia del celular (factura, caja IMEI,
-					etc.)
-				</li>
+				<li>Denuncia policial</li>
+				<li>Constancia de preexistencia del celular (factura, caja, etc.)</li>
 				<li>Denuncia de robo en tu compañía telefónica</li>
-				<li>Constancia de bloqueo del IMEI ante el ENACOM</li>
+				<li>Constancia de bloqueo del IMEI</li>
 			</ul>
 		</section>
 	</div>
@@ -172,154 +163,107 @@ export default {
 				modeloCelu: "",
 				sumaAsegurada: 300000,
 			},
+			marcas: [
+				"Apple",
+				"Huawei",
+				"LG",
+				"Motorola",
+				"Nokia",
+				"OnePlus",
+				"Realme",
+				"Samsung",
+				"Xiaomi",
+				"ZTE",
+				"Otro",
+			],
 		};
 	},
 	methods: {
 		submitQuote() {
-			// Obtener fecha y hora actuales
 			const now = new Date();
-			const year = now.getFullYear();
-			const month = now.getMonth() + 1;
-			const day = now.getDate();
-			const hours = now.getHours();
-			const minutes = now.getMinutes();
-
-			// Datos a enviar
 			const data = {
 				HOJA: "Leads",
 				PRODUCTO: "Celulares",
 				FECHA: now.toLocaleDateString(),
-				AÑO: year,
-				MES: month,
-				DIA: day,
-				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				AÑO: now.getFullYear(),
+				MES: now.getMonth() + 1,
+				DIA: now.getDate(),
+				"HH:MM": `${now.getHours()}:${now.getMinutes()}`,
 				...this.quoteData,
 			};
 
-			// Proxy y URL
 			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 			const googleScriptUrl =
 				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
 
 			axios
 				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
-				.then((response) => {
-					if (response.data.result === "success") {
-						alert("Cotización enviada correctamente. ¡Gracias!");
-					} else {
-						alert("Error al enviar la cotización: " + response.data.error);
-					}
-				})
-				.catch((error) => {
-					console.error("Error al enviar datos:", error);
-					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
-				});
+				.then(() => alert("Cotización enviada correctamente. ¡Gracias!"))
+				.catch(() =>
+					alert("Error al enviar la cotización. Inténtalo de nuevo.")
+				);
 		},
 		formatNumber(value) {
 			return value.toLocaleString("es-AR");
+		},
+		getServiceImage(imageName) {
+			return new URL(
+				`../assets/images/imgTarjetasHome/${imageName}`,
+				import.meta.url
+			).href;
 		},
 	},
 };
 </script>
 
 <style scoped>
-/* Estilos originales del archivo */
-.celulares-page {
-	padding-top: 20px;
+.image-header {
+	width: 100%;
+	overflow: hidden;
 }
 
-.cotizador-section form {
-	background-color: #f8f9fa;
-	padding: 20px;
+.header-image {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+}
+
+.form-background {
+	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
-.card {
-	border: 1px solid #e0e0e0;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	border-radius: 8px;
-	background-color: #ffffff;
-}
-
-.card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	background-color: #f9f9f9;
-}
-
-.icon-container {
-	font-size: 2.5rem;
-	color: #003366;
-	margin-bottom: 15px;
-}
-
-.card-title {
-	font-size: 1.3rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: center;
-}
-
-.card-text {
-	font-size: 1rem;
-	color: #666;
-	margin-bottom: 15px;
-}
-
-ul {
-	list-style-type: disc;
-	margin-left: 20px;
-}
-
-h2 {
-	font-size: 1.8rem;
-	color: #003366;
-}
-
-h3 {
-	margin-top: 20px;
-	color: #003366;
-}
-
-.btn-primary {
-	background-color: #003366;
+.card-no-border {
 	border: none;
-	color: white;
+	box-shadow: none;
+}
+
+.coverage-icon {
+	font-size: 1.5rem;
+	color: #ff6600;
+	margin-right: 10px;
+}
+
+.divider {
+	height: 3px;
+	background-color: #ff6600;
+	margin: 10px 0;
+}
+
+.btn-custom {
+	background-color: #ff6600;
+	color: #fff;
 	transition: background-color 0.3s;
 }
 
-.btn-primary:hover {
-	background-color: #005399;
-}
-
-input[type="range"] {
-	width: 100%;
-	-webkit-appearance: none;
-	appearance: none;
-	height: 10px;
-	background: #ccc;
-	border-radius: 5px;
-	outline: none;
-	opacity: 0.9;
-	transition: opacity 0.2s;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	appearance: none;
-	width: 25px;
-	height: 25px;
-	background: #005399;
-	cursor: pointer;
-	border-radius: 50%;
-}
-
-input[type="range"]::-moz-range-thumb {
-	width: 25px;
-	height: 25px;
-	background: #005399;
-	cursor: pointer;
-	border-radius: 50%;
+.btn-custom:hover {
+	background-color: #d94e00;
 }
 </style>

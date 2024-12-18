@@ -1,11 +1,18 @@
 <template>
-	<div class="family-combo-page container my-5">
-		<h1 class="text-center mb-4">Seguro Combinado Familiar</h1>
+	<div class="fleet-page">
+		<!-- Imagen Encabezado -->
+		<div class="image-header">
+			<img
+				:src="getServiceImage('familiar.PNG')"
+				alt="Seguro Combinado Familiar Image"
+				class="header-image"
+			/>
+		</div>
 
-		<!-- Formulario de Solicitud -->
-		<section id="solicitud-formulario" class="mb-5">
-			<h2 class="mb-4">Solicita tu Cotización</h2>
-			<form @submit.prevent="submitForm" class="row g-3">
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">Solicita tu Cotización</h2>
+			<form @submit.prevent="submitForm" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre</label>
 					<input
@@ -26,7 +33,6 @@
 						required
 					/>
 				</div>
-
 				<div class="col-md-6">
 					<label for="telefono" class="form-label">Teléfono</label>
 					<input
@@ -48,15 +54,16 @@
 					/>
 				</div>
 				<div class="col-12">
-					<button type="submit" class="btn btn-primary w-100">
+					<button type="submit" class="btn btn-custom w-100">
 						Solicitar Cotización
 					</button>
 				</div>
 			</form>
 		</section>
 
-		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Protección Integral para tu Hogar</h2>
+		<!-- Información sobre Seguro Combinado Familiar -->
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">Protección Integral para tu Hogar</h2>
 			<p>
 				El Seguro Combinado Familiar protege la vivienda y los bienes dentro de
 				ella frente a una amplia gama de riesgos. Es una póliza integral
@@ -65,17 +72,15 @@
 			</p>
 
 			<div class="row">
-				<!-- Tarjeta: Cobertura Básica -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-shield-alt coverage-icon"></i>
+							<h5 class="card-title mb-0">Cobertura Básica</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-shield-alt"></i>
-							</div>
-							<h5 class="card-title text-center">Cobertura Básica</h5>
-							<p class="card-text">
-								Incluye protección ante los siguientes riesgos:
-							</p>
+							<p>Incluye protección ante los siguientes riesgos:</p>
 							<ul>
 								<li>Incendio</li>
 								<li>Robo</li>
@@ -86,18 +91,15 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Tarjeta: Coberturas Adicionales -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-plus-circle coverage-icon"></i>
+							<h5 class="card-title mb-0">Coberturas Adicionales</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-plus-circle"></i>
-							</div>
-							<h5 class="card-title text-center">Coberturas Adicionales</h5>
-							<p class="card-text">
-								Esta cobertura adicional incluye la cobertura básica más:
-							</p>
+							<p>Esta cobertura adicional incluye la cobertura básica más:</p>
 							<ul>
 								<li>
 									Protección de objetos de valor (electrodomésticos, joyas)
@@ -109,7 +111,7 @@
 				</div>
 			</div>
 
-			<h3>Ejemplo de Cobertura</h3>
+			<h3 class="section-title mb-4">Ejemplo de Cobertura</h3>
 			<p>
 				Si tu casa sufre daños por una tormenta, el seguro combinado familiar
 				cubre tanto las reparaciones como el reemplazo de los bienes afectados.
@@ -134,99 +136,95 @@ export default {
 	},
 	methods: {
 		submitForm() {
-			// Obtener la fecha y hora actual
 			const now = new Date();
-			const year = now.getFullYear();
-			const month = now.getMonth() + 1;
-			const day = now.getDate();
-			const hours = now.getHours();
-			const minutes = now.getMinutes();
-
-			// Crear los datos para enviar al App Script
 			const data = {
-				HOJA: "Leads", // Nombre de la hoja en Google Sheets
-				PRODUCTO: "CombinadoFamiliar", // Producto específico para esta solicitud
+				HOJA: "Leads",
+				PRODUCTO: "CombinadoFamiliar",
 				FECHA: now.toLocaleDateString(),
-				AÑO: year,
-				MES: month,
-				DIA: day,
-				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				AÑO: now.getFullYear(),
+				MES: now.getMonth() + 1,
+				DIA: now.getDate(),
+				"HH:MM": `${now.getHours()}:${now.getMinutes()}`,
 				...this.formData,
 			};
 
-			// Utilizar un proxy para evitar problemas de CORS
 			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 			const googleScriptUrl =
 				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
 
 			axios
 				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
-				.then((response) => {
-					if (response.data.result === "success") {
-						alert("Cotización enviada correctamente. ¡Gracias!");
-					} else {
-						alert("Error al enviar la cotización: " + response.data.error);
-					}
-				})
-				.catch((error) => {
-					console.error("Error al enviar datos:", error);
-					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
-				});
+				.then(() => alert("Cotización enviada correctamente. ¡Gracias!"))
+				.catch(() =>
+					alert("Error al enviar la cotización. Inténtalo de nuevo.")
+				);
+		},
+		getServiceImage(imageName) {
+			return new URL(
+				`../assets/images/imgTarjetasHome/${imageName}`,
+				import.meta.url
+			).href;
 		},
 	},
 };
 </script>
 
 <style scoped>
-.family-combo-page {
-	padding-top: 20px;
+.image-header {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
-.card {
-	border: 1px solid #e0e0e0;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	border-radius: 8px;
-	background-color: #ffffff;
+.header-image {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
 }
 
-.card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	background-color: #f9f9f9;
-}
-
-.icon-container {
-	font-size: 2.5rem;
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
 	color: #003366;
-	margin-bottom: 15px;
+	text-align: left;
+}
+
+.form-background {
+	background-color: #f5f5f5;
+	border-radius: 10px;
+}
+
+.card-no-border {
+	border: none;
+	box-shadow: none;
 }
 
 .card-title {
-	font-size: 1.3rem;
+	color: #003366;
 	font-weight: bold;
-	color: #003366;
-	text-align: center;
 }
 
-.card-text {
-	font-size: 1rem;
-	color: #666;
-	margin-bottom: 15px;
+.coverage-icon {
+	font-size: 1.5rem;
+	color: #ff6600;
+	margin-right: 10px;
 }
 
-ul {
-	list-style-type: disc;
-	margin-left: 20px;
+.divider {
+	height: 3px;
+	background-color: #ff6600;
+	margin: 10px 0;
+	border: none;
 }
 
-h2 {
-	font-size: 1.8rem;
-	color: #003366;
+.btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	transition: background-color 0.3s;
 }
 
-h3 {
-	margin-top: 20px;
-	color: #003366;
+.btn-custom:hover {
+	background-color: #d94e00;
 }
 </style>

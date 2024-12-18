@@ -1,11 +1,18 @@
 <template>
-	<div class="notebook-page container my-5">
-		<h1 class="text-center mb-4">Seguro de Notebooks</h1>
+	<div class="notebook-page">
+		<!-- Imagen de Encabezado -->
+		<div class="image-header">
+			<img
+				:src="getServiceImage('Notebooks.PNG')"
+				alt="Seguro de Notebooks"
+				class="header-image"
+			/>
+		</div>
 
 		<!-- Cotizador Web -->
-		<section id="cotizador" class="cotizador-section mb-5">
-			<h2 class="mb-4">Cotizador Web</h2>
-			<form @submit.prevent="submitQuote" class="row g-3">
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">Solicita tu Cotización</h2>
+			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre</label>
 					<input
@@ -45,20 +52,11 @@
 						required
 					>
 						<option value="" disabled>Seleccione una opción</option>
-						<option value="Acer">Acer</option>
-						<option value="Apple">Apple</option>
-						<option value="Asus">Asus</option>
-						<option value="Banghó">Banghó</option>
-						<option value="Dell">Dell</option>
-						<option value="HP">HP</option>
-						<option value="Lenovo">Lenovo</option>
-						<option value="MSI">MSI</option>
-						<option value="Samsung">Samsung</option>
-						<option value="Sony">Sony</option>
-						<option value="Otro">Otro</option>
+						<option v-for="marca in marcas" :key="marca" :value="marca">
+							{{ marca }}
+						</option>
 					</select>
 				</div>
-
 				<div class="col-md-6">
 					<label for="modeloNote" class="form-label">Modelo</label>
 					<input
@@ -69,7 +67,6 @@
 						required
 					/>
 				</div>
-
 				<div class="col-md-6">
 					<label for="sumaAsegurada" class="form-label">Suma Asegurada</label>
 					<input
@@ -80,9 +77,8 @@
 						required
 					/>
 				</div>
-
 				<div class="col-12">
-					<button type="submit" class="btn btn-primary w-100">
+					<button type="submit" class="btn btn-custom w-100">
 						Solicitar Cotización
 					</button>
 				</div>
@@ -90,24 +86,23 @@
 		</section>
 
 		<!-- Información sobre el Seguro de Notebooks -->
-		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Protección Integral para tus Dispositivos Portátiles</h2>
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">
+				Protección Integral para tus Dispositivos Portátiles
+			</h2>
 			<p>
-				Este seguro protege contra el robo o daño de notebooks y computadoras
-				portátiles, garantizando que el asegurado no sufra pérdidas económicas
-				por eventos inesperados.
+				El seguro de notebooks protege tus dispositivos contra el robo o daño,
+				garantizando que no sufras pérdidas económicas por eventos inesperados.
 			</p>
-
 			<div class="row">
-				<!-- Tarjeta: Cobertura Básica -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-shield-alt coverage-icon"></i>
+							<h5 class="card-title mb-0">Cobertura Básica</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-shield-alt"></i>
-							</div>
-							<h5 class="card-title text-center">Cobertura Básica</h5>
-							<p class="card-text">Incluye protección ante:</p>
 							<ul>
 								<li>Robo</li>
 								<li>Daños accidentales</li>
@@ -116,16 +111,14 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Tarjeta: Coberturas Adicionales -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-globe coverage-icon"></i>
+							<h5 class="card-title mb-0">Coberturas Adicionales</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-globe"></i>
-							</div>
-							<h5 class="card-title text-center">Coberturas Adicionales</h5>
-							<p class="card-text">Esta cobertura incluye la básica más:</p>
 							<ul>
 								<li>Cobertura mundial para dispositivos en viajes</li>
 								<li>Pérdida de datos</li>
@@ -134,8 +127,7 @@
 					</div>
 				</div>
 			</div>
-
-			<h3>Ejemplo de Cobertura</h3>
+			<h3 class="section-title mb-4">Ejemplo de Cobertura</h3>
 			<p>
 				Si tu notebook se daña por una caída accidental, el seguro cubrirá el
 				costo de reparación o reposición.
@@ -158,114 +150,104 @@ export default {
 				modeloNote: "",
 				sumaAsegurada: "",
 			},
+			marcas: [
+				"Acer",
+				"Apple",
+				"Asus",
+				"Banghó",
+				"Dell",
+				"HP",
+				"Lenovo",
+				"MSI",
+				"Samsung",
+				"Sony",
+				"Otro",
+			],
 		};
 	},
 	methods: {
 		submitQuote() {
-			// Obtener fecha y hora actuales
 			const now = new Date();
-			const year = now.getFullYear();
-			const month = now.getMonth() + 1;
-			const day = now.getDate();
-			const hours = now.getHours();
-			const minutes = now.getMinutes();
-
-			// Datos para enviar a Google Sheets
 			const data = {
 				HOJA: "Leads",
 				PRODUCTO: "Notebooks",
 				FECHA: now.toLocaleDateString(),
-				AÑO: year,
-				MES: month,
-				DIA: day,
-				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				AÑO: now.getFullYear(),
+				MES: now.getMonth() + 1,
+				DIA: now.getDate(),
+				"HH:MM": `${now.getHours()}:${now.getMinutes()}`,
 				...this.quoteData,
 			};
 
-			// Proxy y URL del script
 			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 			const googleScriptUrl =
 				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
 
 			axios
 				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
-				.then((response) => {
-					if (response.data.result === "success") {
-						alert("Cotización enviada correctamente. ¡Gracias!");
-					} else {
-						alert("Error al enviar la cotización: " + response.data.error);
-					}
-				})
-				.catch((error) => {
-					console.error("Error al enviar datos:", error);
-					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
-				});
+				.then(() => alert("Cotización enviada correctamente. ¡Gracias!"))
+				.catch(() =>
+					alert("Error al enviar la cotización. Inténtalo de nuevo.")
+				);
+		},
+		getServiceImage(imageName) {
+			return new URL(
+				`../assets/images/imgTarjetasHome/${imageName}`,
+				import.meta.url
+			).href;
 		},
 	},
 };
 </script>
 
 <style scoped>
-.notebook-page {
-	padding-top: 20px;
+.image-header {
+	width: 100%;
+	overflow: hidden;
 }
 
-.cotizador-section form {
-	background-color: #f8f9fa;
-	padding: 20px;
+.header-image {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+}
+
+.form-background {
+	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
-.card {
-	border: 1px solid #e0e0e0;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	border-radius: 8px;
-	background-color: #ffffff;
-}
-
-.card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	background-color: #f9f9f9;
-}
-
-.icon-container {
-	font-size: 2.5rem;
-	color: #003366;
-	margin-bottom: 15px;
-}
-
-.card-title {
-	font-size: 1.3rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: center;
-}
-
-h2 {
-	font-size: 1.8rem;
-	color: #003366;
-}
-
-h3 {
-	margin-top: 20px;
-	color: #003366;
-}
-
-ul {
-	list-style-type: disc;
-	margin-left: 20px;
-}
-
-.btn-primary {
-	background-color: #003366;
+.card-no-border {
 	border: none;
-	color: white;
+	box-shadow: none;
+}
+
+.coverage-icon {
+	font-size: 1.5rem;
+	color: #ff6600;
+	margin-right: 10px;
+}
+
+.divider {
+	height: 3px;
+	background-color: #ff6600;
+	margin: 10px 0;
+}
+
+.btn-custom {
+	background-color: #ff6600;
+	color: #fff;
 	transition: background-color 0.3s;
 }
 
-.btn-primary:hover {
-	background-color: #005399;
+.btn-custom:hover {
+	background-color: #d94e00;
 }
 </style>

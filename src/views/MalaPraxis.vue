@@ -1,11 +1,18 @@
 <template>
-	<div class="mala-praxis-page container my-5">
-		<h1 class="text-center mb-4">Seguro de Mala Praxis</h1>
+	<div class="fleet-page">
+		<!-- Imagen Encabezado -->
+		<div class="image-header">
+			<img
+				:src="getServiceImage('MalaPraxis.jpeg')"
+				alt="Seguro de Mala Praxis Image"
+				class="header-image"
+			/>
+		</div>
 
-		<!-- Formulario de Cotización -->
-		<section id="cotizacion-formulario" class="mb-5">
-			<h2 class="mb-4">Solicita tu Cotización</h2>
-			<form @submit.prevent="submitForm" class="row g-3">
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">Solicita tu Cotización</h2>
+			<form @submit.prevent="submitForm" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre</label>
 					<input
@@ -57,15 +64,18 @@
 					/>
 				</div>
 				<div class="col-12">
-					<button type="submit" class="btn btn-primary w-100">
+					<button type="submit" class="btn btn-custom w-100">
 						Solicitar Cotización
 					</button>
 				</div>
 			</form>
 		</section>
 
-		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Información sobre Seguro de Mala Praxis</h2>
+		<!-- Información sobre Seguro de Mala Praxis -->
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">
+				Información sobre Seguro de Mala Praxis
+			</h2>
 			<p>
 				Este seguro está dirigido a profesionales de la salud, abogados,
 				ingenieros, y otros que puedan enfrentar demandas por errores
@@ -75,14 +85,14 @@
 			</p>
 
 			<div class="row">
-				<!-- Tarjeta: Cobertura Básica -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-balance-scale coverage-icon"></i>
+							<h5 class="card-title mb-0">Cobertura Básica</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-balance-scale"></i>
-							</div>
-							<h5 class="card-title text-center">Cobertura Básica</h5>
 							<ul>
 								<li>Indemnizaciones por daños a terceros</li>
 								<li>Gastos judiciales</li>
@@ -91,15 +101,14 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Tarjeta: Coberturas Adicionales -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-shield-alt coverage-icon"></i>
+							<h5 class="card-title mb-0">Coberturas Adicionales</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-shield-alt"></i>
-							</div>
-							<h5 class="card-title text-center">Coberturas Adicionales</h5>
 							<ul>
 								<li>Cobertura para actos de negligencia grave</li>
 								<li>Defensa ante tribunales de ética</li>
@@ -109,7 +118,7 @@
 				</div>
 			</div>
 
-			<h3>Ejemplo</h3>
+			<h3 class="section-title mb-4">Ejemplo</h3>
 			<p>
 				Si un médico enfrenta una demanda por un error durante una cirugía que
 				causó daño a un paciente, el seguro de mala praxis cubre los costos de
@@ -136,95 +145,95 @@ export default {
 	},
 	methods: {
 		submitForm() {
-			// Obtener la fecha y hora actual
 			const now = new Date();
-			const year = now.getFullYear();
-			const month = now.getMonth() + 1; // Los meses empiezan desde 0
-			const day = now.getDate();
-			const hours = now.getHours();
-			const minutes = now.getMinutes();
-
-			// Crear los datos para enviar al App Script
 			const data = {
-				HOJA: "Leads", // Nombre de la hoja en Google Sheets
-				PRODUCTO: "MalaPraxis", // Producto específico para esta solicitud
-				FECHA: now.toLocaleDateString(), // Fecha completa
-				AÑO: year,
-				MES: month,
-				DIA: day,
-				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`, // Hora en formato HH:MM
+				HOJA: "Leads",
+				PRODUCTO: "MalaPraxis",
+				FECHA: now.toLocaleDateString(),
+				AÑO: now.getFullYear(),
+				MES: now.getMonth() + 1,
+				DIA: now.getDate(),
+				"HH:MM": `${now.getHours()}:${now.getMinutes()}`,
 				...this.formData,
 			};
 
-			// Utilizar un proxy para evitar problemas de CORS
 			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 			const googleScriptUrl =
 				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
 
 			axios
 				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
-				.then((response) => {
-					if (response.data.result === "success") {
-						alert("Cotización enviada correctamente. ¡Gracias!");
-					} else {
-						alert("Error al enviar la cotización: " + response.data.error);
-					}
-				})
-				.catch((error) => {
-					console.error("Error al enviar datos:", error);
-					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
-				});
+				.then(() => alert("Cotización enviada correctamente. ¡Gracias!"))
+				.catch(() =>
+					alert("Error al enviar la cotización. Inténtalo de nuevo.")
+				);
+		},
+		getServiceImage(imageName) {
+			return new URL(
+				`../assets/images/imgTarjetasHome/${imageName}`,
+				import.meta.url
+			).href;
 		},
 	},
 };
 </script>
 
 <style scoped>
-.mala-praxis-page {
-	padding-top: 20px;
+.image-header {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
-.card {
-	border: 1px solid #e0e0e0;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	border-radius: 8px;
-	background-color: #ffffff;
+.header-image {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
 }
 
-.card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	background-color: #f9f9f9;
-}
-
-.icon-container {
-	font-size: 2.5rem;
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
 	color: #003366;
-	margin-bottom: 15px;
+	text-align: left;
+}
+
+.form-background {
+	background-color: #f5f5f5;
+	border-radius: 10px;
+}
+
+.card-no-border {
+	border: none;
+	box-shadow: none;
 }
 
 .card-title {
-	font-size: 1.3rem;
+	color: #003366;
 	font-weight: bold;
-	color: #003366;
-	text-align: center;
 }
 
-.card-text,
-ul {
-	font-size: 1rem;
-	color: #666;
-	margin-bottom: 15px;
+.coverage-icon {
+	font-size: 1.5rem;
+	color: #ff6600;
+	margin-right: 10px;
 }
 
-h2 {
-	font-size: 1.8rem;
-	color: #003366;
+.divider {
+	height: 3px;
+	background-color: #ff6600;
+	margin: 10px 0;
+	border: none;
 }
 
-h3 {
-	margin-top: 20px;
-	color: #003366;
+.btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+	background-color: #d94e00;
 }
 </style>

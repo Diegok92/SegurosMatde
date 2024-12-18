@@ -1,11 +1,18 @@
 <template>
-	<div class="todo-riesgo-page container my-5">
-		<h1 class="text-center mb-4">Todo Riesgo Operativo</h1>
+	<div class="fleet-page">
+		<!-- Imagen Encabezado -->
+		<div class="image-header">
+			<img
+				:src="getServiceImage('TRO.PNG')"
+				alt="Todo Riesgo Operativo Image"
+				class="header-image"
+			/>
+		</div>
 
 		<!-- Cotizador Web -->
-		<section id="cotizador" class="cotizador-section mb-5">
-			<h2 class="mb-4">Cotizador Web</h2>
-			<form @submit.prevent="submitQuote" class="row g-3">
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">Cotizador Web</h2>
+			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre</label>
 					<input
@@ -57,15 +64,16 @@
 					/>
 				</div>
 				<div class="col-12">
-					<button type="submit" class="btn btn-primary w-100">
+					<button type="submit" class="btn btn-custom w-100">
 						Solicitar Cotización
 					</button>
 				</div>
 			</form>
 		</section>
 
-		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">
+		<!-- Información sobre Todo Riesgo Operativo -->
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">
 				Protección para Operaciones Comerciales e Industriales
 			</h2>
 			<p>
@@ -76,31 +84,30 @@
 
 			<!-- Tarjetas de Cobertura -->
 			<div class="row">
-				<!-- Tarjeta: Cobertura Estándar -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-warehouse coverage-icon"></i>
+							<h5 class="card-title mb-0">Cobertura Estándar</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-warehouse"></i>
-							</div>
-							<h5 class="card-title text-center">Cobertura Estándar</h5>
-							<p class="card-text">
+							<p>
 								Esta cobertura incluye daños por incendio, robo y desastres
 								naturales, así como responsabilidad civil para terceros.
 							</p>
 						</div>
 					</div>
 				</div>
-
-				<!-- Tarjeta: Cobertura Completa -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-shield-alt coverage-icon"></i>
+							<h5 class="card-title mb-0">Cobertura Completa</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-shield-alt"></i>
-							</div>
-							<h5 class="card-title text-center">Cobertura Completa</h5>
-							<p class="card-text">
+							<p>
 								Además de la cobertura estándar, incluye protección contra
 								pérdidas económicas por interrupción de actividades y daños a
 								maquinaria.
@@ -130,28 +137,16 @@ export default {
 	},
 	methods: {
 		submitQuote() {
-			// Obtener la fecha y hora actuales
 			const now = new Date();
-			const year = now.getFullYear();
-			const month = now.getMonth() + 1;
-			const day = now.getDate();
-			const hours = now.getHours();
-			const minutes = now.getMinutes();
-
-			// Datos a enviar a Google Sheets
 			const data = {
 				HOJA: "Leads",
 				PRODUCTO: "TodoRiesgoOperativo",
 				FECHA: now.toLocaleDateString(),
-				AÑO: year,
-				MES: month,
-				DIA: day,
-				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
-				nombre: this.quoteData.nombre,
-				razonSocial: this.quoteData.razonSocial,
-				actividad: this.quoteData.actividad,
-				telefono: this.quoteData.telefono,
-				email: this.quoteData.email,
+				AÑO: now.getFullYear(),
+				MES: now.getMonth() + 1,
+				DIA: now.getDate(),
+				"HH:MM": `${now.getHours()}:${now.getMinutes()}`,
+				...this.quoteData,
 			};
 
 			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
@@ -160,82 +155,81 @@ export default {
 
 			axios
 				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
-				.then((response) => {
-					if (response.data.result === "success") {
-						alert("Cotización solicitada y datos enviados a Google Sheets");
-					} else {
-						alert(
-							"Error inesperado al enviar la cotización: " + response.data.error
-						);
-					}
-				})
-				.catch((error) => {
-					console.error("Error al enviar datos:", error);
-					alert("Error al enviar la cotización");
-				});
+				.then(() =>
+					alert("Cotización solicitada y datos enviados a Google Sheets")
+				)
+				.catch(() => alert("Error al enviar la cotización"));
+		},
+		getServiceImage(imageName) {
+			return new URL(
+				`../assets/images/imgTarjetasHome/${imageName}`,
+				import.meta.url
+			).href;
 		},
 	},
 };
 </script>
 
 <style scoped>
-.todo-riesgo-page {
-	padding-top: 20px;
+.image-header {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
-.cotizador-section form {
-	background-color: #f8f9fa;
-	padding: 20px;
-	border-radius: 10px;
-}
-
-.card {
-	border: 1px solid #e0e0e0;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	border-radius: 8px;
-	background-color: #ffffff;
-}
-
-.card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	background-color: #f9f9f9;
-}
-
-.icon-container {
-	font-size: 2.5rem;
-	color: #003366;
-	margin-bottom: 15px;
-}
-
-.card-title {
-	font-size: 1.4rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: center;
+.header-image {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
 }
 
 .section-title {
-	font-size: 1.2rem;
+	font-size: 1.6rem;
+	font-weight: bold;
 	color: #003366;
-	margin-top: 20px;
-	text-align: center;
+	text-align: left;
 }
 
-.card-text {
-	font-size: 1rem;
-	color: #666;
-	margin-bottom: 15px;
+.form-background {
+	background-color: #f5f5f5;
+	border-radius: 10px;
 }
 
-h2 {
-	font-size: 1.8rem;
+.card-no-border {
+	border: none;
+	box-shadow: none;
+}
+
+.card-title {
 	color: #003366;
+	font-weight: bold;
 }
 
-ul {
-	list-style-type: disc;
-	margin-left: 20px;
+.coverage-icon {
+	font-size: 1.5rem;
+	color: #ff6600;
+	margin-right: 10px;
+}
+
+.divider {
+	height: 3px;
+	background-color: #ff6600;
+	margin: 10px 0;
+	border: none;
+}
+
+.text-orange {
+	color: #ff6600;
+}
+
+.btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+	background-color: #d94e00;
 }
 </style>

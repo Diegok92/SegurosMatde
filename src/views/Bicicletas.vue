@@ -1,11 +1,18 @@
 <template>
-	<div class="bicicletas-page container my-5">
-		<h1 class="text-center mb-4">Seguro de Bicicletas</h1>
+	<div class="bicicletas-page">
+		<!-- Imagen Encabezado -->
+		<div class="image-header">
+			<img
+				:src="getServiceImage('Bici.PNG')"
+				alt="Seguro de Bicicletas"
+				class="header-image"
+			/>
+		</div>
 
 		<!-- Cotizador Web -->
-		<section id="cotizador" class="cotizador-section mb-5">
-			<h2 class="mb-4">Cotizador Web</h2>
-			<form @submit.prevent="submitQuote" class="row g-3">
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">Solicita tu Cotización</h2>
+			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre</label>
 					<input
@@ -58,7 +65,6 @@
 						<option value="Otro">Otro</option>
 					</select>
 				</div>
-
 				<div class="col-md-6">
 					<label for="modeloBici" class="form-label">Modelo</label>
 					<input
@@ -69,7 +75,6 @@
 						required
 					/>
 				</div>
-
 				<div class="col-md-6">
 					<label for="sumaAsegurada" class="form-label">Suma Asegurada</label>
 					<input
@@ -80,9 +85,8 @@
 						required
 					/>
 				</div>
-
 				<div class="col-12">
-					<button type="submit" class="btn btn-primary w-100">
+					<button type="submit" class="btn btn-custom w-100">
 						Solicitar Cotización
 					</button>
 				</div>
@@ -90,47 +94,47 @@
 		</section>
 
 		<!-- Información sobre el Seguro de Bicicletas -->
-		<section id="informacion" class="mb-5">
-			<h2 class="mb-4">Información sobre el Seguro de Bicicletas</h2>
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">Protección para tu Bicicleta</h2>
 			<p>
-				Este seguro cubre la bicicleta del asegurado frente a diversos riesgos
-				como robo, daño accidental o vandalismo.
+				El seguro cubre tu bicicleta frente a riesgos como robo, daños
+				accidentales y vandalismo, brindándote tranquilidad y seguridad.
 			</p>
 
 			<div class="row">
-				<!-- Tarjeta: Cobertura Básica -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-lock coverage-icon"></i>
+							<h5 class="card-title mb-0">Cobertura Básica</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-lock"></i>
-							</div>
-							<h5 class="card-title text-center">Cobertura Básica</h5>
 							<p>
-								Robo total, daño accidental, y cobertura por responsabilidad
+								Robo total, daño accidental y cobertura por responsabilidad
 								civil en caso de causar daños a terceros.
 							</p>
 						</div>
 					</div>
 				</div>
-
-				<!-- Tarjeta: Coberturas Adicionales -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-tools coverage-icon"></i>
+							<h5 class="card-title mb-0">Coberturas Adicionales</h5>
+						</div>
+						<div class="divider"></div>
 						<div class="card-body">
-							<div class="icon-container text-center">
-								<i class="fas fa-tools"></i>
-							</div>
-							<h5 class="card-title text-center">Coberturas Adicionales</h5>
 							<p>
-								Daños a la bicicleta durante el transporte y asistencia mecánica
+								Cobertura por daños durante el transporte y asistencia mecánica
 								en el lugar del siniestro.
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<h3>Ejemplo</h3>
+
+			<h3 class="section-title mb-4">Ejemplo</h3>
 			<p>
 				Si tu bicicleta es robada mientras está estacionada en la vía pública,
 				el seguro cubrirá el costo de reposición.
@@ -157,99 +161,95 @@ export default {
 	},
 	methods: {
 		submitQuote() {
-			// Obtener la fecha y hora actual
 			const now = new Date();
-			const year = now.getFullYear();
-			const month = now.getMonth() + 1;
-			const day = now.getDate();
-			const hours = now.getHours();
-			const minutes = now.getMinutes();
-
-			// Crear los datos para enviar al App Script
 			const data = {
-				HOJA: "Leads", // Nombre de la hoja en Google Sheets
-				PRODUCTO: "Bicicletas", // Producto específico para esta solicitud
+				HOJA: "Leads",
+				PRODUCTO: "Bicicletas",
 				FECHA: now.toLocaleDateString(),
-				AÑO: year,
-				MES: month,
-				DIA: day,
-				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
+				AÑO: now.getFullYear(),
+				MES: now.getMonth() + 1,
+				DIA: now.getDate(),
+				"HH:MM": `${now.getHours()}:${now.getMinutes()}`,
 				...this.quoteData,
 			};
 
-			// Utilizar un proxy para evitar problemas de CORS
 			const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 			const googleScriptUrl =
 				"https://script.google.com/macros/s/AKfycbzQINUw9bE3dBw5bslOSO8CZS9vklSpFw-pOYA6iPwSwfRfBhkRp0z5RTvUIE22O2Q5/exec";
 
 			axios
 				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
-				.then((response) => {
-					if (response.data.result === "success") {
-						alert("Cotización enviada correctamente. ¡Gracias!");
-					} else {
-						alert("Error al enviar la cotización: " + response.data.error);
-					}
-				})
-				.catch((error) => {
-					console.error("Error al enviar datos:", error);
-					alert("Hubo un problema al enviar tu solicitud. Intenta nuevamente.");
-				});
+				.then(() => alert("Cotización enviada correctamente. ¡Gracias!"))
+				.catch(() =>
+					alert("Error al enviar la cotización. Inténtalo de nuevo.")
+				);
+		},
+		getServiceImage(imageName) {
+			return new URL(
+				`../assets/images/imgTarjetasHome/${imageName}`,
+				import.meta.url
+			).href;
 		},
 	},
 };
 </script>
 
 <style scoped>
-.bicicletas-page {
-	padding-top: 20px;
+.image-header {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
-.cotizador-section form {
-	background-color: #f8f9fa;
-	padding: 20px;
+.header-image {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: center;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: left;
+}
+
+.form-background {
+	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
-.card {
-	border: 1px solid #e0e0e0;
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-	border-radius: 8px;
-	background-color: #ffffff;
-}
-
-.card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	background-color: #f9f9f9;
-}
-
-.icon-container {
-	font-size: 2.5rem;
-	color: #003366;
-	margin-bottom: 15px;
+.card-no-border {
+	border: none;
+	box-shadow: none;
 }
 
 .card-title {
-	font-size: 1.3rem;
+	color: #003366;
 	font-weight: bold;
-	color: #003366;
-	text-align: center;
 }
 
-h2 {
-	font-size: 1.8rem;
-	color: #003366;
+.coverage-icon {
+	font-size: 1.5rem;
+	color: #ff6600;
+	margin-right: 10px;
 }
 
-h3 {
-	margin-top: 20px;
-	color: #003366;
+.divider {
+	height: 3px;
+	background-color: #ff6600;
+	margin: 10px 0;
+	border: none;
 }
 
-ul {
-	list-style-type: disc;
-	margin-left: 20px;
+.btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+	background-color: #d94e00;
 }
 </style>

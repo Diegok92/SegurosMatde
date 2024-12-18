@@ -1,20 +1,11 @@
 <template>
-	<div class="fleet-page">
-		<!-- Imagen Encabezado -->
-		<div class="image-header">
-			<img
-				:src="getServiceImage('Art.PNG')"
-				alt="ART Image"
-				class="header-image"
-			/>
-		</div>
+	<div class="art-page container my-5">
+		<h1 class="text-center mb-4">A.R.T.</h1>
 
 		<!-- Cotizador Web -->
-		<section id="cotizador" class="cotizador-section container my-5">
-			<h2 class="section-title mb-4">
-				Dejanos tus datos y empezá a sentirte seguro
-			</h2>
-			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
+		<section id="cotizador" class="cotizador-section mb-5">
+			<h2 class="mb-4">Dejanos tus datos y empezá a sentirte seguro</h2>
+			<form @submit.prevent="submitQuote" class="row g-3">
 				<div class="col-md-6">
 					<label for="razonSocial" class="form-label">Razón Social</label>
 					<input
@@ -82,7 +73,7 @@
 					</select>
 				</div>
 				<div class="col-12">
-					<button type="submit" class="btn btn-custom w-100">
+					<button type="submit" class="btn btn-primary w-100">
 						Solicitar Cotización
 					</button>
 				</div>
@@ -90,8 +81,8 @@
 		</section>
 
 		<!-- Información sobre ART y Accidentes Personales -->
-		<section id="informacion" class="additional-info container my-5">
-			<h2 class="section-title mb-4">Información sobre A.R.T.</h2>
+		<section id="informacion" class="mb-5">
+			<h2 class="mb-4">Información sobre A.R.T.</h2>
 			<p>
 				Ya sea que trabajes en relación de dependencia o de manera autónoma, es
 				imprescindible que cuentes con un seguro de accidentes. La ART debe ser
@@ -111,13 +102,12 @@
 			<div class="row">
 				<!-- Tarjeta: Seguro ART -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100 d-flex flex-column card-no-border">
-						<div class="d-flex align-items-center">
-							<i class="fas fa-briefcase-medical coverage-icon"></i>
-							<h5 class="card-title mb-0">ART</h5>
-						</div>
-						<div class="divider"></div>
-						<div class="card-body d-flex flex-column">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-briefcase-medical"></i>
+							</div>
+							<h5 class="card-title text-center">ART</h5>
 							<p class="card-text">
 								El seguro ART es obligatorio y cubre a los empleados de una
 								empresa en caso de accidentes laborales o enfermedades
@@ -145,13 +135,12 @@
 
 				<!-- Tarjeta: Seguro de Accidentes de Trabajo (ART) para Personal Doméstico -->
 				<div class="col-md-6 mb-4">
-					<div class="card h-100 d-flex flex-column card-no-border">
-						<div class="d-flex align-items-center">
-							<i class="fas fa-home coverage-icon"></i>
-							<h5 class="card-title mb-0">ART - Personal Doméstico</h5>
-						</div>
-						<div class="divider"></div>
-						<div class="card-body d-flex flex-column">
+					<div class="card h-100">
+						<div class="card-body">
+							<div class="icon-container text-center">
+								<i class="fas fa-home"></i>
+							</div>
+							<h5 class="card-title text-center">ART - Personal Doméstico</h5>
 							<p class="card-text">
 								El seguro de Accidentes de Trabajo (ART) para personal doméstico
 								es obligatorio y protege tanto a empleadores como a trabajadores
@@ -177,9 +166,8 @@
 					</div>
 				</div>
 			</div>
-			<h2 class="section-title mb-4">
-				Cobertura de Riesgos de Trabajo para Casas Particulares
-			</h2>
+
+			<h3>Cobertura de Riesgos de Trabajo para Casas Particulares</h3>
 			<p>
 				La cobertura de riesgos del trabajo para personal de casas particulares
 				es idéntica a la cobertura que posee cualquier otro trabajador en casos
@@ -199,7 +187,8 @@
 				<li>Recalificación profesional</li>
 				<li>Servicio funerario en los casos de fallecimiento</li>
 			</ul>
-			<h3 class="section-title mb-4">Nuestro Objetivo</h3>
+
+			<h3>Nuestro Objetivo</h3>
 			<p>
 				Nuestro objetivo es asesorarte para que elijas la mejor compañía que
 				ofrezca una cobertura integral para proteger a tus empleados frente a
@@ -212,7 +201,7 @@
 				eficaces en la gestión de riesgos laborales.
 			</p>
 
-			<h3 class="section-title mb-4">Nuestros Servicios</h3>
+			<h3>Nuestros Servicios</h3>
 			<ul>
 				<li>Asignación de un ejecutivo de cuentas para tu empresa</li>
 				<li>Gestión de reintegros de ILT</li>
@@ -223,25 +212,22 @@
 					repetición
 				</li>
 			</ul>
-		</section>
 
-		<!-- Socios Estratégicos -->
-		<section class="services-summary container my-5">
-			<h2 class="section-title mb-5">Socios Estratégicos</h2>
-			<div class="row">
+			<h3>Socios Estratégicos</h3>
+			<div class="partners-grid">
 				<img
 					v-for="(logo, index) in partnerLogos"
 					:key="index"
 					:src="logo"
 					:alt="'Logo ' + (index + 1)"
-					class="partner-logo col-md-4 mb-4"
+					class="partner-logo"
 				/>
 			</div>
 		</section>
 
 		<!-- Preguntas Frecuentes -->
-		<section id="preguntas-frecuentes" class="faq-section container my-5">
-			<h2 class="section-title mb-4 text-center">Preguntas Frecuentes</h2>
+		<section id="preguntas-frecuentes" class="faq-section mb-5">
+			<h2 class="mb-4 text-center">Preguntas Frecuentes</h2>
 			<div v-for="(faq, index) in faqs" :key="index" class="faq-item mb-3">
 				<h5 @click="toggleFaq(index)" class="faq-question">
 					<i
@@ -296,15 +282,23 @@ export default {
 	},
 	methods: {
 		submitQuote() {
+			// Obtener fecha y hora actuales
 			const now = new Date();
+			const year = now.getFullYear();
+			const month = now.getMonth() + 1;
+			const day = now.getDate();
+			const hours = now.getHours();
+			const minutes = now.getMinutes();
+
+			// Datos para Google Sheets
 			const data = {
 				HOJA: "Leads",
 				PRODUCTO: "ART",
 				FECHA: now.toLocaleDateString(),
-				AÑO: now.getFullYear(),
-				MES: now.getMonth() + 1,
-				DIA: now.getDate(),
-				"HH:MM": `${now.getHours()}:${now.getMinutes()}`,
+				AÑO: year,
+				MES: month,
+				DIA: day,
+				"HH:MM": `${hours}:${minutes < 10 ? "0" + minutes : minutes}`,
 				razonSocial: this.quoteData.razonSocial,
 				cuit: this.quoteData.cuit,
 				nombre: this.quoteData.nombre,
@@ -319,16 +313,19 @@ export default {
 
 			axios
 				.post(proxyUrl + googleScriptUrl, new URLSearchParams(data))
-				.then(() =>
-					alert("Cotización solicitada y datos enviados a Google Sheets")
-				)
-				.catch(() => alert("Error al enviar la cotización"));
-		},
-		getServiceImage(imageName) {
-			return new URL(
-				`../assets/images/imgTarjetasHome/${imageName}`,
-				import.meta.url
-			).href;
+				.then((response) => {
+					if (response.data.result === "success") {
+						alert("Cotización solicitada y datos enviados a Google Sheets");
+					} else {
+						alert(
+							"Error inesperado al enviar la cotización: " + response.data.error
+						);
+					}
+				})
+				.catch((error) => {
+					console.error("Error al enviar datos:", error);
+					alert("Error al enviar la cotización");
+				});
 		},
 		toggleFaq(index) {
 			this.faqs[index].open = !this.faqs[index].open;
@@ -338,66 +335,60 @@ export default {
 </script>
 
 <style scoped>
-.image-header {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+.art-page {
+	padding-top: 20px;
 }
 
-.header-image {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-	object-position: center;
-}
-
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
-}
-
-.form-background {
-	background-color: #f5f5f5;
+.cotizador-section form {
+	background-color: #f8f9fa;
+	padding: 20px;
 	border-radius: 10px;
 }
 
-.card-no-border {
-	border: none;
-	box-shadow: none;
+.card {
+	border: 1px solid #e0e0e0;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	border-radius: 8px;
+	background-color: #ffffff;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	background-color: #f9f9f9;
+}
+
+.icon-container {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 15px;
+	text-align: center;
 }
 
 .card-title {
-	color: #003366;
+	font-size: 1.4rem;
 	font-weight: bold;
+	color: #003366;
+	text-align: center;
 }
 
-.coverage-icon {
-	font-size: 1.5rem;
-	color: #ff6600;
-	margin-right: 10px;
+.card-text,
+ul {
+	text-align: center;
+	color: #666;
+	margin-bottom: 15px;
 }
 
-.divider {
-	height: 3px;
-	background-color: #ff6600;
-	margin: 10px 0;
-	border: none;
+h2 {
+	font-size: 1.8rem;
+	color: #003366;
+	text-align: center;
 }
 
-.text-orange {
-	color: #ff6600;
-}
-
-.btn-custom {
-	background-color: #ff6600;
-	color: #fff;
-	transition: background-color 0.3s;
-}
-
-.btn-custom:hover {
-	background-color: #d94e00;
+h3 {
+	margin-top: 20px;
+	color: #003366;
 }
 
 .partner-logo {
@@ -405,6 +396,21 @@ export default {
 	max-width: 200px;
 	height: auto;
 	object-fit: contain;
+}
+
+li {
+	text-align: left;
+}
+
+.faq-section {
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.faq-item {
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 10px;
 }
 
 .faq-question {

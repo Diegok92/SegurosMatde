@@ -208,9 +208,9 @@ export default {
 
 .header-image {
 	width: 100%;
-	height: 300px;
+	height: 400px;
 	object-fit: cover;
-	object-position: 50% 30%;
+	object-position: 50% 60%;
 }
 
 .section-title {

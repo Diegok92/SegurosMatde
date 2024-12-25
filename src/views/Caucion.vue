@@ -9,9 +9,33 @@
 			/>
 		</div>
 
+		<!-- Información sobre Seguro de Caución -->
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">Ofrecemos:</h2>
+			<div class="row">
+				<div v-for="(card, index) in cards" :key="index" class="col-md-4 mb-4">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i :class="card.icon" class="coverage-icon"></i>
+							<h5 class="card-title mb-0">{{ card.title }}</h5>
+						</div>
+						<div class="divider"></div>
+						<div class="card-body">
+							<p v-if="card.description">{{ card.description }}</p>
+							<ul v-if="card.list">
+								<li v-for="(item, i) in card.list" :key="i">{{ item }}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<!-- Cotizador Web -->
 		<section id="cotizador" class="cotizador-section container my-5">
-			<h2 class="section-title mb-4">Solicita tu Cotización</h2>
+			<h2 class="section-title mb-4">
+				Dejanos tus datos y empezá a sentirte seguro
+			</h2>
 			<form @submit.prevent="submitForm" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre</label>
@@ -69,28 +93,6 @@
 					</button>
 				</div>
 			</form>
-		</section>
-
-		<!-- Información sobre Seguro de Caución -->
-		<section id="informacion" class="additional-info container my-5">
-			<h2 class="section-title mb-4">Ofrecemos:</h2>
-			<div class="row">
-				<div v-for="(card, index) in cards" :key="index" class="col-md-4 mb-4">
-					<div class="card h-100 d-flex flex-column card-no-border">
-						<div class="d-flex align-items-center">
-							<i :class="card.icon" class="coverage-icon"></i>
-							<h5 class="card-title mb-0">{{ card.title }}</h5>
-						</div>
-						<div class="divider"></div>
-						<div class="card-body">
-							<p v-if="card.description">{{ card.description }}</p>
-							<ul v-if="card.list">
-								<li v-for="(item, i) in card.list" :key="i">{{ item }}</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
 		</section>
 
 		<!-- Información Adicional -->
@@ -238,11 +240,10 @@ export default {
 
 .header-image {
 	width: 100%;
-	height: 200px;
+	height: 400px;
 	object-fit: cover;
-	object-position: center;
+	object-position: 50% 100%;
 }
-
 .section-title {
 	font-size: 1.6rem;
 	font-weight: bold;

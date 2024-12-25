@@ -178,7 +178,7 @@ export default {
 <style scoped>
 .header-image {
 	width: 100%;
-	height: 300px;
+	height: 400px;
 	object-fit: cover;
 	object-position: 50% 0%;
 }

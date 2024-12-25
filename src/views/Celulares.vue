@@ -9,90 +9,6 @@
 			/>
 		</div>
 
-		<!-- Cotizador Web -->
-		<section id="cotizador" class="cotizador-section container my-5">
-			<h2 class="section-title mb-4">Solicita tu Cotización</h2>
-			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
-				<div class="col-md-6">
-					<label for="nombre" class="form-label">Nombre</label>
-					<input
-						type="text"
-						id="nombre"
-						v-model="quoteData.nombre"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="email" class="form-label">Email</label>
-					<input
-						type="email"
-						id="email"
-						v-model="quoteData.email"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="telefono" class="form-label">Teléfono de Contacto</label>
-					<input
-						type="tel"
-						id="telefono"
-						v-model="quoteData.telefono"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="marcaCelu" class="form-label">Marca</label>
-					<select
-						id="marcaCelu"
-						v-model="quoteData.marcaCelu"
-						class="form-control"
-						required
-					>
-						<option value="" disabled>Seleccione una opción</option>
-						<option v-for="marca in marcas" :key="marca" :value="marca">
-							{{ marca }}
-						</option>
-					</select>
-				</div>
-				<div class="col-md-6">
-					<label for="modeloCelu" class="form-label">Modelo</label>
-					<input
-						type="text"
-						id="modeloCelu"
-						v-model="quoteData.modeloCelu"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="sumaAsegurada" class="form-label">Suma a Asegurar</label>
-					<input
-						type="range"
-						id="sumaAsegurada"
-						v-model="quoteData.sumaAsegurada"
-						class="form-range custom-range"
-						min="300000"
-						max="1200000"
-						step="100000"
-					/>
-					<div class="text-center mt-2">
-						<span
-							>Suma a Asegurar: $
-							{{ formatNumber(quoteData.sumaAsegurada) }}</span
-						>
-					</div>
-				</div>
-				<div class="col-12">
-					<button type="submit" class="btn btn-custom w-100">
-						Solicitar Cotización
-					</button>
-				</div>
-			</form>
-		</section>
-
 		<!-- Información sobre el Seguro de Celulares -->
 		<section id="informacion" class="additional-info container my-5">
 			<h2 class="section-title mb-4">Protección para tu Celular</h2>
@@ -133,6 +49,97 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Cotizador Web -->
+			<section id="cotizador" class="cotizador-section container my-5">
+				<h2 class="section-title mb-4">
+					Dejanos tus datos y empezá a sentirte seguro
+				</h2>
+				<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
+					<div class="col-md-6">
+						<label for="nombre" class="form-label">Nombre</label>
+						<input
+							type="text"
+							id="nombre"
+							v-model="quoteData.nombre"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="email" class="form-label">Email</label>
+						<input
+							type="email"
+							id="email"
+							v-model="quoteData.email"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="telefono" class="form-label"
+							>Teléfono de Contacto</label
+						>
+						<input
+							type="tel"
+							id="telefono"
+							v-model="quoteData.telefono"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="marcaCelu" class="form-label">Marca</label>
+						<select
+							id="marcaCelu"
+							v-model="quoteData.marcaCelu"
+							class="form-control"
+							required
+						>
+							<option value="" disabled>Seleccione una opción</option>
+							<option v-for="marca in marcas" :key="marca" :value="marca">
+								{{ marca }}
+							</option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<label for="modeloCelu" class="form-label">Modelo</label>
+						<input
+							type="text"
+							id="modeloCelu"
+							v-model="quoteData.modeloCelu"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="sumaAsegurada" class="form-label"
+							>Suma a Asegurar</label
+						>
+						<input
+							type="range"
+							id="sumaAsegurada"
+							v-model="quoteData.sumaAsegurada"
+							class="form-range custom-range"
+							min="300000"
+							max="1200000"
+							step="100000"
+						/>
+						<div class="text-center mt-2">
+							<span
+								>Suma a Asegurar: $
+								{{ formatNumber(quoteData.sumaAsegurada) }}</span
+							>
+						</div>
+					</div>
+					<div class="col-12">
+						<button type="submit" class="btn btn-custom w-100">
+							Solicitar Cotización
+						</button>
+					</div>
+				</form>
+			</section>
+
 			<h3 class="section-title mb-4">Ejemplo</h3>
 			<p>
 				Si tu teléfono cae y se rompe la pantalla, el seguro cubrirá los costos
@@ -224,9 +231,9 @@ export default {
 
 .header-image {
 	width: 100%;
-	height: 200px;
+	height: 400px;
 	object-fit: cover;
-	object-position: center;
+	object-position: 50% 60%;
 }
 
 .section-title {

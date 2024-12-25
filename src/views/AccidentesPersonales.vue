@@ -9,10 +9,62 @@
 			/>
 		</div>
 
+		<!-- Información sobre el Seguro de Accidentes Personales -->
+		<section id="informacion" class="additional-info container my-5">
+			<h2 class="section-title mb-4">
+				Protección contra Accidentes Personales
+			</h2>
+			<p>
+				Este seguro está diseñado para ofrecer una cobertura completa en caso de
+				accidentes personales que puedan resultar en lesiones, invalidez o
+				fallecimiento. Es ideal para personas que desean una protección
+				adicional ante imprevistos.
+			</p>
+			<p>
+				El Seguro de Accidentes Personales se adapta a tus necesidades, ante
+				cualquier accidente que puedas tener, ya sea realizando tus actividades
+				laborales + in itinere o bien durante las 24 horas los 365 días del año.
+			</p>
+
+			<div class="row">
+				<div class="col-md-6 mb-4">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-user-shield coverage-icon"></i>
+							<h5 class="card-title mb-0">Cobertura Básica</h5>
+						</div>
+						<div class="divider"></div>
+						<div class="card-body">
+							<ul>
+								<li>Gastos médicos</li>
+								<li>Incapacidad temporal o permanente</li>
+								<li>Indemnización por fallecimiento</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mb-4">
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i class="fas fa-medkit coverage-icon"></i>
+							<h5 class="card-title mb-0">Coberturas Adicionales</h5>
+						</div>
+						<div class="divider"></div>
+						<div class="card-body">
+							<ul>
+								<li>Tratamientos médicos prolongados</li>
+								<li>Rehabilitación</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<!-- Cotizador Web -->
 		<section id="cotizador" class="cotizador-section container my-5">
 			<h2 class="section-title mb-4">
-				Dejanos tus datos y empezá a sentirte asegurado
+				Dejanos tus datos y empezá a sentirte seguro
 			</h2>
 			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
@@ -81,58 +133,6 @@
 					</button>
 				</div>
 			</form>
-		</section>
-
-		<!-- Información sobre el Seguro de Accidentes Personales -->
-		<section id="informacion" class="additional-info container my-5">
-			<h2 class="section-title mb-4">
-				Protección contra Accidentes Personales
-			</h2>
-			<p>
-				Este seguro está diseñado para ofrecer una cobertura completa en caso de
-				accidentes personales que puedan resultar en lesiones, invalidez o
-				fallecimiento. Es ideal para personas que desean una protección
-				adicional ante imprevistos.
-			</p>
-			<p>
-				El Seguro de Accidentes Personales se adapta a tus necesidades, ante
-				cualquier accidente que puedas tener, ya sea realizando tus actividades
-				laborales + in itinere o bien durante las 24 horas los 365 días del año.
-			</p>
-
-			<div class="row">
-				<div class="col-md-6 mb-4">
-					<div class="card h-100 d-flex flex-column card-no-border">
-						<div class="d-flex align-items-center">
-							<i class="fas fa-user-shield coverage-icon"></i>
-							<h5 class="card-title mb-0">Cobertura Básica</h5>
-						</div>
-						<div class="divider"></div>
-						<div class="card-body">
-							<ul>
-								<li>Gastos médicos</li>
-								<li>Incapacidad temporal o permanente</li>
-								<li>Indemnización por fallecimiento</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 mb-4">
-					<div class="card h-100 d-flex flex-column card-no-border">
-						<div class="d-flex align-items-center">
-							<i class="fas fa-medkit coverage-icon"></i>
-							<h5 class="card-title mb-0">Coberturas Adicionales</h5>
-						</div>
-						<div class="divider"></div>
-						<div class="card-body">
-							<ul>
-								<li>Tratamientos médicos prolongados</li>
-								<li>Rehabilitación</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
 		</section>
 
 		<!-- Ejemplo de Cobertura -->
@@ -206,9 +206,9 @@ export default {
 
 .header-image {
 	width: 100%;
-	height: 200px;
+	height: 300px;
 	object-fit: cover;
-	object-position: center;
+	object-position: 50% 0%;
 }
 
 .section-title {

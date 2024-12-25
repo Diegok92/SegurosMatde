@@ -9,9 +9,35 @@
 			/>
 		</div>
 
+		<!-- Coberturas Disponibles -->
+		<section class="services-summary container my-5">
+			<h2 class="section-title mb-5">Coberturas Disponibles</h2>
+			<div class="row">
+				<div
+					class="col-md-4 mb-4"
+					v-for="coverage in coverages"
+					:key="coverage.title"
+				>
+					<div class="card h-100 d-flex flex-column card-no-border">
+						<div class="d-flex align-items-center">
+							<i :class="coverage.icon" class="coverage-icon"></i>
+							<h5 class="card-title mb-0">{{ coverage.title }}</h5>
+						</div>
+						<div class="divider"></div>
+						<div class="card-body d-flex flex-column">
+							<p class="card-text">{{ coverage.description }}</p>
+							<p><strong>Cobertura:</strong> {{ coverage.coverage }}</p>
+							<p><strong>Ejemplo:</strong> {{ coverage.example }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 		<!-- Cotizador Web -->
 		<section id="cotizador" class="cotizador-section container my-5">
-			<h2 class="section-title mb-4">Cotizador Web</h2>
+			<h2 class="section-title mb-4">
+				Dejanos tus datos y empezá a sentirte seguro
+			</h2>
 			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
 				<div class="col-md-6">
 					<label for="nombre" class="form-label">Nombre</label>
@@ -77,33 +103,6 @@
 				</div>
 			</form>
 		</section>
-
-		<!-- Coberturas Disponibles -->
-		<section class="services-summary container my-5">
-			<h2 class="section-title mb-5">Coberturas Disponibles</h2>
-			<div class="row">
-				<div
-					class="col-md-4 mb-4"
-					data-aos="fade-up"
-					v-for="coverage in coverages"
-					:key="coverage.title"
-				>
-					<div class="card h-100 d-flex flex-column card-no-border">
-						<div class="d-flex align-items-center">
-							<i :class="coverage.icon" class="coverage-icon"></i>
-							<h5 class="card-title mb-0">{{ coverage.title }}</h5>
-						</div>
-						<div class="divider"></div>
-						<div class="card-body d-flex flex-column">
-							<p class="card-text">{{ coverage.description }}</p>
-							<p><strong>Cobertura:</strong> {{ coverage.coverage }}</p>
-							<p><strong>Ejemplo:</strong> {{ coverage.example }}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<!-- Más Información -->
 		<section id="informacion" class="additional-info container my-5">
 			<h2 class="section-title mb-4">Más Información</h2>
@@ -253,9 +252,9 @@ export default {
 
 .header-image {
 	width: 100%;
-	height: 200px;
+	height: 300px;
 	object-fit: cover;
-	object-position: center;
+	object-position: 50% 50%;
 }
 
 .section-title {

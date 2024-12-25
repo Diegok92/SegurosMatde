@@ -9,80 +9,6 @@
 			/>
 		</div>
 
-		<!-- Cotizador Web -->
-		<section id="cotizador" class="cotizador-section container my-5">
-			<h2 class="section-title mb-4">Cotizador Web</h2>
-			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
-				<div class="col-md-6">
-					<label for="razonSocial" class="form-label">Razón Social</label>
-					<input
-						type="text"
-						id="razonSocial"
-						v-model="quoteData.razonSocial"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="cuit" class="form-label">C.U.I.T.</label>
-					<input
-						type="text"
-						id="cuit"
-						v-model="quoteData.cuit"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="nombre" class="form-label">Nombre de Contacto</label>
-					<input
-						type="text"
-						id="nombre"
-						v-model="quoteData.nombre"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="email" class="form-label">Correo Electrónico</label>
-					<input
-						type="email"
-						id="email"
-						v-model="quoteData.email"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="telefono" class="form-label">Teléfono</label>
-					<input
-						type="tel"
-						id="telefono"
-						v-model="quoteData.telefono"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-6">
-					<label for="tipoMercaderia" class="form-label"
-						>Tipo de Mercadería a Transportar</label
-					>
-					<input
-						type="text"
-						id="tipoMercaderia"
-						v-model="quoteData.tipoMercaderia"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-12">
-					<button type="submit" class="btn btn-custom w-100">
-						Solicitar Cotización
-					</button>
-				</div>
-			</form>
-		</section>
-
 		<!-- Información sobre Transporte de Mercancías -->
 		<section id="informacion" class="additional-info container my-5">
 			<h2 class="section-title mb-4">Cobertura Básica</h2>
@@ -135,6 +61,82 @@
 				cualquier siniestro que pueda sufrir tu mercadería durante su
 				transporte. Puerta a puerta.
 			</p>
+
+			<!-- Cotizador Web -->
+			<section id="cotizador" class="cotizador-section container my-5">
+				<h2 class="section-title mb-4">
+					Dejanos tus datos y empezá a sentirte seguro
+				</h2>
+				<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
+					<div class="col-md-6">
+						<label for="razonSocial" class="form-label">Razón Social</label>
+						<input
+							type="text"
+							id="razonSocial"
+							v-model="quoteData.razonSocial"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="cuit" class="form-label">C.U.I.T.</label>
+						<input
+							type="text"
+							id="cuit"
+							v-model="quoteData.cuit"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="nombre" class="form-label">Nombre de Contacto</label>
+						<input
+							type="text"
+							id="nombre"
+							v-model="quoteData.nombre"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="email" class="form-label">Correo Electrónico</label>
+						<input
+							type="email"
+							id="email"
+							v-model="quoteData.email"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="telefono" class="form-label">Teléfono</label>
+						<input
+							type="tel"
+							id="telefono"
+							v-model="quoteData.telefono"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-md-6">
+						<label for="tipoMercaderia" class="form-label"
+							>Tipo de Mercadería a Transportar</label
+						>
+						<input
+							type="text"
+							id="tipoMercaderia"
+							v-model="quoteData.tipoMercaderia"
+							class="form-control"
+							required
+						/>
+					</div>
+					<div class="col-12">
+						<button type="submit" class="btn btn-custom w-100">
+							Solicitar Cotización
+						</button>
+					</div>
+				</form>
+			</section>
 
 			<h3 class="section-title mb-4">Ejemplo de Cobertura</h3>
 			<p>
@@ -206,9 +208,9 @@ export default {
 
 .header-image {
 	width: 100%;
-	height: 200px;
+	height: 300px;
 	object-fit: cover;
-	object-position: center;
+	object-position: 50% 30%;
 }
 
 .section-title {

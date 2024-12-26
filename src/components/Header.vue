@@ -140,7 +140,17 @@ export default {
 header {
 	background-color: #003366;
 	color: white;
-	padding: 10px 0;
+	padding: 0; /* Ajuste para que no se mueva el contenido */
+	z-index: 1030; /* Asegura que el navbar esté por encima de otros elementos */
+}
+
+.navbar {
+	background-color: #003366; /* Fondo azul fijo para toda la barra */
+	position: fixed;
+	width: 100%; /* Ocupa todo el ancho */
+	top: 0;
+	left: 0;
+	z-index: 1030;
 }
 
 .logo-container {
@@ -232,5 +242,10 @@ header {
 
 .dropdown-item:hover::after {
 	width: 100%;
+}
+
+/* Ajusta el contenido para compensar el navbar fijo */
+body {
+	padding-top: 70px; /* Ajusta según la altura del navbar */
 }
 </style>

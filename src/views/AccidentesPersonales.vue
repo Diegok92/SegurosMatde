@@ -3,7 +3,7 @@
 		<!-- Imagen Encabezado -->
 		<div class="image-header">
 			<img
-				:src="getServiceImage('AP.png')"
+				:src="getServiceImage('AP.jpg')"
 				alt="Accidentes Personales Image"
 				class="header-image"
 			/>
@@ -208,7 +208,7 @@ export default {
 	width: 100%;
 	height: 400px;
 	object-fit: cover;
-	object-position: 50% 0%;
+	object-position: 0% 45%;
 }
 
 .section-title {

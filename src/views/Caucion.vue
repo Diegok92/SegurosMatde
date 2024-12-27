@@ -242,7 +242,7 @@ export default {
 	width: 100%;
 	height: 400px;
 	object-fit: cover;
-	object-position: 50% 100%;
+	object-position: 50% 40%;
 }
 .section-title {
 	font-size: 1.6rem;

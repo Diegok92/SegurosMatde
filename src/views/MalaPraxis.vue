@@ -191,7 +191,7 @@ export default {
 	width: 100%;
 	height: 400px;
 	object-fit: cover;
-	object-position: 50% 20%;
+	object-position: 50% 100%;
 }
 
 .section-title {

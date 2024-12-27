@@ -64,21 +64,21 @@ export default {
 					description:
 						"Cobertura para empleadores y trabajadores, incluye accidentes y enfermedades profesionales.",
 					link: "/art",
-					image: "Art.PNG",
+					image: "Art.jpg",
 				},
 				{
 					title: "Accidentes Personales",
 					description:
 						"Cobertura para lesiones, invalidez o fallecimiento causados por accidentes.",
 					link: "/accidentes-personales",
-					image: "AP.png",
+					image: "AP.jpg",
 				},
 				{
 					title: "Integral de Comercio",
 					description:
 						"Protección para la estructura física del comercio, inventario y responsabilidad civil.",
 					link: "/comercio",
-					image: "comercio.PNG",
+					image: "comercio.jpg",
 				},
 				{
 					title: "Integral de Consorcio",

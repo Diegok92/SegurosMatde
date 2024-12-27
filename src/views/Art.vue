@@ -3,7 +3,7 @@
 		<!-- Imagen Encabezado -->
 		<div class="image-header">
 			<img
-				:src="getServiceImage('Art.PNG')"
+				:src="getServiceImage('Art.jpg')"
 				alt="ART Image"
 				class="header-image"
 			/>
@@ -343,7 +343,7 @@ export default {
 	width: 100%;
 	height: 400px;
 	object-fit: cover;
-	object-position: 50% 30%;
+	object-position: 50% 50%;
 }
 
 .section-title {

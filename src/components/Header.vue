@@ -1,7 +1,7 @@
 <template>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light">
-			<div class="container-fluid">
+			<div class="container">
 				<router-link to="/" class="navbar-brand d-flex align-items-center">
 					<div class="logo-container">
 						<img
@@ -151,6 +151,10 @@ header {
 	top: 0;
 	left: 0;
 	z-index: 1030;
+}
+
+.container {
+	max-width: 1100px;
 }
 
 .logo-container {

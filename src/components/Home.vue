@@ -167,6 +167,10 @@ export default {
 	background: linear-gradient(to right, #f0f4f8, #d9e9f9);
 	border-radius: 15px;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+	padding: 30px;
+	background: #e6f3ff;
+	border-radius: 20px;
 }
 
 .services-title {
@@ -194,6 +198,10 @@ export default {
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	border-radius: 10px;
 	background: #ffffff;
+
+	border: none;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
 }
 
 .card:hover {
@@ -207,6 +215,8 @@ export default {
 	object-fit: cover;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
+
+	height: 130px;
 }
 
 .card-body {

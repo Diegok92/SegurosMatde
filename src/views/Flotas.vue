@@ -1,12 +1,20 @@
 <template>
 	<div class="fleet-page">
-		<!-- Imagen Encabezado -->
-		<div class="image-header">
-			<img
-				:src="getServiceImage('Flotas.PNG')"
-				alt="Flotas Image"
-				class="header-image"
-			/>
+		<!-- Encabezado con diseño dividido -->
+		<div class="header-container d-flex align-items-center">
+			<div class="header-text">
+				<h1>Flotas de Autos</h1>
+				<p>
+					Cobertura integral para flotas de vehículos comerciales, adaptada a
+					cada empresa.
+				</p>
+				<button @click="scrollToForm" class="btn btn-custom">
+					Cotizar Ahora
+				</button>
+			</div>
+			<div class="header-image">
+				<img :src="getServiceImage('Flotas.PNG')" alt="Flotas Image" />
+			</div>
 		</div>
 
 		<!-- Coberturas Disponibles -->
@@ -209,6 +217,12 @@ export default {
 		};
 	},
 	methods: {
+		scrollToForm() {
+			document
+				.getElementById("cotizador")
+				.scrollIntoView({ behavior: "smooth" });
+		},
+
 		submitQuote() {
 			const now = new Date();
 			const data = {
@@ -244,28 +258,57 @@ export default {
 </script>
 
 <style scoped>
-.image-header {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+.form-background {
+	background-color: #f5f5f5;
+	border-radius: 10px;
+}
+
+.header-container {
+	display: flex;
+	justify-content: center;
+	max-width: 1300px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header-text {
+	width: 50%;
+	padding-right: 20px;
+}
+
+.header-text h1 {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 10px;
+}
+
+.header-text p {
+	font-size: 1.2rem;
+	color: #555;
+	margin-bottom: 20px;
+}
+
+.header-text .btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.header-text .btn-custom:hover {
+	background-color: #d94e00;
 }
 
 .header-image {
+	width: 50%;
+	text-align: center;
+}
+
+.header-image img {
 	width: 100%;
-	height: 400px;
-	object-fit: cover;
-	object-position: 50% 50%;
-}
-
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
-}
-
-.form-background {
-	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 

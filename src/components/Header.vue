@@ -154,7 +154,7 @@ header {
 }
 
 .container {
-	max-width: 1100px;
+	max-width: 1300px;
 }
 
 .logo-container {

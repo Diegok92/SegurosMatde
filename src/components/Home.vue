@@ -165,11 +165,13 @@ export default {
 .services-summary {
 	padding: 50px 0;
 	background: linear-gradient(to right, #f0f4f8, #d9e9f9);
+
 	border-radius: 15px;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
 	padding: 30px;
-	background: #e6f3ff;
+	/* background: #e6f3ff; */
+	background-color: #f5f5f5;
 	border-radius: 20px;
 }
 

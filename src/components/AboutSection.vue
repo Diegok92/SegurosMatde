@@ -17,43 +17,49 @@
 					cliente es único, por eso creamos planes a medida, garantizando que
 					siempre tengas el respaldo que necesitas.
 				</p>
-				<h3 class="mb-3 text-center">¿Quiénes somos?</h3>
-				<p class="mb-3 text-center">
-					Somos una empresa sólida y cercana, con años de experiencia en el
-					sector asegurador. Nos distingue nuestro enfoque humano, basado en la
-					confianza, la transparencia y la innovación. Contamos con un equipo de
-					expertos comprometidos en asesorarte y acompañarte en cada paso, para
-					que tomes las mejores decisiones de protección.
-				</p>
-				<h3 class="mb-3 text-center">¿Qué nos hace diferentes?</h3>
-				<ul class="list-unstyled">
-					<li class="mb-3">
-						<strong>Trayectoria confiable:</strong> Nuestra experiencia nos
-						permite ofrecer servicios de calidad que respaldan tu bienestar y tu
-						patrimonio.
-					</li>
-					<li class="mb-3">
-						<strong>Innovación constante:</strong> Incorporamos las mejores
-						herramientas tecnológicas para simplificar procesos y brindarte
-						soluciones modernas.
-					</li>
-					<li class="mb-3">
-						<strong>Atención personalizada:</strong> Escuchamos tus necesidades
-						y diseñamos coberturas que se adaptan a tus objetivos y estilo de
-						vida.
-					</li>
-					<li class="mb-3">
-						<strong>Compromiso contigo:</strong> Estamos contigo en los momentos
-						más importantes, trabajando para resolver tus problemas con rapidez
-						y eficacia.
-					</li>
-				</ul>
-				<h3 class="mb-3 text-center">Nuestra Visión</h3>
-				<p class="text-center">
-					Queremos ser tu aliado estratégico en seguros, proporcionando
-					tranquilidad y estabilidad, para que vivas cada día sin
-					preocupaciones.
-				</p>
+				<div class="text-center">
+					<h3 class="mb-3">¿Quiénes somos?</h3>
+					<p class="mb-3">
+						Somos una empresa sólida y cercana, con años de experiencia en el
+						sector asegurador. Nos distingue nuestro enfoque humano, basado en
+						la confianza, la transparencia y la innovación. Contamos con un
+						equipo de expertos comprometidos en asesorarte y acompañarte en cada
+						paso, para que tomes las mejores decisiones de protección.
+					</p>
+				</div>
+				<div class="text-center">
+					<h3 class="mb-3">¿Qué nos hace diferentes?</h3>
+					<ul class="list-unstyled">
+						<li class="mb-3">
+							<strong>Trayectoria confiable:</strong> Nuestra experiencia nos
+							permite ofrecer servicios de calidad que respaldan tu bienestar y
+							tu patrimonio.
+						</li>
+						<li class="mb-3">
+							<strong>Innovación constante:</strong> Incorporamos las mejores
+							herramientas tecnológicas para simplificar procesos y brindarte
+							soluciones modernas.
+						</li>
+						<li class="mb-3">
+							<strong>Atención personalizada:</strong> Escuchamos tus
+							necesidades y diseñamos coberturas que se adaptan a tus objetivos
+							y estilo de vida.
+						</li>
+						<li class="mb-3">
+							<strong>Compromiso contigo:</strong> Estamos contigo en los
+							momentos más importantes, trabajando para resolver tus problemas
+							con rapidez y eficacia.
+						</li>
+					</ul>
+				</div>
+				<div class="text-center">
+					<h3 class="mb-3">Nuestra Visión</h3>
+					<p>
+						Queremos ser tu aliado estratégico en seguros, proporcionando
+						tranquilidad y estabilidad, para que vivas cada día sin
+						preocupaciones.
+					</p>
+				</div>
 			</div>
 		</section>
 
@@ -81,16 +87,27 @@
 
 		<!-- Sección de Contacto -->
 		<section class="contact-section text-center py-5">
-			<h2 class="mb-4 section-title">¡Hablemos!</h2>
 			<p class="mb-4 lead">
 				Estamos aquí para ayudarte a proteger lo que más valoras. Contáctanos
 				hoy mismo y encuentra la cobertura perfecta para ti o tu empresa.
 			</p>
 			<ul class="list-unstyled contact-info">
-				<li class="mb-3"><strong>Teléfono:</strong> [Número de contacto]</li>
-				<li class="mb-3"><strong>Email:</strong> [Correo electrónico]</li>
-				<li class="mb-3"><strong>Dirección:</strong> [Ubicación física]</li>
-				<li><strong>Sitio web:</strong> [Enlace al sitio]</li>
+				<li class="mb-3">
+					<strong>Teléfono:</strong>
+					<span class="highlight">[Número de contacto]</span>
+				</li>
+				<li class="mb-3">
+					<strong>Email:</strong>
+					<span class="highlight">[Correo electrónico]</span>
+				</li>
+				<li class="mb-3">
+					<strong>Dirección:</strong>
+					<span class="highlight">[Ubicación física]</span>
+				</li>
+				<li>
+					<strong>Sitio web:</strong>
+					<span class="highlight">[Enlace al sitio]</span>
+				</li>
 			</ul>
 			<p class="mt-4 font-weight-bold highlight">
 				Tu tranquilidad es nuestro compromiso. ¡Confiá en nosotros!
@@ -129,12 +146,12 @@ export default {
 </script>
 
 <style scoped>
-.services-page {
-	padding-top: 20px;
+.services-page h2 {
+	font-weight: bold;
 }
 
 .section-title {
-	font-size: 2.5rem;
+	font-size: 2rem;
 	color: #003366;
 	text-transform: uppercase;
 	margin-bottom: 20px;
@@ -153,7 +170,7 @@ export default {
 }
 
 .reason-icon {
-	font-size: 3rem;
+	font-size: 2.5rem;
 	color: #ff6600;
 }
 

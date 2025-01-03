@@ -237,15 +237,7 @@
 		<!-- Socios Estratégicos -->
 		<section class="services-summary container my-5">
 			<h2 class="section-title mb-5">Socios Estratégicos</h2>
-			<div class="row">
-				<img
-					v-for="(logo, index) in partnerLogos"
-					:key="index"
-					:src="logo"
-					:alt="'Logo ' + (index + 1)"
-					class="partner-logo col-md-4 mb-4"
-				/>
-			</div>
+			<ArtPartnersSection />
 		</section>
 
 		<!-- Preguntas Frecuentes -->
@@ -266,19 +258,14 @@
 </template>
 
 <script>
+import ArtPartnersSection from "../components/ArtPartnersSection.vue";
 import axios from "axios";
-import provinciaLogo from "../assets/images/Logos/ProvinciaArt.jpg";
-import expertaLogo from "../assets/images/Logos/ExpertaArt.jpg";
-import prevencionLogo from "../assets/images/Logos/PrevencionSancorArt.jpg";
-import federacionLogo from "../assets/images/Logos/PatronalArt.png";
-import omintLogo from "../assets/images/Logos/OmintArt.jpg";
-import smgLogo from "../assets/images/Logos/SmgArt.svg";
-import berkleyLogo from "../assets/images/Logos/BerkleyArt.jpg";
-import andinaLogo from "../assets/images/Logos/AndinaArt.jpg";
-import galenoLogo from "../assets/images/Logos/GalenoArt.jpg";
 import faqs from "../faqs/art.js";
 
 export default {
+	components: {
+		ArtPartnersSection,
+	},
 	data() {
 		return {
 			quoteData: {
@@ -289,17 +276,7 @@ export default {
 				telefono: "",
 				planes: "",
 			},
-			partnerLogos: [
-				provinciaLogo,
-				expertaLogo,
-				prevencionLogo,
-				federacionLogo,
-				omintLogo,
-				smgLogo,
-				berkleyLogo,
-				andinaLogo,
-				galenoLogo,
-			],
+
 			faqs: faqs,
 		};
 	},
@@ -453,13 +430,6 @@ export default {
 
 .btn-custom:hover {
 	background-color: #d94e00;
-}
-
-.partner-logo {
-	width: 100%;
-	max-width: 200px;
-	height: auto;
-	object-fit: contain;
 }
 
 .faq-question {

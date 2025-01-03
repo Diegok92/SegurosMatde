@@ -1,26 +1,25 @@
 <template>
 	<div class="fleet-page">
-		<!-- Imagen Encabezado -->
-		<div class="image-header">
-			<img
-				:src="getServiceImage('Consorcio.PNG')"
-				alt="Consorcio Image"
-				class="header-image"
-			/>
+		<!-- Encabezado con diseño dividido -->
+		<div class="header-container d-flex align-items-center">
+			<div class="header-text">
+				<h1>Integral de Consorcio</h1>
+				<p>
+					Protección para edificios / propiedad horizontal, incluyendo áreas
+					comunes y responsabilidad civil.
+				</p>
+				<button @click="scrollToForm" class="btn btn-custom">
+					Contactanos!
+				</button>
+			</div>
+			<div class="header-image">
+				<img :src="getServiceImage('edificio.jpg')" alt="Consorcio Image" />
+			</div>
 		</div>
 
-		<!-- Cotizador Web -->
-
-		<!-- Información sobre el Seguro de Consorcio -->
-		<section id="informacion" class="additional-info container my-5">
-			<h2 class="section-title mb-4">Protección Integral para tu Consorcio</h2>
-			<p>
-				El seguro de consorcio está diseñado para brindar protección completa
-				para edificios y complejos residenciales, cubriendo riesgos como daños
-				por incendios, responsabilidad civil, daños a terceros y más.
-			</p>
-
-			<!-- Tarjetas de Cobertura -->
+		<!-- Coberturas Disponibles -->
+		<section class="services-summary container my-5">
+			<h2 class="section-title mb-5">Coberturas Disponibles</h2>
 			<div class="row">
 				<div class="col-md-6 mb-4">
 					<div class="card h-100 d-flex flex-column card-no-border">
@@ -35,13 +34,8 @@
 								<li>Incendio y robo de bienes comunes del consorcio.</li>
 								<li>Cobertura de cristales.</li>
 								<li>Daños por agua.</li>
-								<li>
-									Plomería, gas, electricidad, cerrajería, cristales, las 24
-									horas.
-								</li>
-								<li>
-									Accidentes personales (encargado, ayudantes y copropietarios).
-								</li>
+								<li>Plomería, gas, electricidad, cerrajería las 24 horas.</li>
+								<li>Accidentes personales (encargado y copropietarios).</li>
 								<li>Responsabilidad Civil.</li>
 							</ul>
 						</div>
@@ -56,72 +50,75 @@
 						<div class="divider"></div>
 						<div class="card-body">
 							<p>
-								Incluye además cobertura por rotura de cañerías, robo de bienes
-								comunes y daños por eventos climáticos.
+								Incluye cobertura por rotura de cañerías, robo de bienes comunes
+								y daños por eventos climáticos.
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
+		</section>
 
-			<section id="cotizador" class="cotizador-section container my-5">
-				<h2 class="section-title mb-4">
-					Dejanos tus datos y empezá a sentirte seguro
-				</h2>
-				<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
-					<div class="col-md-6">
-						<label for="nombre" class="form-label">Nombre</label>
-						<input
-							type="text"
-							id="nombre"
-							v-model="quoteData.nombre"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="razonSocial" class="form-label">Razón Social</label>
-						<input
-							type="text"
-							id="razonSocial"
-							v-model="quoteData.razonSocial"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="telefono" class="form-label">Teléfono</label>
-						<input
-							type="tel"
-							id="telefono"
-							v-model="quoteData.telefono"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="email" class="form-label">Email</label>
-						<input
-							type="email"
-							id="email"
-							v-model="quoteData.email"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-12">
-						<button type="submit" class="btn btn-custom w-100">
-							Solicitar Cotización
-						</button>
-					</div>
-				</form>
-			</section>
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">
+				Dejanos tus datos y empezá a sentirte seguro
+			</h2>
+			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="quoteData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="razonSocial" class="form-label">Razón Social</label>
+					<input
+						type="text"
+						id="razonSocial"
+						v-model="quoteData.razonSocial"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-custom w-100">
+						Solicitar Cotización
+					</button>
+				</div>
+			</form>
+		</section>
 
+		<!-- Ejemplo de Cobertura -->
+		<section id="informacion-adicional" class="container my-5">
 			<h3 class="section-title mb-4">Ejemplo de Cobertura</h3>
 			<p>
 				Si el edificio sufre daños debido a un evento climático, el seguro
-				cubrirá los costos de reparación de las áreas comunes, así como los
-				daños que puedan afectar a terceros.
+				cubrirá los costos de reparación de áreas comunes y daños a terceros.
 			</p>
 		</section>
 	</div>
@@ -142,6 +139,11 @@ export default {
 		};
 	},
 	methods: {
+		scrollToForm() {
+			document
+				.getElementById("cotizador")
+				.scrollIntoView({ behavior: "smooth" });
+		},
 		submitQuote() {
 			const now = new Date();
 			const data = {
@@ -177,28 +179,52 @@ export default {
 </script>
 
 <style scoped>
-.image-header {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+.header-container {
+	display: flex;
+	justify-content: center;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header-text {
+	width: 50%;
+	padding-right: 20px;
+}
+
+.header-text h1 {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 10px;
+}
+
+.header-text p {
+	font-size: 1.2rem;
+	color: #555;
+	margin-bottom: 20px;
+}
+
+.header-text .btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.header-text .btn-custom:hover {
+	background-color: #d94e00;
 }
 
 .header-image {
+	width: 50%;
+	text-align: center;
+}
+
+.header-image img {
 	width: 100%;
-	height: 400px;
-	object-fit: cover;
-	object-position: center;
-}
-
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
-}
-
-.form-background {
-	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
@@ -223,6 +249,13 @@ export default {
 	background-color: #ff6600;
 	margin: 10px 0;
 	border: none;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: left;
 }
 
 .text-orange {

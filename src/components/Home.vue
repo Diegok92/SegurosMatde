@@ -85,7 +85,7 @@ export default {
 					description:
 						"Protección para edificios / propiedad horizontal, incluyendo áreas comunes y responsabilidad civil.",
 					link: "/consorcio",
-					image: "Consorcio.PNG",
+					image: "edificio.jpg",
 				},
 				{
 					title: "Todo Riesgo Operativo",

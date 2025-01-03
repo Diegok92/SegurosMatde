@@ -1,22 +1,25 @@
 <template>
-	<div class="celulares-page">
-		<!-- Imagen Encabezado -->
-		<div class="image-header">
-			<img
-				:src="getServiceImage('Celu.PNG')"
-				alt="Seguro de Celulares"
-				class="header-image"
-			/>
+	<div class="fleet-page">
+		<!-- Encabezado con diseño dividido -->
+		<div class="header-container d-flex align-items-center">
+			<div class="header-text">
+				<h1>Seguro de Celulares</h1>
+				<p>
+					Cobertura contra el robo, daños accidentales y fallas técnicas de
+					dispositivos móviles.
+				</p>
+				<button @click="scrollToForm" class="btn btn-custom">
+					Contactanos!
+				</button>
+			</div>
+			<div class="header-image">
+				<img :src="getServiceImage('Celu.PNG')" alt="Seguro de Celulares" />
+			</div>
 		</div>
 
 		<!-- Información sobre el Seguro de Celulares -->
-		<section id="informacion" class="additional-info container my-5">
-			<h2 class="section-title mb-4">Protección para tu Celular</h2>
-			<p>
-				El seguro de celulares cubre el dispositivo frente a robo, daños
-				accidentales o problemas técnicos. Es ideal para proteger smartphones,
-				que suelen tener un valor significativo.
-			</p>
+		<section class="services-summary container my-5">
+			<h2 class="section-title mb-5">Cobertura para tu Celular</h2>
 			<div class="row">
 				<div class="col-md-6 mb-4">
 					<div class="card h-100 d-flex flex-column card-no-border">
@@ -49,98 +52,97 @@
 					</div>
 				</div>
 			</div>
+		</section>
 
-			<!-- Cotizador Web -->
-			<section id="cotizador" class="cotizador-section container my-5">
-				<h2 class="section-title mb-4">
-					Dejanos tus datos y empezá a sentirte seguro
-				</h2>
-				<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
-					<div class="col-md-6">
-						<label for="nombre" class="form-label">Nombre</label>
-						<input
-							type="text"
-							id="nombre"
-							v-model="quoteData.nombre"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="email" class="form-label">Email</label>
-						<input
-							type="email"
-							id="email"
-							v-model="quoteData.email"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="telefono" class="form-label"
-							>Teléfono de Contacto</label
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">
+				Dejanos tus datos y empezá a sentirte seguro
+			</h2>
+			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="quoteData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono de Contacto</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="marcaCelu" class="form-label">Marca</label>
+					<select
+						id="marcaCelu"
+						v-model="quoteData.marcaCelu"
+						class="form-control"
+						required
+					>
+						<option value="" disabled>Seleccione una opción</option>
+						<option v-for="marca in marcas" :key="marca" :value="marca">
+							{{ marca }}
+						</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label for="modeloCelu" class="form-label">Modelo</label>
+					<input
+						type="text"
+						id="modeloCelu"
+						v-model="quoteData.modeloCelu"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="sumaAsegurada" class="form-label">Suma a Asegurar</label>
+					<input
+						type="range"
+						id="sumaAsegurada"
+						v-model="quoteData.sumaAsegurada"
+						class="form-range custom-range"
+						min="300000"
+						max="1200000"
+						step="100000"
+					/>
+					<div class="text-center mt-2">
+						<span
+							>Suma a Asegurar: $
+							{{ formatNumber(quoteData.sumaAsegurada) }}</span
 						>
-						<input
-							type="tel"
-							id="telefono"
-							v-model="quoteData.telefono"
-							class="form-control"
-							required
-						/>
 					</div>
-					<div class="col-md-6">
-						<label for="marcaCelu" class="form-label">Marca</label>
-						<select
-							id="marcaCelu"
-							v-model="quoteData.marcaCelu"
-							class="form-control"
-							required
-						>
-							<option value="" disabled>Seleccione una opción</option>
-							<option v-for="marca in marcas" :key="marca" :value="marca">
-								{{ marca }}
-							</option>
-						</select>
-					</div>
-					<div class="col-md-6">
-						<label for="modeloCelu" class="form-label">Modelo</label>
-						<input
-							type="text"
-							id="modeloCelu"
-							v-model="quoteData.modeloCelu"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="sumaAsegurada" class="form-label"
-							>Suma a Asegurar</label
-						>
-						<input
-							type="range"
-							id="sumaAsegurada"
-							v-model="quoteData.sumaAsegurada"
-							class="form-range custom-range"
-							min="300000"
-							max="1200000"
-							step="100000"
-						/>
-						<div class="text-center mt-2">
-							<span
-								>Suma a Asegurar: $
-								{{ formatNumber(quoteData.sumaAsegurada) }}</span
-							>
-						</div>
-					</div>
-					<div class="col-12">
-						<button type="submit" class="btn btn-custom w-100">
-							Solicitar Cotización
-						</button>
-					</div>
-				</form>
-			</section>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-custom w-100">
+						Solicitar Cotización
+					</button>
+				</div>
+			</form>
+		</section>
 
-			<h3 class="section-title mb-4">Ejemplo</h3>
+		<!-- Ejemplo de Cobertura -->
+		<section id="informacion-adicional" class="container my-5">
+			<h3 class="section-title mb-4">Ejemplo de Cobertura</h3>
 			<p>
 				Si tu teléfono cae y se rompe la pantalla, el seguro cubrirá los costos
 				de reparación.
@@ -186,6 +188,11 @@ export default {
 		};
 	},
 	methods: {
+		scrollToForm() {
+			document
+				.getElementById("cotizador")
+				.scrollIntoView({ behavior: "smooth" });
+		},
 		submitQuote() {
 			const now = new Date();
 			const data = {
@@ -224,32 +231,63 @@ export default {
 </script>
 
 <style scoped>
-.image-header {
-	width: 100%;
-	overflow: hidden;
+.header-container {
+	display: flex;
+	justify-content: center;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header-text {
+	width: 50%;
+	padding-right: 20px;
+}
+
+.header-text h1 {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 10px;
+}
+
+.header-text p {
+	font-size: 1.2rem;
+	color: #555;
+	margin-bottom: 20px;
+}
+
+.header-text .btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.header-text .btn-custom:hover {
+	background-color: #d94e00;
 }
 
 .header-image {
+	width: 50%;
+	text-align: center;
+}
+
+.header-image img {
 	width: 100%;
-	height: 400px;
-	object-fit: cover;
-	object-position: 50% 60%;
-}
-
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-}
-
-.form-background {
-	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
 .card-no-border {
 	border: none;
 	box-shadow: none;
+}
+
+.card-title {
+	color: #003366;
+	font-weight: bold;
 }
 
 .coverage-icon {
@@ -262,6 +300,14 @@ export default {
 	height: 3px;
 	background-color: #ff6600;
 	margin: 10px 0;
+	border: none;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: left;
 }
 
 .btn-custom {

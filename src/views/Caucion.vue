@@ -1,17 +1,28 @@
 <template>
 	<div class="fleet-page">
-		<!-- Imagen Encabezado -->
-		<div class="image-header">
-			<img
-				:src="getServiceImage('Caucion.jpeg')"
-				alt="Seguro de Caución Image"
-				class="header-image"
-			/>
+		<!-- Encabezado con diseño dividido -->
+		<div class="header-container d-flex align-items-center">
+			<div class="header-text">
+				<h1>Seguro de Caución</h1>
+				<p>
+					Garantías para el cumplimiento de obligaciones contractuales y
+					demandas judiciales.
+				</p>
+				<button @click="scrollToForm" class="btn btn-custom">
+					Contactanos!
+				</button>
+			</div>
+			<div class="header-image">
+				<img
+					:src="getServiceImage('Caucion.jpeg')"
+					alt="Seguro de Caución Image"
+				/>
+			</div>
 		</div>
 
 		<!-- Información sobre Seguro de Caución -->
-		<section id="informacion" class="additional-info container my-5">
-			<h2 class="section-title mb-4">Ofrecemos:</h2>
+		<section class="services-summary container my-5">
+			<h2 class="section-title mb-5">Ofrecemos:</h2>
 			<div class="row">
 				<div v-for="(card, index) in cards" :key="index" class="col-md-4 mb-4">
 					<div class="card h-100 d-flex flex-column card-no-border">
@@ -96,7 +107,7 @@
 		</section>
 
 		<!-- Información Adicional -->
-		<section id="informacion-adicional" class="container my-5">
+		<section id="ejemplo" class="container my-5">
 			<h3 class="section-title mb-4">Ejemplo de Cobertura</h3>
 			<p>
 				Si una empresa contratista no termina una obra según el contrato, el
@@ -197,6 +208,11 @@ export default {
 		};
 	},
 	methods: {
+		scrollToForm() {
+			document
+				.getElementById("cotizador")
+				.scrollIntoView({ behavior: "smooth" });
+		},
 		submitForm() {
 			const now = new Date();
 			const data = {
@@ -232,27 +248,52 @@ export default {
 </script>
 
 <style scoped>
-.image-header {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+.header-container {
+	display: flex;
+	justify-content: center;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header-text {
+	width: 50%;
+	padding-right: 20px;
+}
+
+.header-text h1 {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 10px;
+}
+
+.header-text p {
+	font-size: 1.2rem;
+	color: #555;
+	margin-bottom: 20px;
+}
+
+.header-text .btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.header-text .btn-custom:hover {
+	background-color: #d94e00;
 }
 
 .header-image {
-	width: 100%;
-	height: 400px;
-	object-fit: cover;
-	object-position: 50% 40%;
-}
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
+	width: 50%;
+	text-align: center;
 }
 
-.form-background {
-	background-color: #f5f5f5;
+.header-image img {
+	width: 100%;
 	border-radius: 10px;
 }
 
@@ -277,6 +318,13 @@ export default {
 	background-color: #ff6600;
 	margin: 10px 0;
 	border: none;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: left;
 }
 
 .btn-custom {

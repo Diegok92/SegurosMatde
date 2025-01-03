@@ -1,12 +1,23 @@
 <template>
 	<div class="fleet-page">
-		<!-- Imagen Encabezado -->
-		<div class="image-header">
-			<img
-				:src="getServiceImage('AP.jpg')"
-				alt="Accidentes Personales Image"
-				class="header-image"
-			/>
+		<!-- Encabezado con diseño dividido -->
+		<div class="header-container d-flex align-items-center">
+			<div class="header-text">
+				<h1>Accidentes Personales</h1>
+				<p>
+					Cobertura para lesiones, invalidez o fallecimiento causados por
+					accidentes.
+				</p>
+				<button @click="scrollToForm" class="btn btn-custom">
+					Contactanos!
+				</button>
+			</div>
+			<div class="header-image">
+				<img
+					:src="getServiceImage('AP.jpg')"
+					alt="Accidentes Personales Image"
+				/>
+			</div>
 		</div>
 
 		<!-- Información sobre el Seguro de Accidentes Personales -->
@@ -163,6 +174,11 @@ export default {
 		};
 	},
 	methods: {
+		scrollToForm() {
+			document
+				.getElementById("cotizador")
+				.scrollIntoView({ behavior: "smooth" });
+		},
 		submitQuote() {
 			const now = new Date();
 			const data = {
@@ -198,24 +214,53 @@ export default {
 </script>
 
 <style scoped>
-.image-header {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+.header-container {
+	display: flex;
+	justify-content: center;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header-text {
+	width: 50%;
+	padding-right: 20px;
+}
+
+.header-text h1 {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 10px;
+}
+
+.header-text p {
+	font-size: 1.2rem;
+	color: #555;
+	margin-bottom: 20px;
+}
+
+.header-text .btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.header-text .btn-custom:hover {
+	background-color: #d94e00;
 }
 
 .header-image {
-	width: 100%;
-	height: 400px;
-	object-fit: cover;
-	object-position: 0% 45%;
+	width: 50%;
+	text-align: center;
 }
 
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
+.header-image img {
+	width: 100%;
+	border-radius: 10px;
 }
 
 .form-background {
@@ -244,6 +289,13 @@ export default {
 	background-color: #ff6600;
 	margin: 10px 0;
 	border: none;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: left;
 }
 
 .text-orange {

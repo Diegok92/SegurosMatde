@@ -9,7 +9,7 @@
 					cada empresa.
 				</p>
 				<button @click="scrollToForm" class="btn btn-custom">
-					Cotizar Ahora
+					Contactanos!
 				</button>
 			</div>
 			<div class="header-image">
@@ -266,9 +266,10 @@ export default {
 .header-container {
 	display: flex;
 	justify-content: center;
-	max-width: 1300px;
+	max-width: 1100px;
 	margin: 0 auto;
 	padding: 20px;
+	margin-top: 60px;
 }
 
 .header-text {

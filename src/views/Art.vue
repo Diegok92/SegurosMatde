@@ -1,12 +1,20 @@
 <template>
 	<div class="fleet-page">
-		<!-- Imagen Encabezado -->
-		<div class="image-header">
-			<img
-				:src="getServiceImage('Art.jpg')"
-				alt="ART Image"
-				class="header-image"
-			/>
+		<!-- Encabezado con diseño dividido -->
+		<div class="header-container d-flex align-items-center">
+			<div class="header-text">
+				<h1>A.R.T.</h1>
+				<p>
+					Cobertura para empleadores y trabajadores, incluye accidentes y
+					enfermedades profesionales.
+				</p>
+				<button @click="scrollToForm" class="btn btn-custom">
+					Contactanos!
+				</button>
+			</div>
+			<div class="header-image">
+				<img :src="getServiceImage('Art.jpg')" alt="ART Image" />
+			</div>
 		</div>
 
 		<!-- Información sobre ART y Accidentes Personales -->
@@ -242,7 +250,7 @@
 
 		<!-- Preguntas Frecuentes -->
 		<section id="preguntas-frecuentes" class="faq-section container my-5">
-			<h2 class="section-title mb-4 text-center">Preguntas Frecuentes</h2>
+			<h2 class="section-title mb-4">Preguntas Frecuentes</h2>
 			<div v-for="(faq, index) in faqs" :key="index" class="faq-item mb-3">
 				<h5 @click="toggleFaq(index)" class="faq-question">
 					<i
@@ -325,6 +333,11 @@ export default {
 				)
 				.catch(() => alert("Error al enviar la cotización"));
 		},
+		scrollToForm() {
+			document
+				.getElementById("cotizador")
+				.scrollIntoView({ behavior: "smooth" });
+		},
 		getServiceImage(imageName) {
 			return new URL(
 				`../assets/images/imgTarjetasHome/${imageName}`,
@@ -339,11 +352,58 @@ export default {
 </script>
 
 <style scoped>
+.form-background {
+	background-color: #f5f5f5;
+	border-radius: 10px;
+}
+
+.header-container {
+	display: flex;
+	justify-content: center;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header-text {
+	width: 50%;
+	padding-right: 20px;
+}
+
+.header-text h1 {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 10px;
+}
+
+.header-text p {
+	font-size: 1.2rem;
+	color: #555;
+	margin-bottom: 20px;
+}
+
+.header-text .btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.header-text .btn-custom:hover {
+	background-color: #d94e00;
+}
+
 .header-image {
+	width: 50%;
+	text-align: center;
+}
+
+.header-image img {
 	width: 100%;
-	height: 400px;
-	object-fit: cover;
-	object-position: 50% 50%;
+	border-radius: 10px;
 }
 
 .section-title {
@@ -404,12 +464,21 @@ export default {
 
 .faq-question {
 	cursor: pointer;
-	font-weight: bold;
+	font-weight: light;
 	color: #003366;
 }
 
 .faq-answer {
 	color: #666;
 	margin-top: 5px;
+}
+
+h5 i {
+	size: 20px;
+	color: #d94e00;
+}
+
+.faq-question i {
+	font-size: 1rem; /* Ajusta el tamaño a tu preferencia */
 }
 </style>

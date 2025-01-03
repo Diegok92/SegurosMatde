@@ -1,22 +1,25 @@
 <template>
-	<div class="bicicletas-page">
-		<!-- Imagen Encabezado -->
-		<div class="image-header">
-			<img
-				:src="getServiceImage('Bici.PNG')"
-				alt="Seguro de Bicicletas"
-				class="header-image"
-			/>
+	<div class="fleet-page">
+		<!-- Encabezado con diseño dividido -->
+		<div class="header-container d-flex align-items-center">
+			<div class="header-text">
+				<h1>Seguro de Bicicletas</h1>
+				<p>
+					Cobertura contra robo, daños accidentales, y responsabilidad civil
+					para bicicletas.
+				</p>
+				<button @click="scrollToForm" class="btn btn-custom">
+					Contactanos!
+				</button>
+			</div>
+			<div class="header-image">
+				<img :src="getServiceImage('Bici.PNG')" alt="Seguro de Bicicletas" />
+			</div>
 		</div>
 
-		<!-- Información sobre el Seguro de Bicicletas -->
-		<section id="informacion" class="additional-info container my-5">
-			<h2 class="section-title mb-4">Protección para tu Bicicleta</h2>
-			<p>
-				El seguro cubre tu bicicleta frente a riesgos como robo, daños
-				accidentales y vandalismo, brindándote tranquilidad y seguridad.
-			</p>
-
+		<!-- Información sobre Seguro de Bicicletas -->
+		<section class="services-summary container my-5">
+			<h2 class="section-title mb-5">Protección para tu Bicicleta</h2>
 			<div class="row">
 				<div class="col-md-6 mb-4">
 					<div class="card h-100 d-flex flex-column card-no-border">
@@ -49,93 +52,104 @@
 					</div>
 				</div>
 			</div>
+		</section>
 
-			<!-- Cotizador Web -->
-			<section id="cotizador" class="cotizador-section container my-5">
-				<h2 class="section-title mb-4">
-					Dejanos tus datos y empezá a sentirte seguro
-				</h2>
-				<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
-					<div class="col-md-6">
-						<label for="nombre" class="form-label">Nombre</label>
-						<input
-							type="text"
-							id="nombre"
-							v-model="quoteData.nombre"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="email" class="form-label">Email</label>
-						<input
-							type="email"
-							id="email"
-							v-model="quoteData.email"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="telefono" class="form-label">Teléfono</label>
-						<input
-							type="tel"
-							id="telefono"
-							v-model="quoteData.telefono"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="marcaBici" class="form-label">Marca</label>
-						<select
-							id="marcaBici"
-							v-model="quoteData.marcaBici"
-							class="form-control"
-							required
+		<!-- Cotizador Web -->
+		<section id="cotizador" class="cotizador-section container my-5">
+			<h2 class="section-title mb-4">
+				Dejanos tus datos y empezá a sentirte seguro
+			</h2>
+			<form @submit.prevent="submitQuote" class="row g-3 p-4 form-background">
+				<div class="col-md-6">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						id="nombre"
+						v-model="quoteData.nombre"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="email" class="form-label">Email</label>
+					<input
+						type="email"
+						id="email"
+						v-model="quoteData.email"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="telefono" class="form-label">Teléfono</label>
+					<input
+						type="tel"
+						id="telefono"
+						v-model="quoteData.telefono"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="marcaBici" class="form-label">Marca</label>
+					<select
+						id="marcaBici"
+						v-model="quoteData.marcaBici"
+						class="form-control"
+						required
+					>
+						<option value="" disabled>Seleccione una opción</option>
+						<option value="Aurora">Aurora</option>
+						<option value="Cannondale">Cannondale</option>
+						<option value="Giant">Giant</option>
+						<option value="Merida">Merida</option>
+						<option value="Olmo">Olmo</option>
+						<option value="Scott">Scott</option>
+						<option value="Specialized">Specialized</option>
+						<option value="Trek">Trek</option>
+						<option value="Vairo">Vairo</option>
+						<option value="Venzo">Venzo</option>
+						<option value="Otro">Otro</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label for="modeloBici" class="form-label">Modelo</label>
+					<input
+						type="text"
+						id="modeloBici"
+						v-model="quoteData.modeloBici"
+						class="form-control"
+						required
+					/>
+				</div>
+				<div class="col-md-6">
+					<label for="sumaAsegurada" class="form-label">Suma a Asegurar</label>
+					<input
+						type="range"
+						id="sumaAsegurada"
+						v-model="quoteData.sumaAsegurada"
+						class="form-range custom-range"
+						min="300000"
+						max="1200000"
+						step="100000"
+					/>
+					<div class="text-center mt-2">
+						<span
+							>Suma a Asegurar: $
+							{{ formatNumber(quoteData.sumaAsegurada) }}</span
 						>
-							<option value="" disabled>Seleccione una opción</option>
-							<option value="Aurora">Aurora</option>
-							<option value="Cannondale">Cannondale</option>
-							<option value="Giant">Giant</option>
-							<option value="Merida">Merida</option>
-							<option value="Olmo">Olmo</option>
-							<option value="Scott">Scott</option>
-							<option value="Specialized">Specialized</option>
-							<option value="Trek">Trek</option>
-							<option value="Vairo">Vairo</option>
-							<option value="Venzo">Venzo</option>
-							<option value="Otro">Otro</option>
-						</select>
 					</div>
-					<div class="col-md-6">
-						<label for="modeloBici" class="form-label">Modelo</label>
-						<input
-							type="text"
-							id="modeloBici"
-							v-model="quoteData.modeloBici"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-md-6">
-						<label for="sumaAsegurada" class="form-label">Suma Asegurada</label>
-						<input
-							type="number"
-							id="sumaAsegurada"
-							v-model="quoteData.sumaAsegurada"
-							class="form-control"
-							required
-						/>
-					</div>
-					<div class="col-12">
-						<button type="submit" class="btn btn-custom w-100">
-							Solicitar Cotización
-						</button>
-					</div>
-				</form>
-			</section>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-custom w-100">
+						Solicitar Cotización
+					</button>
+				</div>
+			</form>
+		</section>
 
+		<!-- Ejemplo de Cobertura -->
+		<section id="ejemplo" class="container my-5">
 			<h3 class="section-title mb-4">Ejemplo</h3>
 			<p>
 				Si tu bicicleta es robada mientras está estacionada en la vía pública,
@@ -157,11 +171,16 @@ export default {
 				modeloBici: "",
 				email: "",
 				telefono: "",
-				sumaAsegurada: "",
+				sumaAsegurada: 300000,
 			},
 		};
 	},
 	methods: {
+		scrollToForm() {
+			document
+				.getElementById("cotizador")
+				.scrollIntoView({ behavior: "smooth" });
+		},
 		submitQuote() {
 			const now = new Date();
 			const data = {
@@ -186,6 +205,9 @@ export default {
 					alert("Error al enviar la cotización. Inténtalo de nuevo.")
 				);
 		},
+		formatNumber(value) {
+			return value.toLocaleString("es-AR");
+		},
 		getServiceImage(imageName) {
 			return new URL(
 				`../assets/images/imgTarjetasHome/${imageName}`,
@@ -197,28 +219,52 @@ export default {
 </script>
 
 <style scoped>
-.image-header {
-	width: 100%;
-	overflow: hidden;
-	position: relative;
+.header-container {
+	display: flex;
+	justify-content: center;
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header-text {
+	width: 50%;
+	padding-right: 20px;
+}
+
+.header-text h1 {
+	font-size: 2.5rem;
+	color: #003366;
+	margin-bottom: 10px;
+}
+
+.header-text p {
+	font-size: 1.2rem;
+	color: #555;
+	margin-bottom: 20px;
+}
+
+.header-text .btn-custom {
+	background-color: #ff6600;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.header-text .btn-custom:hover {
+	background-color: #d94e00;
 }
 
 .header-image {
+	width: 50%;
+	text-align: center;
+}
+
+.header-image img {
 	width: 100%;
-	height: 400px;
-	object-fit: cover;
-	object-position: 50% 100%;
-}
-
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
-}
-
-.form-background {
-	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
@@ -243,6 +289,13 @@ export default {
 	background-color: #ff6600;
 	margin: 10px 0;
 	border: none;
+}
+
+.section-title {
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #003366;
+	text-align: left;
 }
 
 .btn-custom {

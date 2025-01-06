@@ -1,8 +1,8 @@
 <template>
 	<div class="fleet-page">
 		<!-- Encabezado con diseño dividido -->
-		<div class="header-container d-flex align-items-center">
-			<div class="header-text">
+		<div class="header-container d-flex align-items-center flex-wrap">
+			<div class="header-text col-12 col-md-6 text-center text-md-start">
 				<h1>Flotas de Autos</h1>
 				<p>
 					Cobertura integral para flotas de vehículos comerciales, adaptada a
@@ -12,7 +12,7 @@
 					Contactanos!
 				</button>
 			</div>
-			<div class="header-image">
+			<div class="header-image col-12 col-md-6 text-center">
 				<img :src="getServiceImage('Flotas.PNG')" alt="Flotas Image" />
 			</div>
 		</div>
@@ -41,6 +41,7 @@
 				</div>
 			</div>
 		</section>
+
 		<!-- Cotizador Web -->
 		<section id="cotizador" class="cotizador-section container my-5">
 			<h2 class="section-title mb-4">
@@ -111,10 +112,10 @@
 				</div>
 			</form>
 		</section>
+
 		<!-- Más Información -->
 		<section id="informacion" class="additional-info container my-5">
 			<h2 class="section-title mb-4">Más Información</h2>
-
 			<div class="mb-4" data-aos="fade-up">
 				<h3 class="text-orange">Asistencia Legal</h3>
 				<p>
@@ -153,7 +154,7 @@
 				<ul>
 					<li>
 						<strong>Cobertura: </strong>Robo de partes del vehículo (llantas,
-						espejos, pantalla, etc.)
+						espejos, pantalla, etc.),
 					</li>
 					<li>
 						<strong>Ejemplo: </strong>Si te roban alguna parte del vehículo,
@@ -266,6 +267,7 @@ export default {
 .header-container {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 20px;
@@ -273,8 +275,16 @@ export default {
 }
 
 .header-text {
-	width: 50%;
-	padding-right: 20px;
+	width: 100%;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.header-text {
+		width: 50%;
+		text-align: left;
+	}
 }
 
 .header-text h1 {
@@ -304,8 +314,14 @@ export default {
 }
 
 .header-image {
-	width: 50%;
+	width: 100%;
 	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.header-image {
+		width: 50%;
+	}
 }
 
 .header-image img {

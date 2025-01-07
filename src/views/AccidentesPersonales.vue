@@ -1,8 +1,8 @@
 <template>
 	<div class="fleet-page">
 		<!-- Encabezado con diseño dividido -->
-		<div class="header-container d-flex align-items-center">
-			<div class="header-text">
+		<div class="header-container d-flex align-items-center flex-wrap">
+			<div class="header-text col-12 col-md-6 text-center text-md-start">
 				<h1>Accidentes Personales</h1>
 				<p>
 					Cobertura para lesiones, invalidez o fallecimiento causados por
@@ -12,7 +12,7 @@
 					Contactanos!
 				</button>
 			</div>
-			<div class="header-image">
+			<div class="header-image col-12 col-md-6 text-center">
 				<img
 					:src="getServiceImage('AP.jpg')"
 					alt="Accidentes Personales Image"
@@ -217,16 +217,25 @@ export default {
 .header-container {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 20px;
+	margin-top: 60px;
 }
 
 .header-text {
-	width: 50%;
-	padding-right: 20px;
+	width: 100%;
+	text-align: center;
+	padding: 20px;
 }
 
+@media (min-width: 768px) {
+	.header-text {
+		width: 50%;
+		text-align: left;
+	}
+}
 .header-text h1 {
 	font-size: 2.5rem;
 	color: #003366;
@@ -254,12 +263,18 @@ export default {
 }
 
 .header-image {
-	width: 50%;
+	width: 100%;
 	text-align: center;
+	padding: 20px;
 }
 
+@media (min-width: 768px) {
+	.header-image {
+		width: 50%;
+	}
+}
 .header-image img {
-	width: 100%;
+	max-width: 100%;
 	border-radius: 10px;
 }
 

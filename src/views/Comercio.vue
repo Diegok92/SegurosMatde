@@ -1,8 +1,8 @@
 <template>
 	<div class="fleet-page">
 		<!-- Encabezado con diseño dividido -->
-		<div class="header-container d-flex align-items-center">
-			<div class="header-text">
+		<div class="header-container d-flex align-items-center flex-wrap">
+			<div class="header-text col-12 col-md-6 text-center text-md-start">
 				<h1>Protección Integral para tu Comercio</h1>
 				<p>
 					Protección para la estructura física del comercio, inventario y
@@ -192,9 +192,15 @@ export default {
 </script>
 
 <style scoped>
+.form-background {
+	background-color: #f5f5f5;
+	border-radius: 10px;
+}
+
 .header-container {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 20px;
@@ -202,8 +208,16 @@ export default {
 }
 
 .header-text {
-	width: 50%;
-	padding-right: 20px;
+	width: 100%;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.header-text {
+		width: 50%;
+		text-align: left;
+	}
 }
 
 .header-text h1 {
@@ -233,17 +247,18 @@ export default {
 }
 
 .header-image {
-	width: 50%;
+	width: 100%;
 	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.header-image {
+		width: 50%;
+	}
 }
 
 .header-image img {
 	width: 100%;
-	border-radius: 10px;
-}
-
-.form-background {
-	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 
@@ -268,13 +283,6 @@ export default {
 	background-color: #ff6600;
 	margin: 10px 0;
 	border: none;
-}
-
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
 }
 
 .text-orange {

@@ -210,17 +210,32 @@ export default {
 </script>
 
 <style scoped>
+.form-background {
+	background-color: #f5f5f5;
+	border-radius: 10px;
+}
+
 .header-container {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 20px;
+	margin-top: 60px;
 }
 
 .header-text {
-	width: 50%;
-	padding-right: 20px;
+	width: 100%;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.header-text {
+		width: 50%;
+		text-align: left;
+	}
 }
 
 .header-text h1 {
@@ -250,8 +265,14 @@ export default {
 }
 
 .header-image {
-	width: 50%;
+	width: 100%;
 	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.header-image {
+		width: 50%;
+	}
 }
 
 .header-image img {
@@ -282,11 +303,8 @@ export default {
 	border: none;
 }
 
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
+.text-orange {
+	color: #ff6600;
 }
 
 .btn-custom {
@@ -297,10 +315,5 @@ export default {
 
 .btn-custom:hover {
 	background-color: #d94e00;
-}
-
-.form-background {
-	background-color: #f5f5f5;
-	border-radius: 10px;
 }
 </style>

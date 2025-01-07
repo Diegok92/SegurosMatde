@@ -188,6 +188,7 @@ export default {
 .header-container {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 20px;
@@ -195,8 +196,16 @@ export default {
 }
 
 .header-text {
-	width: 50%;
-	padding-right: 20px;
+	width: 100%;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.header-text {
+		width: 50%;
+		text-align: left;
+	}
 }
 
 .header-text h1 {
@@ -226,14 +235,21 @@ export default {
 }
 
 .header-image {
-	width: 50%;
+	width: 100%;
 	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.header-image {
+		width: 50%;
+	}
 }
 
 .header-image img {
 	width: 100%;
 	border-radius: 10px;
 }
+
 .card-no-border {
 	border: none;
 	box-shadow: none;
@@ -255,13 +271,6 @@ export default {
 	background-color: #ff6600;
 	margin: 10px 0;
 	border: none;
-}
-
-.section-title {
-	font-size: 1.6rem;
-	font-weight: bold;
-	color: #003366;
-	text-align: left;
 }
 
 .text-orange {

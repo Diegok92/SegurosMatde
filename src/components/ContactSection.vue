@@ -16,10 +16,10 @@
 			<div class="col-lg-7">
 				<h2 class="text-center mb-3">Contactanos!</h2>
 				<p class="text-center mb-4">
-					Tenes preguntas?¡Estamos aquí para ayudarte! Completa el formulario y
-					nos pondremos en contacto contigo.
+					Tenés preguntas? Estamos para ayudarte! Completá el formulario y nos
+					pondremos en contacto.
 				</p>
-				<form @submit.prevent="submitForm">
+				<form @submit.prevent="submitForm" class="form-background">
 					<div class="row g-3">
 						<div class="col-md-6">
 							<label for="name" class="form-label">Nombre</label>
@@ -121,6 +121,11 @@ export default {
 </script>
 
 <style scoped>
+.form-background {
+	background-color: #f5f5f5;
+	border-radius: 10px;
+	padding: 20px;
+}
 #contact {
 	padding: 50px 0;
 }
@@ -173,17 +178,35 @@ img {
 	background-color: #d94e00;
 }
 
+/* Estilos específicos para dispositivos móviles */
 @media (max-width: 768px) {
+	#contact {
+		padding: 30px 15px;
+	}
+
 	h2 {
 		font-size: 1.5rem;
 	}
 
-	.form-control {
+	p {
 		font-size: 0.85rem;
+		margin-bottom: 1rem;
 	}
 
-	p {
-		font-size: 0.9rem;
+	.form-control {
+		font-size: 0.85rem;
+		padding: 10px;
+	}
+
+	.row.g-3 > * {
+		padding: 0 10px;
+	}
+
+	.img-fluid {
+		max-width: 80%;
+		margin: 0 auto;
+		border-radius: 12px;
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 	}
 }
 </style>

@@ -13,7 +13,7 @@
 				</button>
 			</div>
 			<div class="header-image">
-				<img :src="getServiceImage('Art.jpg')" alt="ART Image" />
+				<img :src="getServiceImage('Art.png')" alt="ART Image" />
 			</div>
 		</div>
 

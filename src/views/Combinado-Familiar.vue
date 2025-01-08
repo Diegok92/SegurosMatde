@@ -3,7 +3,7 @@
 		<!-- Encabezado con diseño dividido -->
 		<div class="header-container d-flex align-items-center">
 			<div class="header-text">
-				<h1>Seguro Combinado Familiar</h1>
+				<h1>Combinado Familiar</h1>
 				<p>
 					Protección para la vivienda y sus bienes frente a diversos riesgos
 					como incendios y robos.
@@ -14,7 +14,7 @@
 			</div>
 			<div class="header-image">
 				<img
-					:src="getServiceImage('familiar.PNG')"
+					:src="getServiceImage('Familia.png')"
 					alt="Seguro Combinado Familiar Image"
 				/>
 			</div>
@@ -228,6 +228,7 @@ export default {
 	font-size: 1.2rem;
 	color: #555;
 	margin-bottom: 20px;
+	margin-right: 30px;
 }
 
 .header-text .btn-custom {

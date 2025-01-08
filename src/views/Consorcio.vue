@@ -13,7 +13,7 @@
 				</button>
 			</div>
 			<div class="header-image">
-				<img :src="getServiceImage('edificio.jpg')" alt="Consorcio Image" />
+				<img :src="getServiceImage('Consorcio.png')" alt="Consorcio Image" />
 			</div>
 		</div>
 
@@ -217,6 +217,7 @@ export default {
 	font-size: 1.2rem;
 	color: #555;
 	margin-bottom: 20px;
+	margin-right: 30px;
 }
 
 .header-text .btn-custom {

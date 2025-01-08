@@ -3,7 +3,7 @@
 		<!-- Encabezado con diseño dividido -->
 		<div class="header-container d-flex align-items-center">
 			<div class="header-text">
-				<h1>Seguro de Mala Praxis</h1>
+				<h1>Mala Praxis</h1>
 				<p>
 					Cobertura para profesionales que enfrentan demandas por errores
 					ejerciendo su labor.
@@ -14,7 +14,7 @@
 			</div>
 			<div class="header-image">
 				<img
-					:src="getServiceImage('MalaPraxis.jpeg')"
+					:src="getServiceImage('MalaPraxis.png')"
 					alt="Seguro de Mala Praxis Image"
 				/>
 			</div>
@@ -237,6 +237,7 @@ export default {
 	font-size: 1.2rem;
 	color: #555;
 	margin-bottom: 20px;
+	margin-right: 30px;
 }
 
 .header-text .btn-custom {

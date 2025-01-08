@@ -14,7 +14,7 @@
 			</div>
 			<div class="header-image">
 				<img
-					:src="getServiceImage('TRO.PNG')"
+					:src="getServiceImage('TRO.png')"
 					alt="Todo Riesgo Operativo Image"
 				/>
 			</div>
@@ -218,6 +218,7 @@ export default {
 	font-size: 1.2rem;
 	color: #555;
 	margin-bottom: 20px;
+	margin-right: 30px;
 }
 
 .header-text .btn-custom {

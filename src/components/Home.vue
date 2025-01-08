@@ -57,91 +57,91 @@ export default {
 					description:
 						"Cobertura integral para flotas de vehículos comerciales, adaptada a cada empresa.",
 					link: "/flotas",
-					image: "Flotas.PNG",
+					image: "Flota.png",
 				},
 				{
 					title: "A.R.T.",
 					description:
 						"Cobertura para empleadores y trabajadores, incluye accidentes y enfermedades profesionales.",
 					link: "/art",
-					image: "Art.jpg",
+					image: "Art.png",
 				},
 				{
 					title: "Accidentes Personales",
 					description:
 						"Cobertura para lesiones, invalidez o fallecimiento causados por accidentes.",
 					link: "/accidentes-personales",
-					image: "AP.jpg",
+					image: "Ap.png",
 				},
 				{
 					title: "Integral de Comercio",
 					description:
 						"Protección para la estructura física del comercio, inventario y responsabilidad civil.",
 					link: "/comercio",
-					image: "comercio.jpg",
+					image: "Comercio.png",
 				},
 				{
 					title: "Integral de Consorcio",
 					description:
 						"Protección para edificios / propiedad horizontal, incluyendo áreas comunes y responsabilidad civil.",
 					link: "/consorcio",
-					image: "edificio.jpg",
+					image: "Consorcio.png",
 				},
 				{
 					title: "Todo Riesgo Operativo",
 					description:
 						"Cobertura integral para empresas, protegiendo contra daños materiales y pérdidas económicas.",
 					link: "/todo-riesgo-operativo",
-					image: "TRO.PNG",
+					image: "TRO.png",
 				},
 				{
 					title: "Transporte de Mercancías",
 					description:
 						"Cobertura para la carga durante el transporte terrestre, marítimo o aéreo. Incluye robo, daños y mas.",
 					link: "/transport",
-					image: "TrnspMerc.PNG",
+					image: "TranspMerc.png",
 				},
 				{
 					title: "Caución",
 					description:
 						"Garantías para el cumplimiento de obligaciones contractuales y demandas judiciales.",
 					link: "/caucion",
-					image: "Caucion.jpeg",
+					image: "Caucion.png",
 				},
 				{
 					title: "Mala Praxis",
 					description:
 						"Cobertura para profesionales que enfrentan demandas por errores ejerciendo su labor.",
 					link: "/mala-praxis",
-					image: "MalaPraxis.jpeg",
+					image: "MalaPraxis.png",
 				},
 				{
 					title: "Combinado Familiar",
 					description:
 						"Protección para la vivienda y sus bienes frente a diversos riesgos como incendios y robos.",
 					link: "/combinado-familiar",
-					image: "familiar.PNG",
+					image: "Familia.png",
 				},
 				{
 					title: "Bicicletas",
 					description:
 						"Cobertura contra robo, daños accidentales, y responsabilidad civil para bicicletas.",
 					link: "/bicicletas",
-					image: "Bici.PNG",
+					image: "Bici.png",
 				},
 				{
 					title: "Notebooks",
 					description:
 						"Protección contra robo o daños accidentales para notebooks y computadoras portátiles.",
 					link: "/notebooks",
-					image: "Note.PNG",
+					image: "Note.png",
 				},
 				{
 					title: "Celulares",
 					description:
 						"Cobertura contra el robo, daños accidentales y fallas técnicas de dispositivos móviles.",
 					link: "/celulares",
-					image: "Celu.PNG",
+					image: "Celu.png",
 				},
 			],
 		};

@@ -4,7 +4,7 @@
 		<div class="header-container d-flex align-items-center flex-wrap">
 			<div class="header-text col-12 col-md-6 text-center text-md-start">
 				<h1>Flotas de Autos</h1>
-				<p>
+				<p class="subtitulo">
 					Cobertura integral para flotas de vehículos comerciales, adaptada a
 					cada empresa.
 				</p>
@@ -13,7 +13,7 @@
 				</button>
 			</div>
 			<div class="header-image col-12 col-md-6 text-center">
-				<img :src="getServiceImage('Flotas.PNG')" alt="Flotas Image" />
+				<img :src="getServiceImage('Flota.png')" alt="Flotas Image" />
 			</div>
 		</div>
 

@@ -3,7 +3,7 @@
 		<!-- Encabezado con diseño dividido -->
 		<div class="header-container d-flex align-items-center flex-wrap">
 			<div class="header-text col-12 col-md-6 text-center text-md-start">
-				<h1>Seguro de Caución</h1>
+				<h1>Caución</h1>
 				<p>
 					Garantías para el cumplimiento de obligaciones tanto contractuales
 					como demandas judiciales.
@@ -14,7 +14,7 @@
 			</div>
 			<div class="header-image">
 				<img
-					:src="getServiceImage('Caucion.jpeg')"
+					:src="getServiceImage('Caucion.png')"
 					alt="Seguro de Caución Image"
 				/>
 			</div>

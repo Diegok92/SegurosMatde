@@ -3,8 +3,8 @@
 		<!-- Encabezado con diseño dividido -->
 		<div class="header-container d-flex align-items-center flex-wrap">
 			<div class="header-text col-12 col-md-6 text-center text-md-start">
-				<h1>Protección Integral para tu Comercio</h1>
-				<p>
+				<h1>Integral de Comercio</h1>
+				<p class="subtitulo">
 					Protección para la estructura física del comercio, inventario y
 					responsabilidad civil.
 				</p>
@@ -13,7 +13,7 @@
 				</button>
 			</div>
 			<div class="header-image">
-				<img :src="getServiceImage('comercio.jpg')" alt="Comercio Image" />
+				<img :src="getServiceImage('Comercio.png')" alt="Comercio Image" />
 			</div>
 		</div>
 
@@ -230,6 +230,7 @@ export default {
 	font-size: 1.2rem;
 	color: #555;
 	margin-bottom: 20px;
+	margin-right: 30px;
 }
 
 .header-text .btn-custom {

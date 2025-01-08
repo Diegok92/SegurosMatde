@@ -14,7 +14,7 @@
 			</div>
 			<div class="header-image col-12 col-md-6 text-center">
 				<img
-					:src="getServiceImage('AP.jpg')"
+					:src="getServiceImage('Ap.png')"
 					alt="Accidentes Personales Image"
 				/>
 			</div>

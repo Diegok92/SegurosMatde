@@ -14,7 +14,7 @@
 			</div>
 			<div class="header-image">
 				<img
-					:src="getServiceImage('TrnspMerc.PNG')"
+					:src="getServiceImage('TranspMerc.png')"
 					alt="Transporte de Mercancías Image"
 				/>
 			</div>

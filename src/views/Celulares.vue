@@ -3,7 +3,7 @@
 		<!-- Encabezado con diseño dividido -->
 		<div class="header-container d-flex align-items-center">
 			<div class="header-text">
-				<h1>Seguro de Celulares</h1>
+				<h1>Celulares</h1>
 				<p>
 					Cobertura contra el robo, daños accidentales y fallas técnicas de
 					dispositivos móviles.
@@ -13,7 +13,7 @@
 				</button>
 			</div>
 			<div class="header-image">
-				<img :src="getServiceImage('Celu.PNG')" alt="Seguro de Celulares" />
+				<img :src="getServiceImage('Celu.png')" alt="Seguro de Celulares" />
 			</div>
 		</div>
 
@@ -269,6 +269,7 @@ export default {
 	font-size: 1.2rem;
 	color: #555;
 	margin-bottom: 20px;
+	margin-right: 30px;
 }
 
 .header-text .btn-custom {

@@ -3,7 +3,7 @@
 		<!-- Encabezado con diseño dividido -->
 		<div class="header-container d-flex align-items-center">
 			<div class="header-text">
-				<h1>Seguro de Notebooks</h1>
+				<h1>Notebooks</h1>
 				<p>
 					Protección contra robo o daños accidentales para notebooks y
 					computadoras portátiles.
@@ -13,7 +13,7 @@
 				</button>
 			</div>
 			<div class="header-image">
-				<img :src="getServiceImage('Note.PNG')" alt="Seguro de Notebooks" />
+				<img :src="getServiceImage('Note.png')" alt="Seguro de Notebooks" />
 			</div>
 		</div>
 
@@ -265,6 +265,7 @@ export default {
 	font-size: 1.2rem;
 	color: #555;
 	margin-bottom: 20px;
+	margin-right: 30px;
 }
 
 .header-text .btn-custom {

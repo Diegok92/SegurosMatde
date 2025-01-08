@@ -14,18 +14,22 @@
 				<button
 					class="navbar-toggler"
 					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarNav"
+					@click="toggleMenu"
 					aria-controls="navbarNav"
-					aria-expanded="false"
+					:aria-expanded="isMenuOpen"
 					aria-label="Toggle navigation"
 				>
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
+				<div
+					class="collapse navbar-collapse"
+					:class="{ show: isMenuOpen }"
+					id="navbarNav"
+					ref="navbarNav"
+				>
 					<ul class="navbar-nav ms-auto">
 						<li class="nav-item">
-							<router-link to="/" class="nav-link"
+							<router-link to="/" class="nav-link" @click="closeMenu"
 								><span>INICIO</span></router-link
 							>
 						</li>
@@ -39,85 +43,123 @@
 								aria-expanded="false"
 							>
 								<span>SEGUROS</span>
-								<!-- <div class="triangle ms-2"></div> -->
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="segurosDropdown">
 								<li>
-									<router-link to="/flotas" class="dropdown-item"
+									<router-link
+										to="/flotas"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Flotas de Autos</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/art" class="dropdown-item"
+									<router-link
+										to="/art"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>A.R.T.</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/accidentes-personales" class="dropdown-item"
+									<router-link
+										to="/accidentes-personales"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Accidentes Personales</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/comercio" class="dropdown-item"
+									<router-link
+										to="/comercio"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Integral de Comercio</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/consorcio" class="dropdown-item"
+									<router-link
+										to="/consorcio"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Integral de Consorcio</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/todo-riesgo-operativo" class="dropdown-item"
+									<router-link
+										to="/todo-riesgo-operativo"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Todo Riesgo Operativo</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/transport" class="dropdown-item"
+									<router-link
+										to="/transport"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Transporte de Mercancías</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/caucion" class="dropdown-item"
+									<router-link
+										to="/caucion"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Caución</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/mala-praxis" class="dropdown-item"
+									<router-link
+										to="/mala-praxis"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Mala Praxis</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/combinado-familiar" class="dropdown-item"
+									<router-link
+										to="/combinado-familiar"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Combinado Familiar</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/bicicletas" class="dropdown-item"
+									<router-link
+										to="/bicicletas"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Bicicletas</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/notebooks" class="dropdown-item"
+									<router-link
+										to="/notebooks"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Notebooks</span></router-link
 									>
 								</li>
 								<li>
-									<router-link to="/celulares" class="dropdown-item"
+									<router-link
+										to="/celulares"
+										class="dropdown-item"
+										@click="closeMenu"
 										><span>Celulares</span></router-link
 									>
 								</li>
 							</ul>
 						</li>
 						<li class="nav-item">
-							<router-link to="/about" class="nav-link"
-								><span>NOSOTROS</span></router-link
-							>
+							<router-link to="/about" class="nav-link" @click="closeMenu">
+								<span>NOSOTROS</span>
+							</router-link>
 						</li>
 						<li class="nav-item">
-							<router-link to="/contact" class="nav-link"
-								><span>CONTACTO</span></router-link
-							>
+							<router-link to="/contact" class="nav-link" @click="closeMenu">
+								<span>CONTACTO</span>
+							</router-link>
 						</li>
 					</ul>
 				</div>
@@ -130,8 +172,30 @@
 export default {
 	data() {
 		return {
-			menuOpen: false,
+			isMenuOpen: false,
 		};
+	},
+	mounted() {
+		document.addEventListener("click", this.handleClickOutside);
+	},
+	beforeUnmount() {
+		document.removeEventListener("click", this.handleClickOutside);
+	},
+	methods: {
+		toggleMenu(event) {
+			event.stopPropagation();
+			this.isMenuOpen = !this.isMenuOpen;
+		},
+		closeMenu() {
+			this.isMenuOpen = false;
+		},
+		handleClickOutside(event) {
+			const menu = this.$refs.navbarNav;
+			const toggler = event.target.closest(".navbar-toggler");
+			if (this.isMenuOpen && menu && !menu.contains(event.target) && !toggler) {
+				this.closeMenu();
+			}
+		},
 	},
 };
 </script>
@@ -253,11 +317,34 @@ body {
 	padding-top: 70px; /* Ajusta según la altura del navbar */
 }
 
-.navbar-toggler {
-	border-color: white !important; /* Cambia el borde a blanco */
-}
-
 .navbar-toggler-icon {
 	background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+	border-color: white !important;
+}
+
+.dropdown-menu.show {
+	display: block;
+}
+
+@media (max-width: 768px) {
+	.dropdown-menu {
+		background-color: #ffffff !important;
+	}
+
+	.dropdown-item {
+		color: #003366;
+	}
+
+	.dropdown-item:hover {
+		background-color: #f2f2f2;
+		color: #003366;
+	}
+
+	.dropdown-item::after {
+		background-color: #ff6600;
+	}
 }
 </style>

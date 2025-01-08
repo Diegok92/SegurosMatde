@@ -176,6 +176,10 @@ export default {
 	margin-bottom: 20px;
 }
 
+.intro-section h1 {
+	margin-top: 20px;
+}
+
 .intro-section p {
 	font-size: 1.2rem;
 	color: #444;
